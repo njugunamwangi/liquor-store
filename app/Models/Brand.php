@@ -4,8 +4,12 @@ namespace App\Models;
 
 use Awcodes\Curator\Components\Forms\CuratorPicker;
 use Awcodes\Curator\Models\Media;
+use Filament\Forms\Components\Grid;
 use Filament\Forms\Components\RichEditor;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
+use Filament\Forms\Get;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -23,13 +27,7 @@ class Brand extends Model
     public const CREATED_AT = null;
     public const UPDATED_AT = null;
 
-    protected $fillable = [
-        'brand',
-        'slug',
-        'website',
-        'featured_image_id',
-        'description',
-    ];
+    protected $guarded = [];
 
     public function featuredImage(): BelongsTo
     {
@@ -47,6 +45,15 @@ class Brand extends Model
         return $this->hasMany(Product::class, 'brand_id', 'id');
     }
 
+    public function category(): BelongsTo {
+        return $this->belongsTo(Category::class);
+    }
+
+    public function flavor(): BelongsTo {
+        return $this->belongsTo(Flavor::class);
+    }
+
+
     public static function getForm(): array {
         return [
             TextInput::make('brand')
@@ -57,11 +64,26 @@ class Brand extends Model
                 ->required()
                 ->hiddenOn('create')
                 ->maxLength(255),
-            TextInput::make('website')
-                ->url()
-                ->unique(ignoreRecord: true)
-                ->required()
-                ->maxLength(255),
+            Grid::make(2)
+                ->schema([
+                    Select::make('category_id')
+                        ->relationship('category', 'category')
+                        ->createOptionForm(Category::getForm())
+                        ->editOptionForm(Category::getForm())
+                        ->preload()
+                        ->live()
+                        ->multiple()
+                        ->searchable(),
+                    Select::make('flavor_id')
+                        ->relationship('flavor', 'flavor', modifyQueryUsing: function(Builder $query, Get $get) {
+                            return $query->where('category_id', $get('category_id'));
+                        })
+                        ->createOptionForm(Flavor::getForm())
+                        ->editOptionForm(Flavor::getForm())
+                        ->preload()
+                        ->multiple()
+                        ->searchable(),
+                ]),
             CuratorPicker::make('featured_image_id')
                 ->relationship('featuredImage', 'id')
                 ->label('Image'),
