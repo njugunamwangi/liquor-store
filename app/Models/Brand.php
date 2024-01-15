@@ -72,7 +72,6 @@ class Brand extends Model
                         ->editOptionForm(Category::getForm())
                         ->preload()
                         ->live()
-                        ->multiple()
                         ->searchable(),
                     Select::make('flavor_id')
                         ->relationship('flavor', 'flavor', modifyQueryUsing: function(Builder $query, Get $get) {
@@ -81,7 +80,6 @@ class Brand extends Model
                         ->createOptionForm(Flavor::getForm())
                         ->editOptionForm(Flavor::getForm())
                         ->preload()
-                        ->multiple()
                         ->searchable(),
                 ]),
             CuratorPicker::make('featured_image_id')

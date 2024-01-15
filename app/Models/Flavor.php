@@ -64,6 +64,7 @@ class Flavor extends Model
             Select::make('category_id')
                 ->relationship('category', 'category')
                 ->createOptionForm(Category::getForm())
+                ->editOptionForm(Category::getForm())
                 ->preload()
                 ->columnSpanFull()
                 ->required()
