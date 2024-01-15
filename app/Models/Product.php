@@ -63,6 +63,10 @@ class Product extends Model
         return $this->belongsTo(Category::class);
     }
 
+    public function liquorAmounts(): BelongsToMany {
+        return $this->belongsToMany(LiquorAmount::class);
+    }
+
     public function getDiscount() {
         $diff = $this->list_price - $this->retail_price;
 
