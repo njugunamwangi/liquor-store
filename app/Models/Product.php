@@ -63,8 +63,8 @@ class Product extends Model
         return $this->belongsTo(Category::class);
     }
 
-    public function liquorAmounts(): BelongsToMany {
-        return $this->belongsToMany(LiquorAmount::class);
+    public function amounts(): BelongsToMany {
+        return $this->belongsToMany(Amount::class);
     }
 
     public function getDiscount() {
