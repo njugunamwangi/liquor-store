@@ -40,6 +40,10 @@ class Flavor extends Model
         return $this->hasMany(Product::class);
     }
 
+    public function category(): BelongsTo {
+        return $this->belongsTo(Category::class);
+    }
+
     public static function getForm(): array {
         return [
             CuratorPicker::make('featured_image_id')
@@ -57,6 +61,13 @@ class Flavor extends Model
                         ->hiddenOn('create')
                         ->maxLength(255),
                 ]),
+            Select::make('category_id')
+                ->relationship('category', 'category')
+                ->createOptionForm(Category::getForm())
+                ->preload()
+                ->columnSpanFull()
+                ->required()
+                ->searchable(),
             RichEditor::make('description')
                 ->columnSpanFull()
             ];
