@@ -5,6 +5,7 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\FlavorResource\Pages;
 use App\Filament\Resources\FlavorResource\RelationManagers;
 use App\Models\Flavor;
+use Awcodes\Curator\Components\Tables\CuratorColumn;
 use Filament\Forms;
 use Filament\Forms\Components\Grid;
 use Filament\Forms\Form;
@@ -32,8 +33,9 @@ class FlavorResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('featuredImage.name')
-                    ->numeric()
+                CuratorColumn::make('featured_image_id')
+                    ->height(50)
+                    ->label('Image')
                     ->sortable(),
                 Tables\Columns\TextColumn::make('flavor')
                     ->searchable(),

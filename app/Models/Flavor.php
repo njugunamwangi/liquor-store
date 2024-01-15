@@ -5,6 +5,7 @@ namespace App\Models;
 use Awcodes\Curator\Components\Forms\CuratorPicker;
 use Awcodes\Curator\Models\Media;
 use Filament\Forms\Components\Grid;
+use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -25,7 +26,7 @@ class Flavor extends Model
 
     public function featuredImage(): BelongsTo
     {
-        return $this->belongsTo(Media::class, 'image_id');
+        return $this->belongsTo(Media::class, 'featured_image_id');
     }
 
     public function getSlugOptions() : SlugOptions
@@ -44,6 +45,7 @@ class Flavor extends Model
             CuratorPicker::make('featured_image_id')
                 ->relationship('featuredImage', 'name')
                 ->label('Featured Image')
+                ->listDisplay(false)
                 ->required(),
             Grid::make(2)
                 ->schema([
@@ -54,7 +56,9 @@ class Flavor extends Model
                         ->required()
                         ->hiddenOn('create')
                         ->maxLength(255),
-                ])
+                ]),
+            RichEditor::make('description')
+                ->columnSpanFull()
             ];
     }
 }
