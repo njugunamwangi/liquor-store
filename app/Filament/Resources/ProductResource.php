@@ -6,6 +6,7 @@ use App\Filament\Resources\ProductResource\Pages;
 use App\Filament\Resources\ProductResource\RelationManagers;
 use App\Models\Brand;
 use App\Models\Category;
+use App\Models\Flavor;
 use App\Models\Product;
 use Awcodes\Curator\Components\Forms\CuratorPicker;
 use Awcodes\Curator\Components\Tables\CuratorColumn;
@@ -25,7 +26,7 @@ class ProductResource extends Resource
 
     protected static ?string $navigationGroup = 'Shop';
 
-    protected static ?int $navigationSort = 3;
+    protected static ?int $navigationSort = 4;
 
     public static function form(Form $form): Form
     {
@@ -87,7 +88,6 @@ class ProductResource extends Resource
                             ->required(),
                         Forms\Components\Select::make('category_id')
                             ->relationship('categories', 'category')
-                            ->required()
                             ->createOptionForm(Category::getForm())
                             ->preload()
                             ->multiple()
@@ -99,6 +99,16 @@ class ProductResource extends Resource
                             )
                             ->createOptionForm(Brand::getForm())
                             ->editOptionForm(Brand::getForm())
+                            ->required()
+                            ->preload()
+                            ->searchable(),
+                        Forms\Components\Select::make('flavor_id')
+                            ->relationship('flavor', 'flavor')
+                            ->options(Flavor::all()
+                                ->pluck('flavor', 'id')
+                            )
+                            ->createOptionForm(Flavor::getForm())
+                            ->editOptionForm(Flavor::getForm())
                             ->required()
                             ->preload()
                             ->searchable(),

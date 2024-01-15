@@ -2,7 +2,11 @@
 
 namespace App\Models;
 
+use Awcodes\Curator\Components\Forms\CuratorPicker;
 use Awcodes\Curator\Models\Media;
+use Filament\Forms\Components\Grid;
+use Filament\Forms\Components\Select;
+use Filament\Forms\Components\TextInput;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -33,5 +37,24 @@ class Flavor extends Model
 
     public function products(): HasMany {
         return $this->hasMany(Product::class);
+    }
+
+    public static function getForm(): array {
+        return [
+            CuratorPicker::make('featured_image_id')
+                ->relationship('featuredImage', 'name')
+                ->label('Featured Image')
+                ->required(),
+            Grid::make(2)
+                ->schema([
+                    TextInput::make('flavor')
+                        ->required()
+                        ->maxLength(255),
+                    TextInput::make('slug')
+                        ->required()
+                        ->hiddenOn('create')
+                        ->maxLength(255),
+                ])
+            ];
     }
 }
