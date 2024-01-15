@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('liquor_amounts', function (Blueprint $table) {
             $table->id();
+            $table->string('amount');
+            $table->string('slug');
+            $table->string('nickname')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

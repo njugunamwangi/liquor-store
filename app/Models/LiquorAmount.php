@@ -20,7 +20,7 @@ class LiquorAmount extends Model
     public function getSlugOptions() : SlugOptions
     {
         return SlugOptions::create()
-            ->generateSlugsFrom('category')
+            ->generateSlugsFrom('amount')
             ->saveSlugsTo('slug');
     }
 
