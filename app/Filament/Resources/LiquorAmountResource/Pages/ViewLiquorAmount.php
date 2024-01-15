@@ -1,0 +1,19 @@
+<?php
+
+namespace App\Filament\Resources\LiquorAmountResource\Pages;
+
+use App\Filament\Resources\LiquorAmountResource;
+use Filament\Actions;
+use Filament\Resources\Pages\ViewRecord;
+
+class ViewLiquorAmount extends ViewRecord
+{
+    protected static string $resource = LiquorAmountResource::class;
+
+    protected function getHeaderActions(): array
+    {
+        return [
+            Actions\EditAction::make(),
+        ];
+    }
+}
