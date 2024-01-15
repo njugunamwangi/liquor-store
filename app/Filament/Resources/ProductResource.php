@@ -14,6 +14,7 @@ use Filament\Forms;
 use Filament\Forms\Components\Grid;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Form;
+use Filament\Forms\Get;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
@@ -44,13 +45,6 @@ class ProductResource extends Resource
                                     ->hiddenOn('create')
                                     ->maxLength(2000),
                             ]),
-                        Grid::make(2)
-                            ->schema([
-                                Forms\Components\TextInput::make('model_name')
-                                    ->maxLength(2000),
-                                Forms\Components\TextInput::make('model_number')
-                                    ->maxLength(2000),
-                            ]),
                         Forms\Components\RichEditor::make('description')
                             ->columnSpanFull(),
                         Grid::make(2)
@@ -77,8 +71,6 @@ class ProductResource extends Resource
                                     ->label('Published')
                                     ->required(),
                             ]),
-                        Forms\Components\RichEditor::make('warranty')
-                            ->columnSpanFull(),
                     ])->columnSpan(8),
                 Section::make()
                     ->schema([
@@ -87,28 +79,29 @@ class ProductResource extends Resource
                             ->label('Image')
                             ->required(),
                         Forms\Components\Select::make('category_id')
-                            ->relationship('categories', 'category')
+                            ->relationship('category', 'category')
                             ->createOptionForm(Category::getForm())
-                            ->preload()
-                            ->multiple()
-                            ->searchable(),
-                        Forms\Components\Select::make('brand_id')
-                            ->relationship('brand', 'brand')
-                            ->options(Brand::all()
-                                ->pluck('brand', 'id')
-                            )
-                            ->createOptionForm(Brand::getForm())
-                            ->editOptionForm(Brand::getForm())
+                            ->editOptionForm(Category::getForm())
+                            ->live()
                             ->required()
                             ->preload()
                             ->searchable(),
                         Forms\Components\Select::make('flavor_id')
-                            ->relationship('flavor', 'flavor')
-                            ->options(Flavor::all()
-                                ->pluck('flavor', 'id')
-                            )
+                            ->relationship('flavor', 'flavor', modifyQueryUsing: function(Builder $query, Get $get) {
+                                return $query->where('category_id', $get('category_id'));
+                            })
                             ->createOptionForm(Flavor::getForm())
                             ->editOptionForm(Flavor::getForm())
+                            ->live()
+                            ->required()
+                            ->preload()
+                            ->searchable(),
+                        Forms\Components\Select::make('brand_id')
+                            ->relationship('brand', 'brand', modifyQueryUsing: function(Builder $query, Get $get) {
+                                return $query->where('flavor_id', $get('flavor_id'));
+                            })
+                            ->createOptionForm(Brand::getForm())
+                            ->editOptionForm(Brand::getForm())
                             ->required()
                             ->preload()
                             ->searchable(),
