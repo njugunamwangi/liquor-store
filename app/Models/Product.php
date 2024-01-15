@@ -71,6 +71,10 @@ class Product extends Model
         return $this->belongsTo(Brand::class, 'brand_id');
     }
 
+    public function flavor(): BelongsTo {
+        return $this->belongsTo(Flavor::class);
+    }
+
     public function categories(): BelongsToMany
     {
         return $this->belongsToMany(Category::class);
