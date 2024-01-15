@@ -40,6 +40,7 @@ class AdminPanelProvider extends PanelProvider
             ])
             ->navigationGroups([
                 NavigationGroup::make('Shop')->icon('heroicon-o-shopping-cart'),
+                NavigationGroup::make('User Management')->icon('heroicon-o-user-group'),
             ])
             ->discoverWidgets(in: app_path('Filament/Widgets'), for: 'App\\Filament\\Widgets')
             ->widgets([
