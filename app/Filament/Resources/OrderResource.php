@@ -88,21 +88,14 @@ class OrderResource extends Resource
                                                 Components\TextEntry::make('payment_method'),
                                                 Components\TextEntry::make('payment_status')
                                                     ->badge()
-                                                    ->color(fn (string $state): string => match ($state) {
-                                                        'Not Paid' => 'gray',
-                                                        'Failed' => 'warning',
-                                                        'Paid' => 'success',
-                                                        'Pending' => 'danger',
+                                                    ->color(function($state) {
+                                                        return $state->getColor();
                                                     }),
                                                 Components\TextEntry::make('order_status')
                                                     ->badge()
-                                                    ->color(fn (string $state): string => match ($state) {
-                                                        'Pending' => 'gray',
-                                                        'Failed' => 'warning',
-                                                        'Processing' => 'info',
-                                                        'Delivered' => 'success',
-                                                        'Cancelled' => 'danger',
-                                                    }),
+                                                    ->color(function($state) {
+                                                        return $state->getColor();
+                                                    })
                                             ]),
                                         ]),
                                 ])->from('lg'),
