@@ -48,7 +48,7 @@
                                                 </svg>
                                             </button>
 
-                                            <input disabled value="{{ $item->quantity }}" class="w-16 rounded-md border border-gray-300 py-1.5 text-center text-base font-medium leading-5 text-gray-700 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500 sm:text-sm" />
+                                            <input disabled value="{{ $item->quantity }}" class="w-16 border border-gray-300 py-1.5 text-center text-base font-medium leading-5 text-gray-700 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500 sm:text-sm" />
 
                                             <button
                                                 wire:click="decrementQuantity({{ $item->id }})"
@@ -84,7 +84,7 @@
 
                                 <p class="mt-4 flex space-x-2 text-sm text-gray-700">
                                     SubTotal: Kes {{ number_format( $item->product->retail_price * $item->quantity, 2 ) }}
-                                            @php $subTotal += $item->product->retail_price * $item->quantity @endphp
+                                    @php $subTotal += $item->product->retail_price * $item->quantity @endphp
                                 </p>
                             </div>
                         </li>

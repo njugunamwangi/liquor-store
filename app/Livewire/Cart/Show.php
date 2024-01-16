@@ -9,7 +9,7 @@ use Masmerise\Toaster\Toaster;
 
 class Show extends Component
 {
-    public $cart, $subTotal = 0, $shipping = 0;
+    public $cart, $subTotal = 0, $shipping = 100;
 
     public function incrementQuantity(int $cartId)
     {
