@@ -12,7 +12,7 @@ use Masmerise\Toaster\Toaster;
 
 class Checkout extends Component
 {
-    public $cart, $subTotal, $shipping = 0;
+    public $cart, $subTotal, $shipping = 100;
 
     public $name, $email, $phone, $address1, $address2, $city, $state, $zipcode;
 
@@ -33,7 +33,7 @@ class Checkout extends Component
     {
         $this->validate();
 
-        $total = 0;
+        $total = $this->shipping;
 
         foreach ($this->cart as $item) {
             $total += $item->product->retail_price * $item->quantity;
