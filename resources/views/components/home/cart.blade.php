@@ -1,11 +1,11 @@
 <x-app-layout :title="$title">
-    <div class="bg-white py-6 sm:py-8 lg:py-12">
-        <div class="mx-auto max-w-screen-lg px-4 md:px-8">
-            <div class="mb-6 sm:mb-10 lg:mb-16">
-                <h2 class="mb-4 text-center text-2xl font-bold text-gray-800 md:mb-6 lg:text-3xl">Your Cart</h2>
-            </div>
+
+    <div class="bg-white">
+        <div class="mx-auto max-w-2xl px-4 pb-24 pt-16 sm:px-6 lg:max-w-7xl lg:px-8">
+            <h1 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Shopping Cart</h1>
 
             <livewire:cart.show />
         </div>
     </div>
+
 </x-app-layout>
