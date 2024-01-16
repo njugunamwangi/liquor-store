@@ -4,6 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\ProductResource\Pages;
 use App\Filament\Resources\ProductResource\RelationManagers;
+use App\Models\Amount;
 use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Flavor;
@@ -15,6 +16,11 @@ use Filament\Forms\Components\Grid;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Form;
 use Filament\Forms\Get;
+use Filament\Infolists\Components\Group;
+use Filament\Infolists\Components\ImageEntry;
+use Filament\Infolists\Components\Section as ComponentsSection;
+use Filament\Infolists\Components\TextEntry;
+use Filament\Infolists\Infolist;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
@@ -52,6 +58,7 @@ class ProductResource extends Resource
                                 Forms\Components\TextInput::make('list_price')
                                     ->prefix('Kes')
                                     ->required()
+                                    ->gt('retail_price')
                                     ->numeric(),
                                 Forms\Components\TextInput::make('retail_price')
                                     ->prefix('Kes')
@@ -102,6 +109,14 @@ class ProductResource extends Resource
                             })
                             ->createOptionForm(Brand::getForm())
                             ->editOptionForm(Brand::getForm())
+                            ->required()
+                            ->preload()
+                            ->searchable(),
+                        Forms\Components\Select::make('amount_id')
+                            ->relationship('amount', 'amount')
+                            ->label('Volume')
+                            ->createOptionForm(Amount::getForm())
+                            ->editOptionForm(Amount::getForm())
                             ->required()
                             ->preload()
                             ->searchable(),
@@ -185,6 +200,34 @@ class ProductResource extends Resource
                     Tables\Actions\ForceDeleteBulkAction::make(),
                     Tables\Actions\RestoreBulkAction::make(),
                 ]),
+            ]);
+    }
+
+    public static function infolist(Infolist $infolist): Infolist
+    {
+        return $infolist
+            ->schema([
+                ComponentsSection::make('Basic Information')
+                    ->columns(3)
+                    ->schema([
+                        ImageEntry::make('image')
+                            ->getStateUsing(function($record) {
+                                return $record->productImage->path;
+                            }),
+                        Group::make()
+                            ->columnSpan(2)
+                            ->columns(2)
+                            ->schema([
+                                TextEntry::make('product'),
+                                TextEntry::make('category.category'),
+                                TextEntry::make('flavor.flavor'),
+                                TextEntry::make('brand.brand'),
+                                TextEntry::make('list_price')
+                                    ->money('Kes'),
+                                TextEntry::make('retail_price')
+                                    ->money('Kes'),
+                            ])
+                    ])
             ]);
     }
 

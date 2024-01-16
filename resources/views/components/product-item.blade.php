@@ -15,7 +15,7 @@
     <div class="flex items-start justify-between gap-2 px-2">
         <div class="flex flex-col">
             <a href="{{ route('product', $product) }}" wire:navigate class="text-lg font-bold text-gray-800 transition duration-100 hover:text-gray-500 lg:text-xl">{{ $product->product }}</a>
-            <span class="text-gray-500">by {{ $product->brand->brand }}</span>
+            <span class="text-gray-500">{{ $product->brand->brand }}</span>
         </div>
 
         <div class="flex flex-col items-end">
