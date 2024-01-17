@@ -48,6 +48,7 @@ class Checkout extends Component
             'payment_method' => 'Online',
             'payment_status' => 'Not Paid',
             'order_status' => 'Pending',
+            'shipping' => $this->shipping,
         ]);
 
         foreach ($this->cart as $item) {
