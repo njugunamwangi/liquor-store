@@ -3,6 +3,7 @@
 # Plugins
 
 - [Laravel JetStream](https://jetstream.laravel.com/introduction.html).
+- [Activity Logger](https://filamentphp.com/plugins/z3d0x-logger).
 
 # Tech Stack
 
