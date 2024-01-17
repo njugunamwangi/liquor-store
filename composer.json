@@ -21,7 +21,8 @@
         "masmerise/livewire-toaster": "2.0.0",
         "sebdesign/laravel-viva-payments": "^6.0",
         "spatie/laravel-sluggable": "^3.5",
-        "unicodeveloper/laravel-paystack": "^1.1"
+        "unicodeveloper/laravel-paystack": "^1.1",
+        "z3d0x/filament-logger": "^0.6.2"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",

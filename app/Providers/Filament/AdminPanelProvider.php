@@ -62,6 +62,9 @@ class AdminPanelProvider extends PanelProvider
             ->authMiddleware([
                 Authenticate::class,
             ])
+            ->resources([
+                config('filament-logger.activity_resource')
+            ])
             ->plugins([
                 FilamentSpatieRolesPermissionsPlugin::make(),
                 CuratorPlugin::make()
@@ -70,7 +73,7 @@ class AdminPanelProvider extends PanelProvider
                     ->navigationIcon('heroicon-o-photo')
                     ->navigationGroup('Content')
                     ->navigationSort(3)
-                    ->navigationCountBadge()
+                    ->navigationCountBadge(),
             ]);
     }
 
