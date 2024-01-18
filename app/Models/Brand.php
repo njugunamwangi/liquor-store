@@ -59,11 +59,6 @@ class Brand extends Model
             TextInput::make('brand')
                 ->required()
                 ->maxLength(255),
-            TextInput::make('slug')
-                ->unique(ignoreRecord: true)
-                ->required()
-                ->hiddenOn('create')
-                ->maxLength(255),
             Grid::make(2)
                 ->schema([
                     Select::make('category_id')
