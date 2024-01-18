@@ -31,7 +31,7 @@
         -->
         <div class="relative flex w-full max-w-xs flex-col overflow-y-auto bg-white pb-12 shadow-xl">
             <div class="flex px-4 pb-2 pt-5">
-                <button type="button" @click="open = !open" class="-m-2 inline-flex items-center justify-center rounded-md p-2 text-gray-400">
+                <button type="button" @click="open = !open" @click.away="open = false" class="-m-2 inline-flex items-center justify-center rounded-md p-2 text-gray-400">
                     <span class="sr-only">Close menu</span>
                     <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
