@@ -42,6 +42,10 @@ class Category extends Model
             ->saveSlugsTo('slug');
     }
 
+    public function flavors(): HasMany {
+        return $this->hasMany(Flavor::class);
+    }
+
     public function image(): BelongsTo {
         return $this->belongsTo(Media::class, 'image_id');
     }
