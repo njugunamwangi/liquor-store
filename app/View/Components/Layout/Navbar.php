@@ -2,6 +2,7 @@
 
 namespace App\View\Components\Layout;
 
+use App\Http\Resources\CategoryResource;
 use App\Models\Category;
 use Closure;
 use Illuminate\Contracts\View\View;
@@ -22,7 +23,7 @@ class Navbar extends Component
      */
     public function render(): View|Closure|string
     {
-        $categories = Category::all();
+        $categories = CategoryResource::collection(Category::all());
 
         return view('components.layout.navbar', compact('categories'));
     }
