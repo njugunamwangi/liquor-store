@@ -20,7 +20,7 @@
     <body class="h-full font-sans antialiased">
         <div class="bg-white pb-6 sm:pb-8 lg:pb-12">
 
-            <x-layout.navbar></x-layout.navbar>
+
 
             {{ $slot }}
 
