@@ -4,6 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\FlavorResource\Pages;
 use App\Filament\Resources\FlavorResource\RelationManagers;
+use App\Filament\Resources\FlavorResource\RelationManagers\BrandsRelationManager;
 use App\Models\Flavor;
 use Awcodes\Curator\Components\Tables\CuratorColumn;
 use Filament\Forms;
@@ -103,7 +104,7 @@ class FlavorResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            BrandsRelationManager::class,
         ];
     }
 
