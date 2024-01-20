@@ -5,6 +5,7 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\FlavorResource\Pages;
 use App\Filament\Resources\FlavorResource\RelationManagers;
 use App\Filament\Resources\FlavorResource\RelationManagers\BrandsRelationManager;
+use App\Filament\Resources\FlavorResource\RelationManagers\ProductsRelationManager;
 use App\Models\Flavor;
 use Awcodes\Curator\Components\Tables\CuratorColumn;
 use Filament\Forms;
@@ -105,6 +106,7 @@ class FlavorResource extends Resource
     {
         return [
             BrandsRelationManager::class,
+            ProductsRelationManager::class,
         ];
     }
 
