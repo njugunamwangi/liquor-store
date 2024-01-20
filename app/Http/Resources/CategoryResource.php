@@ -18,6 +18,7 @@ class CategoryResource extends JsonResource
             'id' => $this->id,
             'category' => $this->category,
             'flavors' => FlavorResource::collection($this->flavors),
+            'image' => $this->image,
         ];
     }
 }
