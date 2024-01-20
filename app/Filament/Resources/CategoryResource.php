@@ -4,6 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\CategoryResource\Pages;
 use App\Filament\Resources\CategoryResource\RelationManagers;
+use App\Filament\Resources\CategoryResource\RelationManagers\FlavorsRelationManager;
 use App\Models\Category;
 use Awcodes\Curator\Components\Forms\CuratorPicker;
 use Awcodes\Curator\Components\Tables\CuratorColumn;
@@ -93,7 +94,7 @@ class CategoryResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            FlavorsRelationManager::class,
         ];
     }
 
