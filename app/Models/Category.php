@@ -47,7 +47,7 @@ class Category extends Model
     }
 
     public function image(): BelongsTo {
-        return $this->belongsTo(Media::class, 'image_id');
+        return $this->belongsTo(Media::class, 'image_id', 'id');
     }
 
     public function parent(): BelongsTo {

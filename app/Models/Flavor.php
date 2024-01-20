@@ -26,7 +26,7 @@ class Flavor extends Model
 
     public function featuredImage(): BelongsTo
     {
-        return $this->belongsTo(Media::class, 'featured_image_id');
+        return $this->belongsTo(Media::class, 'featured_image_id', 'id');
     }
 
     public function getSlugOptions() : SlugOptions
