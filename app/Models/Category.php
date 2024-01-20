@@ -46,6 +46,10 @@ class Category extends Model
         return $this->hasMany(Flavor::class);
     }
 
+    public function brands(): HasMany {
+        return $this->hasMany(Brand::class);
+    }
+
     public function image(): BelongsTo {
         return $this->belongsTo(Media::class, 'image_id', 'id');
     }

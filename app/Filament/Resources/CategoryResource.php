@@ -4,6 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\CategoryResource\Pages;
 use App\Filament\Resources\CategoryResource\RelationManagers;
+use App\Filament\Resources\CategoryResource\RelationManagers\BrandsRelationManager;
 use App\Filament\Resources\CategoryResource\RelationManagers\FlavorsRelationManager;
 use App\Models\Category;
 use Awcodes\Curator\Components\Forms\CuratorPicker;
@@ -95,6 +96,7 @@ class CategoryResource extends Resource
     {
         return [
             FlavorsRelationManager::class,
+            BrandsRelationManager::class
         ];
     }
 
