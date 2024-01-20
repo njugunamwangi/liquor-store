@@ -9,6 +9,11 @@ use Awcodes\Curator\Components\Tables\CuratorColumn;
 use Filament\Forms;
 use Filament\Forms\Components\Grid;
 use Filament\Forms\Form;
+use Filament\Infolists\Components\Group;
+use Filament\Infolists\Components\ImageEntry;
+use Filament\Infolists\Components\Section;
+use Filament\Infolists\Components\TextEntry;
+use Filament\Infolists\Infolist;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
@@ -38,8 +43,10 @@ class FlavorResource extends Resource
                     ->label('Image')
                     ->sortable(),
                 Tables\Columns\TextColumn::make('flavor')
+                    ->sortable()
                     ->searchable(),
-                Tables\Columns\TextColumn::make('slug')
+                Tables\Columns\TextColumn::make('category.category')
+                    ->sortable()
                     ->searchable(),
                 Tables\Columns\TextColumn::make('deleted_at')
                     ->dateTime()
@@ -68,6 +75,28 @@ class FlavorResource extends Resource
                     Tables\Actions\ForceDeleteBulkAction::make(),
                     Tables\Actions\RestoreBulkAction::make(),
                 ]),
+            ]);
+    }
+
+    public static function infolist(Infolist $infolist): Infolist
+    {
+        return $infolist
+            ->schema([
+                Section::make('Flavor Information')
+                    ->columns(3)
+                    ->schema([
+                        ImageEntry::make('image')
+                            ->getStateUsing(function($record) {
+                                return $record->featuredImage->path;
+                            }),
+                        Group::make()
+                            ->columns(2)
+                            ->columnSpan(2)
+                            ->schema([
+                                TextEntry::make('flavor'),
+                                TextEntry::make('category.category'),
+                            ])
+                    ]),
             ]);
     }
 
