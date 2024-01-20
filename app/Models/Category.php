@@ -62,8 +62,8 @@ class Category extends Model
         return $this->hasMany(Category::class, 'parent_id', 'id');
     }
 
-    public function products() : BelongsToMany {
-        return $this->belongsToMany(Category::class);
+    public function products() : HasMany {
+        return $this->hasMany(Product::class);
     }
 
     public static function getForm(): array {
