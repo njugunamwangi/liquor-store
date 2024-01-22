@@ -18,7 +18,7 @@ class FlavorFactory extends Factory
      */
     public function definition(): array
     {
-        $flavor = $this->faker->name();
+        $flavor = $this->faker->word();
         $slug = Str::slug($flavor);
 
         return [
