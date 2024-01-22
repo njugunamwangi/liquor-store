@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Flavor;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -16,5 +17,6 @@ class ShopSeeder extends Seeder
     {
         Category::factory(2)->create();
         Flavor::factory(10)->create();
+        Brand::factory(20)->create();
     }
 }
