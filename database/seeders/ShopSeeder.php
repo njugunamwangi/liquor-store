@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Amount;
 use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Flavor;
@@ -18,5 +19,6 @@ class ShopSeeder extends Seeder
         Category::factory(2)->create();
         Flavor::factory(10)->create();
         Brand::factory(20)->create();
+        Amount::factory(5)->create();
     }
 }
