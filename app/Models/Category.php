@@ -42,6 +42,11 @@ class Category extends Model
             ->saveSlugsTo('slug');
     }
 
+    public function featuredImage(): BelongsTo
+    {
+        return $this->belongsTo(Media::class, 'image_id', 'id');
+    }
+
     public function flavors(): HasMany {
         return $this->hasMany(Flavor::class);
     }
