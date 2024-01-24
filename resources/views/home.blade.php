@@ -1,5 +1,5 @@
 <x-app-layout>
 
-    <x-layout.navbar></x-layout.navbar>
+    <x-home.new-arrival></x-home.new-arrival>
 
 </x-app-layout>
