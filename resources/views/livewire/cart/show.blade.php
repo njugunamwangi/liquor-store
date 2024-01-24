@@ -31,9 +31,9 @@
                                         </p>
                                     </div>
 
-                                    <div class="mt-4 sm:mt-0 sm:pr-9">
+                                    <div class="flex justify-between mt-4 sm:mt-0 sm:pr-9">
                                         <label for="quantity-0" class="sr-only">{{ $item->product->product }}</label>
-                                        <div class="flex flex-row">
+                                        <div class="flex flex-row h-8 ">
                                             <button
                                                 wire:click="incrementQuantity({{ $item->id }})"
                                                 wire:loading.attr="disabled"
@@ -64,7 +64,7 @@
                                                 </svg>
                                             </button>
                                         </div>
-                                        <div class="absolute right-0 top-0">
+                                        <div class=" right-0 top-0">
                                             <button
                                                 type="button"
                                                 class="-m-2 inline-flex p-2 text-gray-400 hover:text-gray-500"
