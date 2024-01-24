@@ -15,7 +15,7 @@
                             </div>
 
                             <div class="ml-4 flex flex-1 flex-col justify-between sm:ml-6">
-                                <div class="relative pr-9 sm:grid sm:grid-cols-2 sm:gap-x-6 sm:pr-0">
+                                <div class="pr-9 sm:grid sm:grid-cols-2 sm:gap-x-6 sm:pr-0">
                                     <div>
                                         <div class="flex justify-between">
                                             <h3 class="text-sm">
@@ -38,7 +38,7 @@
                                                 wire:click="incrementQuantity({{ $item->id }})"
                                                 wire:loading.attr="disabled"
                                                 type="button"
-                                                class="relative inline-flex items-center rounded-l-md bg-white px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-10">
+                                                class="inline-flex items-center rounded-l-md bg-white px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-10">
                                                 <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 256 256" xml:space="preserve">
                                                     <defs>
                                                     </defs>
@@ -54,7 +54,7 @@
                                                 wire:click="decrementQuantity({{ $item->id }})"
                                                 wire:loading.attr="disabled"
                                                 type="button"
-                                                class="relative -ml-px inline-flex items-center rounded-r-md bg-white px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-10">
+                                                class="-ml-px inline-flex items-center rounded-r-md bg-white px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-10">
                                                 <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 256 256" xml:space="preserve">
                                                     <defs>
                                                     </defs>
