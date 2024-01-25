@@ -4,6 +4,7 @@ namespace App\Livewire\Cart;
 
 use App\Models\Cart;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 use Masmerise\Toaster\Toaster;
 
@@ -52,6 +53,17 @@ class Show extends Component
             $model->delete();
             $this->dispatch('CartUpdated');
             Toaster::error('Product removed from cart.');
+        }
+    }
+
+    public function clearCart() {
+        $model = DB::table('carts')
+            ->where('user_id', '=', auth()->user()->id)
+            ->delete();
+
+        if ($model) {
+            $this->dispatch('CartUpdated');
+            Toaster::error('Cart emptied');
         }
     }
 
