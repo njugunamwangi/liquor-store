@@ -130,6 +130,7 @@ class PaymentResource extends Resource
             ->schema([
                 Section::make('Payment Information')
                     ->icon('heroicon-o-credit-card')
+                    ->description('Provided by PayStack Payment Processor')
                     ->columns(2)
                     ->schema([
                         TextEntry::make('message'),
@@ -147,6 +148,7 @@ class PaymentResource extends Resource
                     ]),
                 Section::make('Order Information')
                     ->icon('heroicon-o-shopping-bag')
+                    ->description('Order owner & status ')
                     ->columns(2)
                     ->schema([
                         TextEntry::make('order.order_id')
