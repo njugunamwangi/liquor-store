@@ -58,10 +58,10 @@ class Show extends Component
 
     public function clearCart() {
         $model = DB::table('carts')
-            ->where('user_id', '=', auth()->user()->id)
-            ->delete();
+            ->where('user_id', '=', auth()->user()->id);
 
         if ($model) {
+            $model->delete();
             $this->dispatch('CartUpdated');
             Toaster::error('Cart emptied');
         }
