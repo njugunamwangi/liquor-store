@@ -12,6 +12,7 @@
         "althinect/filament-spatie-roles-permissions": "^2.2",
         "awcodes/filament-curator": "^3.0",
         "filament/filament": "^3.0-stable",
+        "flowframe/laravel-trend": "^0.1.5",
         "guzzlehttp/guzzle": "^7.2",
         "laravel/framework": "^10.10",
         "laravel/jetstream": "^4.0",
