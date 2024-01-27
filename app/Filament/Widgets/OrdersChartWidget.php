@@ -9,6 +9,7 @@ use Flowframe\Trend\TrendValue;
 
 class OrdersChartWidget extends ChartWidget
 {
+    protected static ?int $sort = 3;
     protected static ?string $heading = 'Order History';
 
     public ?string $filter = 'month';
