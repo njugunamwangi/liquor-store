@@ -34,13 +34,15 @@ class LatestOrdersWidget extends BaseWidget
                     ->color(function ($state) {
                         return $state->getColor();
                     })
-                    ->searchable(),
+                    ->searchable()
+                    ->sortable(),
                 Tables\Columns\TextColumn::make('payment_status')
                     ->badge()
                     ->color(function ($state) {
                         return $state->getColor();
                     })
-                    ->searchable(),
+                    ->searchable()
+                    ->sortable(),
             ])
             ->actions([
                 Tables\Actions\Action::make('view')
