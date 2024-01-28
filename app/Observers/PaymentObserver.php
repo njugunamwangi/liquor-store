@@ -3,6 +3,9 @@
 namespace App\Observers;
 
 use App\Models\Payment;
+use App\Models\Role;
+use App\Models\User;
+use Filament\Notifications\Actions\Action;
 use Filament\Notifications\Notification;
 
 class PaymentObserver
@@ -12,12 +15,21 @@ class PaymentObserver
      */
     public function created(Payment $payment): void
     {
-        Notification::make()
-            ->title($payment->user->name . ' made payment for order ' . $payment->order->order_id )
-            ->success()
-            ->icon('heroicon-o-banknotes')
-            ->body('New payment received')
-            ->sendToDatabase($payment->user);
+        $recipients = User::role(Role::IS_ADMIN)->get();
+
+        foreach ($recipients as $recipient) {
+            Notification::make()
+                ->title($payment->user->name . ' made payment for order ' . $payment->order->order_id )
+                ->success()
+                ->icon('heroicon-o-banknotes')
+                ->body('New payment received')
+                ->actions([
+                    Action::make('markAsRead')
+                        ->button()
+                        ->markAsRead(),
+                ])
+                ->sendToDatabase($recipient);
+        }
     }
 
     /**

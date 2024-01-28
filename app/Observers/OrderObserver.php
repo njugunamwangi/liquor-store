@@ -3,6 +3,9 @@
 namespace App\Observers;
 
 use App\Models\Order;
+use App\Models\Role;
+use App\Models\User;
+use Filament\Notifications\Actions\Action;
 use Filament\Notifications\Notification;
 
 class OrderObserver
@@ -12,12 +15,23 @@ class OrderObserver
      */
     public function created(Order $order): void
     {
-        Notification::make()
-            ->title($order->user->name . ' placed an order')
-            ->warning()
-            ->icon('heroicon-o-shopping-bag')
-            ->body('New order ' . $order->order_id)
-            ->sendToDatabase($order->user);
+        $recipients = User::role(Role::IS_ADMIN)->get();
+
+        foreach ($recipients as $recipient) {
+            Notification::make()
+                ->title($order->user->name . ' placed an order')
+                ->warning()
+                ->icon('heroicon-o-shopping-bag')
+                ->body('New order ' . $order->order_id)
+                ->actions([
+                    Action::make('markAsRead')
+                        ->button()
+                        ->markAsRead(),
+                ])
+                ->sendToDatabase($recipient);
+        }
+
+
     }
 
     /**
