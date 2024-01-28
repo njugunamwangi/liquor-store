@@ -30,11 +30,21 @@ class OrderItemsRelationManager extends RelationManager
         return $table
             ->recordTitleAttribute('quantity')
             ->columns([
+                TextColumn::make('order.user.name')
+                    ->label('Customer')
+                    ->searchable()
+                    ->sortable(),
                 TextColumn::make('order.order_id')
-                    ->label('Order ID'),
+                    ->label('Order ID')
+                    ->searchable()
+                    ->sortable(),
                 TextColumn::make('order.tracking_no')
-                    ->label('Tracking Number'),
-                Tables\Columns\TextColumn::make('quantity'),
+                    ->label('Tracking Number')
+                    ->searchable()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('quantity')
+                    ->searchable()
+                    ->sortable(),
             ])
             ->filters([
                 //
