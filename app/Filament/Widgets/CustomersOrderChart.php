@@ -19,6 +19,7 @@ class CustomersOrderChart extends ChartWidget
             'week' => 'Last Week',
             'month' => 'Last Month',
             '3months' => 'Last 3 Months',
+            'year' => 'Last Year',
         ];
     }
 
@@ -45,6 +46,13 @@ class CustomersOrderChart extends ChartWidget
                 ->between(
                     start: now()->subMonths(3),
                     end: now(),
+                )
+                ->perMonth()
+                ->count(),
+            'year' => $data = Trend::model(User::class)
+                ->between(
+                    start: now()->startOfYear(),
+                    end: now()->endOfYear(),
                 )
                 ->perMonth()
                 ->count(),
