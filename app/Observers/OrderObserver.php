@@ -13,7 +13,10 @@ class OrderObserver
     public function created(Order $order): void
     {
         Notification::make()
-            ->title('New order '. $order->order_id)
+            ->title($order->user->name . ' placed an order')
+            ->warning()
+            ->icon('heroicon-o-shopping-bag')
+            ->body('New order ' . $order->order_id)
             ->sendToDatabase($order->user);
     }
 
