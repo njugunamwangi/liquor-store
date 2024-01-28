@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
@@ -65,6 +66,10 @@ class Product extends Model
 
     public function amount(): BelongsTo {
         return $this->belongsTo(Amount::class);
+    }
+
+    public function carts(): HasMany {
+        return $this->hasMany(Cart::class);
     }
 
     public function getDiscount() {
