@@ -4,6 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\ProductResource\Pages;
 use App\Filament\Resources\ProductResource\RelationManagers;
+use App\Filament\Resources\ProductResource\RelationManagers\CartsRelationManager;
 use App\Models\Amount;
 use App\Models\Brand;
 use App\Models\Category;
@@ -234,7 +235,7 @@ class ProductResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            CartsRelationManager::class,
         ];
     }
 
