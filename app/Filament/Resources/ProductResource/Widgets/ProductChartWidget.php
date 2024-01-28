@@ -71,7 +71,7 @@ class ProductChartWidget extends ChartWidget
         return [
             'datasets' => [
                 [
-                    'label' => 'Orders',
+                    'label' => 'Order History',
                     'data' => $data->map(fn (TrendValue $value) => $value->aggregate),
                 ],
             ],
