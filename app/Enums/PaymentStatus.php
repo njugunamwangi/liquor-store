@@ -9,9 +9,9 @@
 
         public function getColor():string {
             return match($this) {
-                self::NotPaid => 'primary',
+                self::NotPaid => 'warning',
                 self::Paid => 'success',
-                self::Failed => 'warning',
+                self::Failed => 'danger',
             };
         }
     }

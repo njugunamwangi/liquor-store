@@ -43,7 +43,8 @@ class LatestOrdersWidget extends BaseWidget
                     ->searchable(),
             ])
             ->actions([
-                Tables\Actions\Action::make('open')
+                Tables\Actions\Action::make('view')
+                    ->label('View Order')
                     ->url(fn (Order $record): string => OrderResource::getUrl('view', ['record' => $record])),
             ]);
     }
