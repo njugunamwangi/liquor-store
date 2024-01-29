@@ -30,8 +30,6 @@ class OrderObserver
                 ])
                 ->sendToDatabase($recipient);
         }
-
-
     }
 
     /**
@@ -39,7 +37,21 @@ class OrderObserver
      */
     public function updated(Order $order): void
     {
-        //
+        $recipients = User::role(Role::IS_ADMIN)->get();
+
+        foreach ($recipients as $recipient) {
+            Notification::make()
+                ->title($order->order_id . ' ' . $order->order_status->value)
+                ->iconColor($order->order_status->getColor())
+                ->icon($order->order_status->getIcon())
+                ->body('Order updated')
+                ->actions([
+                    Action::make('markAsRead')
+                        ->button()
+                        ->markAsRead(),
+                ])
+                ->sendToDatabase($recipient);
+        }
     }
 
     /**
