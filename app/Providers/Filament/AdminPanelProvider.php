@@ -68,6 +68,7 @@ class AdminPanelProvider extends PanelProvider
             ->resources([
                 config('filament-logger.activity_resource')
             ])
+            ->globalSearchKeyBindings(['command+k', 'ctrl+k'])
             ->plugins([
                 FilamentSpatieRolesPermissionsPlugin::make(),
                 CuratorPlugin::make()
