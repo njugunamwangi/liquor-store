@@ -19,7 +19,7 @@ class OrdersChartWidget extends ChartWidget
             'week' => 'Last Week',
             'month' => 'Last Month',
             '3months' => 'Last 3 Months',
-            'year' => 'Last Year',
+            'year' => 'This Year',
         ];
     }
 
