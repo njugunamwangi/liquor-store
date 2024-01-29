@@ -34,6 +34,9 @@ class LatestOrdersWidget extends BaseWidget
                     ->color(function ($state) {
                         return $state->getColor();
                     })
+                    ->icon(function ($state) {
+                        return $state->getIcon();
+                    })
                     ->searchable()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('payment_status')

@@ -153,13 +153,18 @@ class OrderResource extends Resource
                     ->color(function ($state) {
                         return $state->getColor();
                     })
-                    ->searchable(),
+                    ->icon(function ($state) {
+                        return $state->getIcon();
+                    })
+                    ->searchable()
+                    ->sortable(),
                 Tables\Columns\TextColumn::make('payment_status')
                     ->badge()
                     ->color(function ($state) {
                         return $state->getColor();
                     })
-                    ->searchable(),
+                    ->searchable()
+                    ->sortable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
