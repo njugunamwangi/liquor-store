@@ -18,6 +18,7 @@ use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class OrderResource extends Resource
@@ -27,6 +28,8 @@ class OrderResource extends Resource
     protected static ?string $navigationGroup = 'Shop';
 
     protected static ?int $navigationSort = 6;
+
+    protected static ?string $recordTitleAttribute = 'tracking_no';
 
     public static function form(Form $form): Form
     {
@@ -221,5 +224,15 @@ class OrderResource extends Resource
             ->withoutGlobalScopes([
                 SoftDeletingScope::class,
             ]);
+    }
+
+    public static function getGlobalSearchResultUrl(Model $record): string
+    {
+        return OrderResource::getUrl('view', ['record' => $record]);
+    }
+
+    public static function getGloballySearchableAttributes(): array
+    {
+        return ['total_price', 'items.product.product', 'payments.reference', 'user.name'];
     }
 }
