@@ -18,6 +18,7 @@ use Filament\Forms\Components\Grid;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Form;
 use Filament\Forms\Get;
+use Filament\GlobalSearch\Actions\Action;
 use Filament\Infolists\Components\Group;
 use Filament\Infolists\Components\ImageEntry;
 use Filament\Infolists\Components\Section as ComponentsSection;
@@ -27,6 +28,7 @@ use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class ProductResource extends Resource
@@ -36,6 +38,8 @@ class ProductResource extends Resource
     protected static ?string $navigationGroup = 'Shop';
 
     protected static ?int $navigationSort = 5;
+
+    protected static ?string $recordTitleAttribute = 'product';
 
     public static function form(Form $form): Form
     {
@@ -257,5 +261,20 @@ class ProductResource extends Resource
             ->withoutGlobalScopes([
                 SoftDeletingScope::class,
             ]);
+    }
+
+    public static function getGlobalSearchResultUrl(Model $record): string
+    {
+        return ProductResource::getUrl('view', ['record' => $record]);
+    }
+
+    public static function getGloballySearchableAttributes(): array
+    {
+        return ['product', 'description', 'list_price', 'retail_price', 'brand.brand', 'flavor.flavor', 'category.category'];
+    }
+
+    public static function getGlobalSearchEloquentQuery(): Builder
+    {
+        return parent::getGlobalSearchEloquentQuery()->with(['brand', 'flavor', 'category']);
     }
 }
