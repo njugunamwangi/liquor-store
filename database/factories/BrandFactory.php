@@ -20,11 +20,7 @@ class BrandFactory extends Factory
     public function definition(): array
     {
         return [
-            'brand' => $brand = $this->faker->name(),
-            'slug' => Str::slug($brand),
-            'featured_image_id' => $this->faker->numberBetween(1, 5),
-            'category_id' => $category_id = $this->faker->randomElement(Category::all()->pluck('id')),
-            'flavor_id' => $this->faker->randomElement(Flavor::query()->where('category_id', '=', $category_id)->pluck('id'))
+            //
         ];
     }
 }
