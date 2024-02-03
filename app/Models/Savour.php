@@ -24,7 +24,7 @@ class Savour extends Model
     public function getSlugOptions() : SlugOptions
     {
         return SlugOptions::create()
-            ->generateSlugsFrom('flavor')
+            ->generateSlugsFrom('savour')
             ->saveSlugsTo('slug');
     }
 }
