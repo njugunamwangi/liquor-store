@@ -17,13 +17,8 @@ class CategoryFactory extends Factory
      */
     public function definition(): array
     {
-        $category = $this->faker->word();
-        $slug = Str::of($category)->slug();
-
         return [
-            'category' => $category,
-            'slug' => $slug,
-            'image_id' => $this->faker->unique()->numberBetween(1, 5)
+            //
         ];
     }
 }
