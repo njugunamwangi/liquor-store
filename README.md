@@ -30,12 +30,12 @@ git clone https://github.com/njugunamwangi/laracom.git
 copy .env.example .env
 ```
 
-- Run migrations and seed admin user
+- Run migrations and seed the database
 ```bash
 php artisan migrate --seed
 ```
 
-- Install composer dependencies bu running composer install
+- Install composer dependencies by running composer install
  ```bash
 composer install
 ```
@@ -53,7 +53,7 @@ php artisan key:generate
 ```bash
 php artisan serve
 ```
-- Run react application using 
+- Run application using 
 ```bash
 npm run dev
 ```
