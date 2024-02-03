@@ -44,6 +44,7 @@ class Savour extends Model
                 ->createOptionForm(Flavor::getForm())
                 ->editOptionForm(Flavor::getForm())
                 ->preload()
+                ->required()
                 ->searchable(),
         ];
     }
