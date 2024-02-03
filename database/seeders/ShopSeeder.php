@@ -19,6 +19,6 @@ class ShopSeeder extends Seeder
         $this->call(CategorySeeder::class);
         $this->call(FlavorSeeder::class);
         $this->call(BrandSeeder::class);
-        Amount::factory(5)->create();
+        $this->call(AmountSeeder::class);
     }
 }
