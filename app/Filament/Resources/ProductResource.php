@@ -106,7 +106,6 @@ class ProductResource extends Resource
                             ->createOptionForm(Flavor::getForm())
                             ->editOptionForm(Flavor::getForm())
                             ->live()
-                            ->required()
                             ->preload()
                             ->searchable(),
                         Forms\Components\Select::make('brand_id')
@@ -115,7 +114,6 @@ class ProductResource extends Resource
                             })
                             ->createOptionForm(Brand::getForm())
                             ->editOptionForm(Brand::getForm())
-                            ->required()
                             ->preload()
                             ->searchable(),
                         Forms\Components\Select::make('amount_id')
