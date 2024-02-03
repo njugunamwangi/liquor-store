@@ -40,6 +40,10 @@ class Flavor extends Model
         return $this->hasMany(Savour::class);
     }
 
+    public function types(): HasMany {
+        return $this->hasMany(Type::class);
+    }
+
     public function brands(): HasMany {
         return $this->hasMany(Brand::class);
     }
