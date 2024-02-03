@@ -7,6 +7,7 @@ use App\Filament\Resources\FlavorResource\RelationManagers;
 use App\Filament\Resources\FlavorResource\RelationManagers\BrandsRelationManager;
 use App\Filament\Resources\FlavorResource\RelationManagers\ProductsRelationManager;
 use App\Filament\Resources\FlavorResource\RelationManagers\SavoursRelationManager;
+use App\Filament\Resources\FlavorResource\RelationManagers\TypesRelationManager;
 use App\Models\Flavor;
 use Awcodes\Curator\Components\Tables\CuratorColumn;
 use Filament\Forms;
@@ -108,6 +109,7 @@ class FlavorResource extends Resource
         return [
             BrandsRelationManager::class,
             SavoursRelationManager::class,
+            TypesRelationManager::class,
             ProductsRelationManager::class,
         ];
     }
@@ -118,7 +120,7 @@ class FlavorResource extends Resource
             'index' => Pages\ListFlavors::route('/'),
             // 'create' => Pages\CreateFlavor::route('/create'),
             'view' => Pages\ViewFlavor::route('/{record}'),
-            // 'edit' => Pages\EditFlavor::route('/{record}/edit'),
+            'edit' => Pages\EditFlavor::route('/{record}/edit'),
         ];
     }
 
