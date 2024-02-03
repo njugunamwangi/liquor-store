@@ -108,6 +108,20 @@ class ProductResource extends Resource
                             ->live()
                             ->preload()
                             ->searchable(),
+                        Forms\Components\Select::make('savour_id')
+                            ->relationship('savour', 'savour', modifyQueryUsing: function(Builder $query, Get $get) {
+                                return $query->where('flavor_id', $get('flavor_id'));
+                            })
+                            ->label('Savour')
+                            ->preload()
+                            ->searchable()
+                            ->visible(function (Get $get): bool {
+                                if (!empty($get('flavor_id'))) {
+                                    $flavor = Flavor::find($get('flavor_id'));
+                                    return $flavor->savours()->count() > 0;
+                                }
+                                return false;
+                            }),
                         Forms\Components\Select::make('brand_id')
                             ->relationship('brand', 'brand', modifyQueryUsing: function(Builder $query, Get $get) {
                                 return $query->where('flavor_id', $get('flavor_id'));

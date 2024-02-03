@@ -55,6 +55,11 @@ class Product extends Model
         return $this->belongsTo(Brand::class);
     }
 
+    public function savour(): BelongsTo
+    {
+        return $this->belongsTo(Savour::class);
+    }
+
     public function flavor(): BelongsTo {
         return $this->belongsTo(Flavor::class);
     }
