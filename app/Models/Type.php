@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use Filament\Forms\Components\Select;
+use Filament\Forms\Components\TextInput;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -31,5 +33,19 @@ class Type extends Model
 
     public function products() : HasMany {
         return $this->hasMany(Product::class);
+    }
+
+    public static function getForm(): array {
+        return [
+            TextInput::make('type')
+                ->required(),
+            Select::make('flavor_id')
+                ->relationship('flavor', 'flavor')
+                ->createOptionForm(Flavor::getForm())
+                ->editOptionForm(Flavor::getForm())
+                ->preload()
+                ->required()
+                ->searchable(),
+        ];
     }
 }
