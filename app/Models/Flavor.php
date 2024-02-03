@@ -36,6 +36,10 @@ class Flavor extends Model
             ->saveSlugsTo('slug');
     }
 
+    public function savours(): HasMany {
+        return $this->hasMany(Savour::class);
+    }
+
     public function brands(): HasMany {
         return $this->hasMany(Brand::class);
     }
