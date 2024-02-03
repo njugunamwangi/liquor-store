@@ -11,6 +11,7 @@ use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Flavor;
 use App\Models\Product;
+use App\Models\Savour;
 use Awcodes\Curator\Components\Forms\CuratorPicker;
 use Awcodes\Curator\Components\Tables\CuratorColumn;
 use Filament\Forms;
@@ -115,6 +116,8 @@ class ProductResource extends Resource
                             ->label('Savour')
                             ->preload()
                             ->searchable()
+                            ->createOptionForm(Savour::getForm())
+                            ->editOptionForm(Savour::getForm())
                             ->visible(function (Get $get): bool {
                                 if (!empty($get('flavor_id'))) {
                                     $flavor = Flavor::find($get('flavor_id'));
