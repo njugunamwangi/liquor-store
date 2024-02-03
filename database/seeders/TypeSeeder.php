@@ -23,7 +23,7 @@ class TypeSeeder extends Seeder
             Type::create([
                 'type' => $type,
                 'slug' => Str::slug($type),
-                'flavor_id' => Flavor::where('flavor', '=', 'Whiskey')->first()->id,
+                'flavor_id' => Flavor::where('flavor', '=', 'Whisky')->first()->id,
             ]);
         }
     }

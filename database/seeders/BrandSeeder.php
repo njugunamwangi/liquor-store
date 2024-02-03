@@ -30,16 +30,16 @@ class BrandSeeder extends Seeder
             ]);
         }
 
-        // Whiskey
-        $whiskey = ['Jameson', 'Jack Daniel\'s', 'Glenlivet', 'Johnnie Walker', 'Glenfiddich', 'Singleton'];
+        // Whisky
+        $whisky = ['Jameson', 'Jack Daniel\'s', 'Glenlivet', 'Johnnie Walker', 'Glenfiddich', 'Singleton'];
 
-        foreach ($whiskey as $brand) {
+        foreach ($whisky as $brand) {
             Brand::create([
                 'brand' => $brand,
                 'slug' => Str::slug($brand),
                 'featured_image_id' => rand(12, 20),
                 'category_id' => Category::where('category', '=', 'Distilled')->first()->id,
-                'flavor_id' => Flavor::where('flavor', '=', 'Whiskey')->first()->id,
+                'flavor_id' => Flavor::where('flavor', '=', 'Whisky')->first()->id,
             ]);
         }
 

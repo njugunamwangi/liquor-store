@@ -15,7 +15,7 @@ class FlavorSeeder extends Seeder
      */
     public function run(): void
     {
-        $distilledFlavors = ['Cognac','Whiskey', 'Gin', 'Absinthe', 'Rum', 'Tequila', 'Vodka', 'Brandy'];
+        $distilledFlavors = ['Cognac','Whisky', 'Gin', 'Absinthe', 'Rum', 'Tequila', 'Vodka', 'Brandy'];
 
         foreach ($distilledFlavors as $flavor) {
             Flavor::create([

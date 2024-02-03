@@ -15,8 +15,8 @@ class SavourSeeder extends Seeder
      */
     public function run(): void
     {
-        // Whiskeys
-        $WhiskeySavours = [
+        // Whiskys
+        $WhiskySavours = [
             'Dried Fruit and Nut',
             'Elegant and Floral',
             'Fresh Fruit and Vanilla',
@@ -27,11 +27,11 @@ class SavourSeeder extends Seeder
             'Rich Fruit and Spice',
         ];
 
-        foreach ($WhiskeySavours as $savour) {
+        foreach ($WhiskySavours as $savour) {
             Savour::create([
                 'savour' => $savour,
                 'slug' => Str::slug($savour),
-                'flavor_id' => Flavor::where('flavor', '=', 'Whiskey')->first()->id,
+                'flavor_id' => Flavor::where('flavor', '=', 'Whisky')->first()->id,
             ]);
         }
 
