@@ -16,7 +16,7 @@
 
 - Admin credentials
 ```bash
-email: admin@admin.com
+email: admin@ndachi.dev
 password: password
 ```
 
