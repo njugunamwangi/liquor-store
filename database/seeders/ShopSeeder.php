@@ -17,7 +17,7 @@ class ShopSeeder extends Seeder
     public function run(): void
     {
         $this->call(CategorySeeder::class);
-        Flavor::factory(10)->create();
+        $this->call(FlavorSeeder::class);
         Brand::factory(20)->create();
         Amount::factory(5)->create();
     }

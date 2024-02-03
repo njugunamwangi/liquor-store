@@ -18,14 +18,8 @@ class FlavorFactory extends Factory
      */
     public function definition(): array
     {
-        $flavor = $this->faker->word();
-        $slug = Str::slug($flavor);
-
         return [
-            'featured_image_id' => $this->faker->numberBetween(1, 5),
-            'flavor' => $flavor,
-            'slug' => $slug,
-            'category_id' => $this->faker->randomElement(Category::pluck('id'))
+            //
         ];
     }
 }
