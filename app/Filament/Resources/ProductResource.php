@@ -122,6 +122,20 @@ class ProductResource extends Resource
                                 }
                                 return false;
                             }),
+                        Forms\Components\Select::make('type_id')
+                            ->relationship('type', 'type', modifyQueryUsing: function(Builder $query, Get $get) {
+                                return $query->where('flavor_id', $get('flavor_id'));
+                            })
+                            ->label('Type')
+                            ->preload()
+                            ->searchable()
+                            ->visible(function (Get $get): bool {
+                                if (!empty($get('flavor_id'))) {
+                                    $flavor = Flavor::find($get('flavor_id'));
+                                    return $flavor->types()->count() > 0;
+                                }
+                                return false;
+                            }),
                         Forms\Components\Select::make('brand_id')
                             ->relationship('brand', 'brand', modifyQueryUsing: function(Builder $query, Get $get) {
                                 return $query->where('flavor_id', $get('flavor_id'));
