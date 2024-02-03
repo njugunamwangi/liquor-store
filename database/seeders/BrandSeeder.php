@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Brand;
 use App\Models\Category;
+use App\Models\Flavor;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Str;
@@ -25,7 +26,7 @@ class BrandSeeder extends Seeder
                 'slug' => Str::slug($brand),
                 'featured_image_id' => rand(12, 20),
                 'category_id' => Category::where('category', '=', 'Distilled')->first()->id,
-                'brand_id' => Brand::where('brand', '=', 'Cognac')->first()->id,
+                'flavor_id' => Flavor::where('flavor', '=', 'Cognac')->first()->id,
             ]);
         }
 
@@ -38,7 +39,7 @@ class BrandSeeder extends Seeder
                 'slug' => Str::slug($brand),
                 'featured_image_id' => rand(12, 20),
                 'category_id' => Category::where('category', '=', 'Distilled')->first()->id,
-                'brand_id' => Brand::where('brand', '=', 'Whiskey')->first()->id,
+                'flavor_id' => Flavor::where('flavor', '=', 'Whiskey')->first()->id,
             ]);
         }
 
@@ -51,7 +52,7 @@ class BrandSeeder extends Seeder
                 'slug' => Str::slug($brand),
                 'featured_image_id' => rand(12, 20),
                 'category_id' => Category::where('category', '=', 'Distilled')->first()->id,
-                'brand_id' => Brand::where('brand', '=', 'Gin')->first()->id,
+                'flavor_id' => Flavor::where('flavor', '=', 'Gin')->first()->id,
             ]);
         }
 
@@ -64,7 +65,7 @@ class BrandSeeder extends Seeder
                 'slug' => Str::slug($brand),
                 'featured_image_id' => rand(12, 20),
                 'category_id' => Category::where('category', '=', 'Distilled')->first()->id,
-                'brand_id' => Brand::where('brand', '=', 'Brandy')->first()->id,
+                'flavor_id' => Flavor::where('flavor', '=', 'Brandy')->first()->id,
             ]);
         }
 
@@ -77,7 +78,7 @@ class BrandSeeder extends Seeder
                 'slug' => Str::slug($brand),
                 'featured_image_id' => rand(12, 20),
                 'category_id' => Category::where('category', '=', 'Distilled')->first()->id,
-                'brand_id' => Brand::where('brand', '=', 'Tequila')->first()->id,
+                'flavor_id' => Flavor::where('flavor', '=', 'Tequila')->first()->id,
             ]);
         }
 
@@ -90,7 +91,7 @@ class BrandSeeder extends Seeder
                 'slug' => Str::slug($brand),
                 'featured_image_id' => rand(12, 20),
                 'category_id' => Category::where('category', '=', 'Distilled')->first()->id,
-                'brand_id' => Brand::where('brand', '=', 'Rum')->first()->id,
+                'flavor_id' => Flavor::where('flavor', '=', 'Rum')->first()->id,
             ]);
         }
 
@@ -103,7 +104,7 @@ class BrandSeeder extends Seeder
                 'slug' => Str::slug($brand),
                 'featured_image_id' => rand(12, 20),
                 'category_id' => Category::where('category', '=', 'Distilled')->first()->id,
-                'brand_id' => Brand::where('brand', '=', 'Vodka')->first()->id,
+                'flavor_id' => Flavor::where('flavor', '=', 'Vodka')->first()->id,
             ]);
         }
 
@@ -117,7 +118,7 @@ class BrandSeeder extends Seeder
                 'slug' => Str::slug($brand),
                 'featured_image_id' => rand(12, 20),
                 'category_id' => Category::where('category', '=', 'Undistilled')->first()->id,
-                'brand_id' => Brand::where('brand', '=', 'Beer')->first()->id,
+                'flavor_id' => Flavor::where('flavor', '=', 'Beer')->first()->id,
             ]);
         }
 
@@ -130,7 +131,7 @@ class BrandSeeder extends Seeder
                 'slug' => Str::slug($brand),
                 'featured_image_id' => rand(12, 20),
                 'category_id' => Category::where('category', '=', 'Undistilled')->first()->id,
-                'brand_id' => Brand::where('brand', '=', 'Wine')->first()->id,
+                'flavor_id' => Flavor::where('flavor', '=', 'Wine')->first()->id,
             ]);
         }
     }
