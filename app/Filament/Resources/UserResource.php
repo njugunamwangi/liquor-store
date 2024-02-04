@@ -9,6 +9,10 @@ use App\Models\User;
 use Filament\Forms;
 use Filament\Forms\Components\Grid;
 use Filament\Forms\Form;
+use Filament\Infolists\Components\Fieldset;
+use Filament\Infolists\Components\Section;
+use Filament\Infolists\Components\TextEntry;
+use Filament\Infolists\Infolist;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
@@ -114,6 +118,59 @@ class UserResource extends Resource
                     Tables\Actions\ForceDeleteBulkAction::make(),
                     Tables\Actions\RestoreBulkAction::make(),
                 ]),
+            ]);
+    }
+
+    public static function infolist(Infolist $infolist): Infolist
+    {
+        return $infolist
+            ->schema([
+                Section::make('Primary Info')
+                    ->columns(3)
+                    ->schema([
+                        TextEntry::make('name'),
+                        TextEntry::make('email'),
+                        TextEntry::make('roles.name'),
+                        Fieldset::make('Verification')
+                            ->schema([
+                                TextEntry::make('email_verified_at')
+                                    ->label('Email')
+                                    ->getStateUsing(function($record) {
+                                        return ($record->email_verified_at == NULL) ? 'Not Verified' : 'Verified';
+                                    })
+                                    ->badge()
+                                    ->color(function ($state) {
+                                        if($state === 'Verified') {
+                                            return 'success';
+                                        }
+                                        return 'warning';
+                                    })
+                                    ->icon(function ($state) {
+                                        if($state === 'Verified') {
+                                            return 'heroicon-o-check-badge';
+                                        }
+                                        return 'heroicon-o-x-circle';
+                                    }),
+                                TextEntry::make('two_factor_confirmed_at')
+                                    ->label('Two Factor Authentication')
+                                    ->getStateUsing(function($record) {
+                                        return ($record->two_factor_confirmed_at == NULL) ? 'Not Verified' : 'Verified';
+                                    })
+                                    ->badge()
+                                    ->color(function ($state) {
+                                        if($state === 'Verified') {
+                                            return 'success';
+                                        }
+                                        return 'warning';
+                                    })
+                                    ->icon(function ($state) {
+                                        if($state === 'Verified') {
+                                            return 'heroicon-o-check-badge';
+                                        }
+                                        return 'heroicon-o-x-circle';
+                                    }),
+                            ])
+                    ])
             ]);
     }
 
