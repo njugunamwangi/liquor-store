@@ -93,11 +93,17 @@ class OrderResource extends Resource
                                                     ->badge()
                                                     ->color(function($state) {
                                                         return $state->getColor();
+                                                    })
+                                                    ->icon(function ($state) {
+                                                        return $state->getIcon();
                                                     }),
                                                 Components\TextEntry::make('order_status')
                                                     ->badge()
                                                     ->color(function($state) {
                                                         return $state->getColor();
+                                                    })
+                                                    ->icon(function ($state) {
+                                                        return $state->getIcon();
                                                     })
                                             ]),
                                         ]),
@@ -165,6 +171,9 @@ class OrderResource extends Resource
                     ->badge()
                     ->color(function ($state) {
                         return $state->getColor();
+                    })
+                    ->icon(function ($state) {
+                        return $state->getIcon();
                     })
                     ->searchable()
                     ->sortable(),
