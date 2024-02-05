@@ -2,8 +2,10 @@
 
 namespace App\Filament\Resources\OrderResource\RelationManagers;
 
+use Awcodes\Curator\Components\Tables\CuratorColumn;
 use Filament\Forms;
 use Filament\Forms\Form;
+use Filament\Infolists\Components\ImageEntry;
 use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Tables;
 use Filament\Tables\Table;
@@ -29,6 +31,8 @@ class ItemsRelationManager extends RelationManager
         return $table
             ->recordTitleAttribute('product')
             ->columns([
+                CuratorColumn::make('product.productImage')
+                    ->height(50),
                 Tables\Columns\TextColumn::make('product.product'),
                 Tables\Columns\TextColumn::make('quantity'),
                 Tables\Columns\TextColumn::make('unit_price')
