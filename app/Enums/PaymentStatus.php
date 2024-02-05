@@ -14,4 +14,12 @@
                 self::Failed => 'danger',
             };
         }
+
+        public function getIcon():string {
+            return match($this) {
+                self::NotPaid => 'heroicon-o-clock',
+                self::Paid => 'heroicon-o-check-badge',
+                self::Failed => 'heroicon-o-x-circle',
+            };
+        }
     }
