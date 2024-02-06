@@ -20,7 +20,7 @@ class OrderObserver
         foreach ($recipients as $recipient) {
             Notification::make()
                 ->title($order->user->name . ' placed an order')
-                ->warning()
+                ->info()
                 ->icon('heroicon-o-shopping-bag')
                 ->body('New order ' . $order->order_id)
                 ->actions([
