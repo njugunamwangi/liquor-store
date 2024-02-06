@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
+    <head class="h-full bg-white">
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -17,11 +17,14 @@
         <!-- Styles -->
         @livewireStyles
     </head>
-    <body>
-        <div class="font-sans text-gray-900 dark:text-gray-100 antialiased">
+    <body class="h-full font-sans antialiased">
+        <div class="bg-white mx-32 pb-6 sm:pb-8 lg:pb-12">
+
             {{ $slot }}
+
         </div>
 
+        <x-toaster-hub />
         @livewireScripts
     </body>
 </html>
