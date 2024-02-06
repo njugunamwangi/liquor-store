@@ -2,6 +2,8 @@
 
 namespace App\Filament\Resources\UserResource\RelationManagers;
 
+use App\Filament\Resources\OrderResource;
+use App\Models\Order;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\RelationManagers\RelationManager;
@@ -30,9 +32,28 @@ class OrdersRelationManager extends RelationManager
             ->recordTitleAttribute('id')
             ->columns([
                 Tables\Columns\TextColumn::make('tracking_no'),
-                Tables\Columns\TextColumn::make('order_id'),
-                Tables\Columns\TextColumn::make('order_status'),
-                Tables\Columns\TextColumn::make('payment_status'),
+                Tables\Columns\TextColumn::make('order_id')
+                    ->label('Order ID'),
+                Tables\Columns\TextColumn::make('order_status')
+                    ->badge()
+                    ->color(function ($state) {
+                        return $state->getColor();
+                    })
+                    ->icon(function ($state) {
+                        return $state->getIcon();
+                    })
+                    ->searchable()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('payment_status')
+                    ->badge()
+                    ->color(function ($state) {
+                        return $state->getColor();
+                    })
+                    ->icon(function ($state) {
+                        return $state->getIcon();
+                    })
+                    ->searchable()
+                    ->sortable(),
                 Tables\Columns\TextColumn::make('total_price')
                     ->money('KES'),
             ])
@@ -43,8 +64,9 @@ class OrdersRelationManager extends RelationManager
                 Tables\Actions\CreateAction::make(),
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
-                Tables\Actions\DeleteAction::make(),
+                Tables\Actions\Action::make('view')
+                    ->label('View Order')
+                    ->url(fn (Order $record): string => OrderResource::getUrl('view', ['record' => $record])),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
