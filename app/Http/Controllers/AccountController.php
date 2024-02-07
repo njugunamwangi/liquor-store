@@ -11,4 +11,10 @@ class AccountController extends Controller
 
         return view('components.account.home', compact('title'));
     }
+
+    public function orders() {
+        $title = 'Orders';
+
+        return view('components.account.orders', compact('title'));
+    }
 }
