@@ -36,6 +36,7 @@ Route::get('/cart', [SiteController::class, 'cart'])->name('cart');
 Route::get('/checkout', [SiteController::class, 'checkout'])->name('checkout');
 Route::get('/orders', [OrderController::class, 'index'])->name('orders');
 Route::get('/order/{order:tracking_no}', [OrderController::class, 'show'])->name('order');
+Route::get('/account', [AccountController::class, 'home'])->name('account');
 Route::get('/account/cart', [AccountController::class, 'cart'])->name('my-cart');
 Route::get('/account/wishlist', [AccountController::class, 'wishlist'])->name('my-wishlist');
 Route::get('/account/two-factor', [AccountController::class, 'twoFactor'])->name('two-factor');
