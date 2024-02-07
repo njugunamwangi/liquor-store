@@ -125,6 +125,28 @@
                 </li>
                         </ul>
                     </li>
+                    <li class="-mx-6 mt-auto">
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-x-4 px-6 py-3 text-sm font-semibold leading-6 text-gray-900 hover:bg-gray-50">
+                        <img class="h-8 w-8 rounded-full bg-gray-50" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
+                        <span class="sr-only">Your profile</span>
+                        <span aria-hidden="true">{{ Auth::user()->name }}</span>
+                    </div>
+                    <div class="flex items-center gap-x-4 px-6 py-3 text-sm font-semibold leading-6 text-gray-900 hover:bg-gray-50">
+                        <form method="POST" action="{{ route('logout') }}" x-data>
+
+                            @csrf
+
+                            <a href="{{ route('logout') }}" @click.prevent="$root.submit();" class="p-2 text-gray-400 hover:text-gray-500 lg:ml-4">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0 0 13.5 3h-6a2.25 2.25 0 0 0-2.25 2.25v13.5A2.25 2.25 0 0 0 7.5 21h6a2.25 2.25 0 0 0 2.25-2.25V15m3 0 3-3m0 0-3-3m3 3H9" />
+                                </svg>
+                            </a>
+                        </form>
+                    </div>
+                </div>
+
+            </li>
                     </ul>
                 </nav>
             </div>
@@ -250,7 +272,15 @@
         <div class="flex-1 text-sm font-semibold leading-6 text-gray-900">Dashboard</div>
         <a href="#">
         <span class="sr-only">Your profile</span>
-        <img class="h-8 w-8 rounded-full bg-gray-50" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
+            <form method="POST" action="{{ route('logout') }}" x-data>
+                @csrf
+
+                <a href="{{ route('logout') }}" @click.prevent="$root.submit();" class="text-gray-400 hover:text-gray-500 lg:ml-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0 0 13.5 3h-6a2.25 2.25 0 0 0-2.25 2.25v13.5A2.25 2.25 0 0 0 7.5 21h6a2.25 2.25 0 0 0 2.25-2.25V15m3 0 3-3m0 0-3-3m3 3H9" />
+                    </svg>
+                </a>
+            </form>
         </a>
     </div>
 </div>
