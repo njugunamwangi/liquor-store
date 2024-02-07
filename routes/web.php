@@ -37,6 +37,7 @@ Route::get('/checkout', [SiteController::class, 'checkout'])->name('checkout');
 Route::get('/orders', [OrderController::class, 'index'])->name('orders');
 Route::get('/order/{order:tracking_no}', [OrderController::class, 'show'])->name('order');
 Route::get('/account/two-factor', [AccountController::class, 'twoFactor'])->name('two-factor');
+Route::get('/account/browser-sessions', [AccountController::class, 'browserSessions'])->name('browser-sessions');
 
 Route::post('/pay', [PaymentController::class, 'redirectToGateway'])->name('pay');
 Route::get('/payment/callback', [PaymentController::class, 'handleGatewayCallback']);

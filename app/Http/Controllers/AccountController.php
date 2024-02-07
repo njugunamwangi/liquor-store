@@ -22,4 +22,10 @@ class AccountController extends Controller
 
         return view('components.account.two-factor', compact('title'));
     }
+
+    public function browserSessions() {
+        $title = 'Browser Sessions';
+
+        return view('components.account.browser-sessions', compact('title'));
+    }
 }
