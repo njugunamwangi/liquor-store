@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AccountController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProductController;
@@ -36,11 +37,15 @@ Route::get('/cart', [SiteController::class, 'cart'])->name('cart');
 Route::get('/checkout', [SiteController::class, 'checkout'])->name('checkout');
 Route::get('/orders', [OrderController::class, 'index'])->name('orders');
 Route::get('/order/{order:tracking_no}', [OrderController::class, 'show'])->name('order');
+
+// User account
 Route::get('/account', [AccountController::class, 'home'])->name('account');
+Route::get('/account/orders', [AccountController::class, 'orders'])->name('my-orders');
 Route::get('/account/cart', [AccountController::class, 'cart'])->name('my-cart');
 Route::get('/account/wishlist', [AccountController::class, 'wishlist'])->name('my-wishlist');
 Route::get('/account/two-factor', [AccountController::class, 'twoFactor'])->name('two-factor');
 Route::get('/account/browser-sessions', [AccountController::class, 'browserSessions'])->name('browser-sessions');
+Route::get('/account/close-account', [AccountController::class, 'closeAccount'])->name('close-account');
 
 Route::post('/pay', [PaymentController::class, 'redirectToGateway'])->name('pay');
 Route::get('/payment/callback', [PaymentController::class, 'handleGatewayCallback']);

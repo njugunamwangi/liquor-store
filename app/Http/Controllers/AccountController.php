@@ -29,6 +29,7 @@ class AccountController extends Controller
 
         return view('components.account.wishlist', compact('title'));
     }
+
     public function twoFactor() {
         $title = 'Two Factor Authentication';
 
@@ -39,5 +40,11 @@ class AccountController extends Controller
         $title = 'Browser Sessions';
 
         return view('components.account.browser-sessions', compact('title'));
+    }
+
+    public function closeAccount() {
+        $title = 'Close Account';
+
+        return view('components.account.close-account', compact('title'));
     }
 }
