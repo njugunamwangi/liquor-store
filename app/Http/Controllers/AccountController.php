@@ -17,4 +17,9 @@ class AccountController extends Controller
 
         return view('components.account.orders', compact('title'));
     }
+    public function twoFactor() {
+        $title = 'Two Factor Authentication';
+
+        return view('components.account.two-factor', compact('title'));
+    }
 }
