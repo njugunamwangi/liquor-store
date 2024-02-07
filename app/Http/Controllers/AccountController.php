@@ -18,6 +18,12 @@ class AccountController extends Controller
         return view('components.account.orders', compact('title'));
     }
 
+    public function cart() {
+        $title = 'Cart';
+
+        return view('components.account.cart', compact('title'));
+    }
+
     public function wishlist() {
         $title = 'Wishlist';
 
