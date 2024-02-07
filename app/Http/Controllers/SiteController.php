@@ -18,10 +18,4 @@ class SiteController extends Controller
 
         return view('components.home.checkout', compact('title'));
     }
-
-    public function wishlist(): View {
-        $title = 'Wishlist';
-
-        return view('components.home.wishlist', compact('title'));
-    }
 }

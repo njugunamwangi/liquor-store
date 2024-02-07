@@ -17,6 +17,12 @@ class AccountController extends Controller
 
         return view('components.account.orders', compact('title'));
     }
+
+    public function wishlist() {
+        $title = 'Wishlist';
+
+        return view('components.account.wishlist', compact('title'));
+    }
     public function twoFactor() {
         $title = 'Two Factor Authentication';
 
