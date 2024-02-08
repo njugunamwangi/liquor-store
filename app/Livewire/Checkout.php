@@ -75,9 +75,7 @@ class Checkout extends Component
         if ($order && $orderDetails) {
             Cart::query()->where('user_id', '=', auth()->user()->id)->delete();
 
-            return redirect()->to('/order/' . $order->tracking_no);
-
-            Toaster::success('Order placed successfully. Proceed with payment!');
+            return redirect()->to('/account/order/' . $order->tracking_no);
         }
     }
 
