@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Order;
 use Illuminate\Http\Request;
 
 class AccountController extends Controller
@@ -12,10 +13,17 @@ class AccountController extends Controller
         return view('components.account.home', compact('title'));
     }
 
-    public function orders() {
+    public function orders(Request $request) {
         $title = 'Orders';
 
-        return view('components.account.orders', compact('title'));
+        $user = $request->user();
+
+        $orders = Order::query()
+                ->where('user_id', '=', $user->id)
+                ->get();
+
+        return view('components.account.orders', compact('title', 'orders'));
+    }
     }
 
     public function cart() {
