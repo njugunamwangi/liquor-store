@@ -68,7 +68,7 @@ class PaymentController extends Controller
                     'payment_method' => 'PayStack'
                 ]);
             }
-            return redirect()->to('orders');
+            return redirect()->to('/account/order/' . $model->tracking_no);
         }
     }
 }
