@@ -15,7 +15,7 @@
                 <div class="bg-white py-6 sm:py-8 lg:py-12">
                     <div class="mx-auto max-w-screen-xl px-4 md:px-8">
                         <!-- text - start -->
-                        <div class="mb-10 md:mb-16">
+                        <div class="mb-4 md:mb-16">
                             <h2 class="mb-4 text-center text-2xl font-bold text-gray-800 md:mb-6 lg:text-3xl">Order Summary</h2>
                         </div>
                         <!-- text - end -->
@@ -23,11 +23,11 @@
                         <div class="bg-white">
                             <div class="mx-auto max-w-3xl px-4 py-4 sm:px-6 sm:py-4 lg:px-8">
                                 <div class="max-w-xl">
-                                    @if($order->order_status == 'Cancelled')
+                                    @if($order->order_status == App\Enums\OrderStatus::Cancelled)
                                         <p class="mt-2 text-4xl font-bold tracking-tight sm:text-5xl">Order Cancelled</p>
                                         <p class="mt-2 text-base text-gray-500">Your order #{{ $order->order_id }} was cancelled.</p>
                                     @else
-                                        @if($order->order_status != 'Delivered')
+                                        @if($order->order_status != App\Enums\OrderStatus::Delivered)
                                             <p class="mt-2 text-4xl font-bold tracking-tight sm:text-5xl">It's on the way!</p>
                                             <p class="mt-2 text-base text-gray-500">Your order #{{ $order->order_id }} is being processed.</p>
                                         @else
