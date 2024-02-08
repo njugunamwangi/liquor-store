@@ -60,7 +60,7 @@
                     <div class="mt-1">
                         <input
                             wire:model="name"
-                            class="block w-full rounded-md @error('name') border-red-500 @enderror border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+                            class="block w-full rounded-md {{ $errors->has('name') ? 'border-red-500'  : 'border-gray-300' }} shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" >
                     </div>
                     @error('name')
                         <p class="text-xs text-red-500 pt-1">{{ $message }} </p>
@@ -71,7 +71,7 @@
                     <div class="mt-1">
                     <input
                         wire:model="email"
-                        class="block w-full rounded-md @error('email') border-red-500 @enderror border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+                        class="block w-full rounded-md {{ $errors->has('email') ? 'border-red-500'  : 'border-gray-300' }} border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
                     </div>
                     @error('email')
                         <p class="text-xs text-red-500 pt-1">{{ $message }} </p>
@@ -81,7 +81,7 @@
                 <div class="mt-6">
                     <label for="phone" class="block text-sm font-medium text-gray-700">Phone number</label>
                     <div class="mt-1">
-                    <input wire:model="phone" class="block w-full rounded-md @error('phone') border-red-500 @enderror border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+                    <input wire:model="phone" class="block w-full rounded-md {{ $errors->has('phone') ? 'border-red-500'  : 'border-gray-300' }} border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
                     </div>
                     @error('phone')
                         <p class="text-xs text-red-500 pt-1">{{ $message }} </p>
@@ -91,7 +91,7 @@
                 <div class="mt-6">
                     <label for="address1" class="block text-sm font-medium text-gray-700">Address 1</label>
                     <div class="mt-1">
-                    <input wire:model="address1" class="block w-full rounded-md @error('address1') border-red-500 @enderror border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+                    <input wire:model="address1" class="block w-full rounded-md {{ $errors->has('address1') ? 'border-red-500'  : 'border-gray-300' }} border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
                     </div>
                     @error('address1')
                         <p class="text-xs text-red-500 pt-1">{{ $message }} </p>
@@ -101,7 +101,7 @@
                 <div class="mt-6">
                     <label for="address2" class="block text-sm font-medium text-gray-700">Address 2</label>
                     <div class="mt-1">
-                    <input wire:model="address2" class="block w-full rounded-md @error('address2') border-red-500 @enderror border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+                    <input wire:model="address2" class="block w-full rounded-md {{ $errors->has('address2') ? 'border-red-500'  : 'border-gray-300' }} border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
                     </div>
                     @error('address2')
                         <p class="text-xs text-red-500 pt-1">{{ $message }} </p>
@@ -111,7 +111,7 @@
                 <div class="mt-6">
                     <label for="city" class="block text-sm font-medium text-gray-700">City</label>
                     <div class="mt-1">
-                    <input wire:model="city" class="block w-full rounded-md @error('city') border-red-500 @enderror border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+                    <input wire:model="city" class="block w-full rounded-md {{ $errors->has('city') ? 'border-red-500'  : 'border-gray-300' }} border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
                     </div>
                     @error('city')
                         <p class="text-xs text-red-500 pt-1">{{ $message }} </p>
@@ -121,7 +121,7 @@
                 <div class="mt-6">
                     <label for="state" class="block text-sm font-medium text-gray-700">State</label>
                     <div class="mt-1">
-                    <input wire:model="state" class="block w-full rounded-md @error('state') border-red-500 @enderror border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+                    <input wire:model="state" class="block w-full rounded-md {{ $errors->has('state') ? 'border-red-500'  : 'border-gray-300' }} border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
                     </div>
                     @error('state')
                         <p class="text-xs text-red-500 pt-1">{{ $message }} </p>
@@ -131,7 +131,7 @@
                 <div class="mt-6">
                     <label for="zipcode" class="block text-sm font-medium text-gray-700">Zip Code</label>
                     <div class="mt-1">
-                    <input wire:model="zipcode" class="block w-full rounded-md @error('zipcode') border-red-500 @enderror border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+                    <input wire:model="zipcode" class="block w-full rounded-md {{ $errors->has('zipcode') ? 'border-red-500'  : 'border-gray-300' }} border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
                     </div>
                     @error('zipcode')
                         <p class="text-xs text-red-500 pt-1">{{ $message }} </p>
@@ -144,6 +144,9 @@
                     class="mt-6 w-full rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 disabled:cursor-not-allowed disabled:bg-gray-100 disabled:text-gray-500">
                     Place Order
                 </button>
+                <div wire:loading class="mt-4 items-center text-emerald-500" >
+                    Processing...
+                </div>
             </div>
 
             <div class="mt-10 divide-y divide-gray-200 border-b border-t border-gray-200">
