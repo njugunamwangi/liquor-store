@@ -24,6 +24,17 @@ class AccountController extends Controller
 
         return view('components.account.orders', compact('title', 'orders'));
     }
+
+    public function viewOrder (Request $request, Order $order) {
+        $user = $request->user()->id;
+
+        $title = $order->order_id;
+
+        if ($order->user_id != $user) {
+            return abort(403, 'You cannot view this order');
+        }
+
+        return view('components.account.view.order', compact('order', 'title'));
     }
 
     public function cart() {
