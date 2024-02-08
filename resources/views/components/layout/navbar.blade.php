@@ -1,4 +1,4 @@
-  <div x-data="{ open: {}, mobile: false }" >
+  <div x-data="{ open: {}, mobile: false, category: {}, flavor: {} }" >
   <!--
     Mobile menu
 
@@ -41,168 +41,49 @@
             <!-- Links -->
             <div class="mt-2">
                 <div id="tabs-1-panel-1" class="space-y-10 px-4 pb-8 pt-10" aria-labelledby="tabs-1-tab-1" role="tabpanel" tabindex="0">
-                    <div class="space-y-4">
-                    <div class="group aspect-h-1 aspect-w-1 relative overflow-hidden rounded-md bg-gray-100">
-                        <img src="https://tailwindui.com/img/ecommerce-images/mega-menu-category-01.jpg" alt="Models sitting back to back, wearing Basic Tee in black and bone." class="object-cover object-center group-hover:opacity-75">
-                        <div class="flex flex-col justify-end">
-                        <div class="bg-white bg-opacity-60 p-4 text-base sm:text-sm">
-                            <a href="#" class="font-medium text-gray-900">
-                            <span class="absolute inset-0" aria-hidden="true"></span>
-                            New Arrivals
-                            </a>
-                            <p aria-hidden="true" class="mt-0.5 text-gray-700 sm:mt-1">Shop now</p>
-                        </div>
-                        </div>
-                    </div>
-                    <div class="group aspect-h-1 aspect-w-1 relative overflow-hidden rounded-md bg-gray-100">
-                        <img src="https://tailwindui.com/img/ecommerce-images/mega-menu-category-02.jpg" alt="Close up of Basic Tee fall bundle with off-white, ochre, olive, and black tees." class="object-cover object-center group-hover:opacity-75">
-                        <div class="flex flex-col justify-end">
-                        <div class="bg-white bg-opacity-60 p-4 text-base sm:text-sm">
-                            <a href="#" class="font-medium text-gray-900">
-                            <span class="absolute inset-0" aria-hidden="true"></span>
-                            Basic Tees
-                            </a>
-                            <p aria-hidden="true" class="mt-0.5 text-gray-700 sm:mt-1">Shop now</p>
-                        </div>
-                        </div>
-                    </div>
-                    <div class="group aspect-h-1 aspect-w-1 relative overflow-hidden rounded-md bg-gray-100">
-                        <img src="https://tailwindui.com/img/ecommerce-images/mega-menu-category-03.jpg" alt="Model wearing minimalist watch with black wristband and white watch face." class="object-cover object-center group-hover:opacity-75">
-                        <div class="flex flex-col justify-end">
-                        <div class="bg-white bg-opacity-60 p-4 text-base sm:text-sm">
-                            <a href="#" class="font-medium text-gray-900">
-                            <span class="absolute inset-0" aria-hidden="true"></span>
-                            Accessories
-                            </a>
-                            <p aria-hidden="true" class="mt-0.5 text-gray-700 sm:mt-1">Shop now</p>
-                        </div>
-                        </div>
-                    </div>
-                    </div>
                     <div class="space-y-10">
-                    <div>
-                        <p id="women-shoes-heading-mobile" class="font-medium text-gray-900">Shoes &amp; Accessories</p>
-                        <ul role="list" aria-labelledby="women-shoes-heading-mobile" class="mt-6 flex flex-col space-y-6">
-                        <li class="flow-root">
-                            <a href="#" class="-m-2 block p-2 text-gray-500">Sneakers</a>
-                        </li>
-                        <li class="flow-root">
-                            <a href="#" class="-m-2 block p-2 text-gray-500">Boots</a>
-                        </li>
-                        <li class="flow-root">
-                            <a href="#" class="-m-2 block p-2 text-gray-500">Flats</a>
-                        </li>
-                        <li class="flow-root">
-                            <a href="#" class="-m-2 block p-2 text-gray-500">Sandals</a>
-                        </li>
-                        <li class="flow-root">
-                            <a href="#" class="-m-2 block p-2 text-gray-500">Heels</a>
-                        </li>
-                        <li class="flow-root">
-                            <a href="#" class="-m-2 block p-2 text-gray-500">Socks</a>
-                        </li>
-                        </ul>
-                    </div>
-                    <div>
-                        <p id="women-collection-heading-mobile" class="font-medium text-gray-900">Shop Collection</p>
-                        <ul role="list" aria-labelledby="women-collection-heading-mobile" class="mt-6 flex flex-col space-y-6">
-                        <li class="flow-root">
-                            <a href="#" class="-m-2 block p-2 text-gray-500">Everything</a>
-                        </li>
-                        <li class="flow-root">
-                            <a href="#" class="-m-2 block p-2 text-gray-500">Core</a>
-                        </li>
-                        <li class="flow-root">
-                            <a href="#" class="-m-2 block p-2 text-gray-500">New Arrivals</a>
-                        </li>
-                        <li class="flow-root">
-                            <a href="#" class="-m-2 block p-2 text-gray-500">Sale</a>
-                        </li>
-                        <li class="flow-root">
-                            <a href="#" class="-m-2 block p-2 text-gray-500">Accessories</a>
-                        </li>
-                        </ul>
-                    </div>
-                    </div>
-                    <div class="space-y-10">
-                    <div>
-                        <p id="women-clothing-heading-mobile" class="font-medium text-gray-900">All Clothing</p>
-                        <ul role="list" aria-labelledby="women-clothing-heading-mobile" class="mt-6 flex flex-col space-y-6">
-                        <li class="flow-root">
-                            <a href="#" class="-m-2 block p-2 text-gray-500">Basic Tees</a>
-                        </li>
-                        <li class="flow-root">
-                            <a href="#" class="-m-2 block p-2 text-gray-500">Artwork Tees</a>
-                        </li>
-                        <li class="flow-root">
-                            <a href="#" class="-m-2 block p-2 text-gray-500">Tops</a>
-                        </li>
-                        <li class="flow-root">
-                            <a href="#" class="-m-2 block p-2 text-gray-500">Bottoms</a>
-                        </li>
-                        <li class="flow-root">
-                            <a href="#" class="-m-2 block p-2 text-gray-500">Swimwear</a>
-                        </li>
-                        <li class="flow-root">
-                            <a href="#" class="-m-2 block p-2 text-gray-500">Underwear</a>
-                        </li>
-                        </ul>
-                    </div>
-                    <div>
-                        <p id="women-accessories-heading-mobile" class="font-medium text-gray-900">All Accessories</p>
-                        <ul role="list" aria-labelledby="women-accessories-heading-mobile" class="mt-6 flex flex-col space-y-6">
-                        <li class="flow-root">
-                            <a href="#" class="-m-2 block p-2 text-gray-500">Watches</a>
-                        </li>
-                        <li class="flow-root">
-                            <a href="#" class="-m-2 block p-2 text-gray-500">Wallets</a>
-                        </li>
-                        <li class="flow-root">
-                            <a href="#" class="-m-2 block p-2 text-gray-500">Bags</a>
-                        </li>
-                        <li class="flow-root">
-                            <a href="#" class="-m-2 block p-2 text-gray-500">Sunglasses</a>
-                        </li>
-                        <li class="flow-root">
-                            <a href="#" class="-m-2 block p-2 text-gray-500">Hats</a>
-                        </li>
-                        <li class="flow-root">
-                            <a href="#" class="-m-2 block p-2 text-gray-500">Belts</a>
-                        </li>
-                        </ul>
-                    </div>
-                    </div>
-                    <div class="space-y-10">
-                    <div>
-                        <p id="women-brands-heading-mobile" class="font-medium text-gray-900">Brands</p>
-                        <ul role="list" aria-labelledby="women-brands-heading-mobile" class="mt-6 flex flex-col space-y-6">
-                        <li class="flow-root">
-                            <a href="#" class="-m-2 block p-2 text-gray-500">Full Nelson</a>
-                        </li>
-                        <li class="flow-root">
-                            <a href="#" class="-m-2 block p-2 text-gray-500">My Way</a>
-                        </li>
-                        <li class="flow-root">
-                            <a href="#" class="-m-2 block p-2 text-gray-500">Re-Arranged</a>
-                        </li>
-                        <li class="flow-root">
-                            <a href="#" class="-m-2 block p-2 text-gray-500">Counterfeit</a>
-                        </li>
-                        <li class="flow-root">
-                            <a href="#" class="-m-2 block p-2 text-gray-500">Significant Other</a>
-                        </li>
-                        </ul>
-                    </div>
-                    </div>
-                </div>
-            </div>
+                        @foreach($categories as $category)
+                            <div>
+                                <div class="flex justify-between">
+                                    <p id="women-shoes-heading-mobile" class="font-medium text-gray-900 hover:text-indigo-700">{{ $category->category }}</p>
+                                    <svg @click="category['{{ $category->id }}'] = !category['{{ $category->id }}']" class="block h-6 w-6 text-gray-400 group-hover:text-gray-500" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                                        <path x-show="!category['{{ $category->id }}']" stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                                        <path x-show="category['{{ $category->id }}']" stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15" />
+                                    </svg>
+                                </div>
+                                <div x-cloak x-show="category['{{ $category->id }}']" @click.away="category['{{ $category->id }}'] = false">
+                                    <ul role="list" aria-labelledby="women-shoes-heading-mobile" class="mt-6 flex flex-col space-y-6">
+                                        @foreach($category->flavors()->get() as $flavor)
+                                            <li class="flow-root">
+                                                <div class="flex justify-between">
+                                                    <a href="#" class="-m-2 block p-2 text-gray-500 hover:text-indigo-700"> {{ $flavor->flavor }} </a>
+                                                    <svg @click="flavor['{{ $flavor->id }}'] = !flavor['{{ $flavor->id }}']" class="block h-5 w-5 text-gray-400 group-hover:text-gray-500" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                                                        <path x-show="!flavor['{{ $flavor->id }}']" stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                                                        <path x-show="flavor['{{ $flavor->id }}']" stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15" />
+                                                    </svg>
+                                                </div>
+                                                <div x-cloak x-show="flavor['{{ $flavor->id }}']" @click.away="flavor['{{ $flavor->id }}'] = false">
+                                                    <ul role="list" aria-labelledby="women-shoes-heading-mobile" class="mt-6 flex flex-col space-y-6">
+                                                        @foreach($flavor->brands()->get() as $brand)
+                                                            <div class="flex items-center">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+                                                                    <path stroke-linecap="round" stroke-linejoin="round" d="m5.25 4.5 7.5 7.5-7.5 7.5m6-15 7.5 7.5-7.5 7.5" />
+                                                                </svg>
 
-            <div class="space-y-6 border-t border-gray-200 px-4 py-6">
-                <div class="flow-root">
-                    <a href="#" class="-m-2 block p-2 font-medium text-gray-900">Company</a>
-                </div>
-                <div class="flow-root">
-                    <a href="#" class="-m-2 block p-2 font-medium text-gray-900">Stores</a>
+                                                                <li class="flow-root">
+                                                                    <a href="#" class="-m-2 block p-2 text-gray-500 hover:text-indigo-700"> {{ $brand->brand }} </a>
+                                                                </li>
+                                                            </div>
+                                                        @endforeach
+                                                    </ul>
+                                                </div>
+                                            </li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
                 </div>
             </div>
         </div>
