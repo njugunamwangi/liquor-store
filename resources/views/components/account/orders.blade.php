@@ -11,7 +11,7 @@
         <x-account.side-bar />
 
         <main class="py-10 lg:pl-72">
-            <div class="px-4 sm:px-6 lg:px-8">
+            <div class="">
                 @if($orders->count() > 0)
                     <div class="bg-white items-center py-6 sm:py-8 lg:py-12">
                         <div class="mx-auto max-w-screen-xl px-4 md:px-8">
@@ -53,7 +53,6 @@
                                                     </tr>
                                                 @endforeach
 
-                                            <!-- More transactions... -->
                                             </tbody>
                                         </table>
                                     </div>
