@@ -128,7 +128,9 @@
                     <li class="-mx-6 mt-auto">
                 <div class="flex items-center justify-between">
                     <div class="flex items-center gap-x-4 px-6 py-3 text-sm font-semibold leading-6 text-gray-900 hover:bg-gray-50">
-                        <img class="h-8 w-8 rounded-full bg-gray-50" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
+                        <img class="h-8 w-8 rounded-full bg-gray-50"
+                            src="{{ Auth::user()->profile_photo_url }}"
+                            alt="{{ Auth::user()->name }}">
                         <span class="sr-only">Your profile</span>
                         <span aria-hidden="true">{{ Auth::user()->name }}</span>
                     </div>
@@ -238,7 +240,9 @@
             <li class="-mx-6 mt-auto">
                 <div class="flex items-center justify-between">
                     <div class="flex items-center gap-x-4 px-6 py-3 text-sm font-semibold leading-6 text-gray-900 hover:bg-gray-50">
-                        <img class="h-8 w-8 rounded-full bg-gray-50" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
+                        <img class="h-8 w-8 rounded-full bg-gray-50"
+                            src="{{ Auth::user()->profile_photo_url }}"
+                            alt="{{ Auth::user()->name }}">
                         <span class="sr-only">Your profile</span>
                         <span aria-hidden="true">{{ Auth::user()->name }}</span>
                     </div>
@@ -269,9 +273,9 @@
                 <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
             </svg>
         </button>
-        <div class="flex-1 text-sm font-semibold leading-6 text-gray-900">Dashboard</div>
+        <div class="flex-1 text-sm font-semibold leading-6 text-gray-900"></div>
         <a href="#">
-        <span class="sr-only">Your profile</span>
+            <span class="sr-only">Your profile</span>
             <form method="POST" action="{{ route('logout') }}" x-data>
                 @csrf
 
