@@ -35,7 +35,7 @@
                                         <label for="quantity-0" class="sr-only">{{ $item->product->product }}</label>
                                         <div class="flex flex-row h-8 ">
                                             <button
-                                                wire:click="incrementQuantity({{ $item->id }})"
+                                                wire:click.prevent="incrementQuantity({{ $item->id }})"
                                                 wire:loading.attr="disabled"
                                                 type="button"
                                                 class="inline-flex items-center rounded-l-md bg-white px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-10">
@@ -51,7 +51,7 @@
                                             <input disabled value="{{ $item->quantity }}" class="w-16 border border-gray-300 py-1.5 text-center text-base font-medium leading-5 text-gray-700 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500 sm:text-sm" />
 
                                             <button
-                                                wire:click="decrementQuantity({{ $item->id }})"
+                                                wire:click.prevent="decrementQuantity({{ $item->id }})"
                                                 wire:loading.attr="disabled"
                                                 type="button"
                                                 class="-ml-px inline-flex items-center rounded-r-md bg-white px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-10">
@@ -69,7 +69,7 @@
                                                 type="button"
                                                 class="-m-2 inline-flex p-2 text-gray-400 hover:text-gray-500"
                                                 wire:loading.attr="disabled"
-                                                wire:click="removeItem({{ $item->id }})"
+                                                wire:click.prevent="removeItem({{ $item->id }})"
                                             >
                                                 <span class="sr-only">Remove</span>
                                                 <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
