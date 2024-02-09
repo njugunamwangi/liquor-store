@@ -12,7 +12,14 @@
 
         <main class="py-10 lg:pl-72">
             <div class="px-4 sm:px-6 lg:px-8">
-                Two Factor Authentication
+            <div class="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8">
+                @if (Laravel\Fortify\Features::canManageTwoFactorAuthentication())
+                    <div class="mt-10 sm:mt-0">
+                        @livewire('profile.two-factor-authentication-form')
+                    </div>
+
+                @endif
+            </div>
             </div>
         </main>
     </div>
