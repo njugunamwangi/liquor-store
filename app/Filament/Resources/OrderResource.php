@@ -31,6 +31,11 @@ class OrderResource extends Resource
 
     protected static ?string $recordTitleAttribute = 'tracking_no';
 
+    public static function getNavigationBadge(): ?string
+    {
+        return static::getModel()::count();
+    }
+
     public static function form(Form $form): Form
     {
         return $form

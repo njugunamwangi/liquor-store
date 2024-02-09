@@ -27,6 +27,11 @@ class AmountResource extends Resource
             ->schema(Amount::getForm());
     }
 
+    public static function getNavigationBadge(): ?string
+    {
+        return static::getModel()::count();
+    }
+
     public static function table(Table $table): Table
     {
         return $table
