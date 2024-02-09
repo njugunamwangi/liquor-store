@@ -23,7 +23,7 @@
                     </li>
                     <li>
                         <div class="flex items-center text-sm">
-                        <a href="#" class="font-medium text-indigo-500 hover:text-gray-900">{{ $product->brand->brand }}</a>
+                        <a href="#" class="font-medium text-gray-500 hover:text-gray-900">{{ $product->brand->brand }}</a>
                         </div>
                     </li>
                 </ol>
