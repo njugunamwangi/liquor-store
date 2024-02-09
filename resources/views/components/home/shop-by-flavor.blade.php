@@ -20,7 +20,9 @@
                                             class="h-full w-full object-cover object-center group-hover:opacity-75">
                                     </div>
                                     <div class="mt-6">
-                                        <!-- <p class="text-sm text-gray-500"></p> -->
+                                        <p class="text-sm text-gray-500">
+                                            {{ ($flavor->products()->count() > 1 ? $flavor->products()->count() . ' products' : $flavor->products()->count() . ' product') }}
+                                        </p>
                                         <h3 class="mt-1 font-semibold text-gray-900">
                                         <a href="#">
                                             <span class="absolute inset-0"></span>
