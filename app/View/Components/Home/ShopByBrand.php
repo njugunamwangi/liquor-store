@@ -22,7 +22,7 @@ class ShopByBrand extends Component
      */
     public function render(): View|Closure|string
     {
-        $brands = Brand::query()->has('products')->limit(5)->get();
+        $brands = Brand::query()->has('products')->withCount('products')->orderByDesc('products_count')->limit(5)->get();
 
         return view('components.home.shop-by-brand', compact('brands'));
     }

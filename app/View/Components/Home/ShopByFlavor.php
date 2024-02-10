@@ -22,7 +22,7 @@ class ShopByFlavor extends Component
      */
     public function render(): View|Closure|string
     {
-        $flavors = Flavor::has('products')->limit(4)->get();
+        $flavors = Flavor::has('products')->withCount('products')->orderByDesc('products_count')->limit(4)->get();
 
         return view('components.home.shop-by-flavor', compact('flavors'));
     }
