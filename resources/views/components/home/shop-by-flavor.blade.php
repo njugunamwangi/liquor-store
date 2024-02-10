@@ -11,7 +11,7 @@
 
                 <div class="relative mt-8">
                     <div class="relative w-full overflow-x-auto">
-                        <ul role="list" class="mx-4 inline-flex space-x-8 sm:mx-6 lg:mx-0 lg:grid lg:grid-cols-4 lg:gap-x-8 lg:space-x-0">
+                        <ul role="list" class="mt-8 grid sm:p-4 grid-cols-1 gap-y-12 sm:grid-cols-2 sm:gap-x-6 lg:grid-cols-4 xl:gap-x-8">
                             @foreach($flavors as $flavor )
                                 <li class="inline-flex w-64 flex-col text-center lg:w-auto">
                                     <div class="group relative">

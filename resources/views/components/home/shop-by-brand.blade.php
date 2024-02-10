@@ -10,8 +10,8 @@
 
         <div class="mt-4 flow-root">
             <div class="-my-2">
-                <div class="relative box-content h-80 overflow-x-auto py-2 xl:overflow-visible">
-                    <div class="absolute flex space-x-8 px-4 sm:px-6 lg:px-8 xl:relative xl:grid xl:grid-cols-5 xl:gap-x-8 xl:space-x-0 xl:px-0">
+                <div class="relative box-content overflow-x-auto py-2 xl:overflow-visible">
+                    <div class="mt-8 grid grid-cols-1 gap-y-12 sm:p-4 sm:grid-cols-2 sm:gap-x-6 lg:grid-cols-4 xl:gap-x-8">
                         @foreach($brands as $brand)
                             <a href="#" class="relative flex h-80 w-56 flex-col overflow-hidden rounded-lg p-6 hover:opacity-75 xl:w-auto">
                                 <span aria-hidden="true" class="absolute inset-0">
