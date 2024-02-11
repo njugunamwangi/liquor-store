@@ -3,7 +3,7 @@
             <div class=" h-72 w-full overflow-hidden rounded-lg">
                 <a href="{{ route('product', [$product->category, $product->flavor, $product->brand, $product]) }}"" >
                     <img
-                    src="{{ url('/storage/'.$product->productImage->path) }}"
+                    src="{{ empty($product->image_id) ? '' : url('/storage/'.$product->productImage->path) }}"
                     alt="{{ $product->product }}"
                     class="h-full w-full object-cover object-center">
                 </a>

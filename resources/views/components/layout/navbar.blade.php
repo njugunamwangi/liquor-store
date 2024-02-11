@@ -146,7 +146,7 @@
                                                 <div class="grid grid-cols-2 grid-rows-1 gap-8 text-sm">
                                                     <div class="group aspect-w-1 aspect-h-1 relative overflow-hidden rounded-md bg-gray-100 aspect-w-2 col-span-2">
                                                         <img
-                                                            src="{{ url('/storage/'.$category->featuredImage->path) }}"
+                                                            src="{{ empty($category->image_id) ? '' : url('/storage/'. $category->featuredImage->path) }}"
                                                             alt="{{ $category->category }}"
                                                             class="object-cover object-center group-hover:opacity-75">
                                                         <div class="flex flex-col justify-end">
@@ -162,7 +162,7 @@
                                                     @foreach($category->flavors()->inRandomOrder()->limit(2)->get() as $flavor)
                                                         <div class="group aspect-w-1 aspect-h-1 relative overflow-hidden rounded-md bg-gray-100">
                                                             <img
-                                                                src="{{ url('/storage/'.$flavor->featuredImage->path) }}"
+                                                                src="{{ empty($flavor->image_id) ? '' : url('/storage/'.$flavor->featuredImage->path) }}"
                                                                 alt="{{ $flavor->flavor }}"
                                                                 class="object-cover object-center group-hover:opacity-75">
                                                             <div class="flex flex-col justify-end">
