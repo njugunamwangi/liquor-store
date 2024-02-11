@@ -21,7 +21,6 @@ class FlavorSeeder extends Seeder
             Flavor::create([
                 'flavor' => $flavor,
                 'slug' => Str::slug($flavor),
-                'featured_image_id' => rand(4,15),
                 'category_id' => Category::where('category', '=', 'Distilled')->first()->id,
             ]);
         }
@@ -32,7 +31,6 @@ class FlavorSeeder extends Seeder
             Flavor::create([
                 'flavor' => $flavor,
                 'slug' => Str::slug($flavor),
-                'featured_image_id' => rand(4,15),
                 'category_id' => Category::where('category', '=', 'Undistilled')->first()->id,
             ]);
         }

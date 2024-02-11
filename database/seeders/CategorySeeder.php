@@ -20,7 +20,6 @@ class CategorySeeder extends Seeder
             Category::create([
                 'category' => $category,
                 'slug' => Str::slug($category),
-                'image_id' => rand(1, 5)
             ]);
         }
     }
