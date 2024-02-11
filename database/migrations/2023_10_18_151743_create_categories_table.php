@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('category', 255)->unique();
             $table->string('slug', 255)->unique();
-            $table->integer('image_id');
+            $table->integer('image_id')->nullable();
             $table->foreignId('parent_id')->nullable()->constrained('categories');
             $table->longText('description')->nullable();
             $table->softDeletes();
