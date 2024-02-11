@@ -27,10 +27,6 @@ class Product extends Model
             ->saveSlugsTo('slug');
     }
 
-    public function image(): BelongsTo {
-        return $this->belongsTo(Media::class, 'image_id');
-    }
-
     public function productImage(): BelongsTo {
         return $this->belongsTo(Media::class, 'image_id', 'id');
     }
