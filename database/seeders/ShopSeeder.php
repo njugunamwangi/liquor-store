@@ -17,5 +17,6 @@ class ShopSeeder extends Seeder
         $this->call(AmountSeeder::class);
         $this->call(SavourSeeder::class);
         $this->call(TypeSeeder::class);
+        $this->call(ProductSeeder::class);
     }
 }
