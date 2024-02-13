@@ -45,7 +45,7 @@ class Checkout extends Component
             'total_price' => $total,
             'tracking_no' => Str::uuid(),
             'order_id' => 'AXFYT-'.rand(1000000, 9999999),
-            'payment_method' => 'Online',
+            'payment_method' => '-',
             'payment_status' => 'Not Paid',
             'order_status' => 'Pending',
             'shipping' => $this->shipping,
