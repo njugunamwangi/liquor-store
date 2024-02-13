@@ -14,7 +14,7 @@ class CategorySeeder extends Seeder
      */
     public function run(): void
     {
-        $categories = ['Distilled', 'Undistilled', 'Cocktail'];
+        $categories = ['Distilled', 'Undistilled'];
 
         foreach ($categories as $category) {
             Category::create([
