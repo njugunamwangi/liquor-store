@@ -2,6 +2,7 @@
 
 namespace App\Observers;
 
+use App\Filament\Resources\UserResource;
 use App\Models\Role;
 use App\Models\User;
 use Filament\Notifications\Actions\Action;
@@ -23,8 +24,8 @@ class UserObserver
                 ->icon('heroicon-o-user-plus')
                 ->body($user->name . ' created an account')
                 ->actions([
-                    Action::make('markAsRead')
-                        ->button()
+                    Action::make('View')
+                        ->url(UserResource::getUrl('view', ['record' => $user->id]))
                         ->markAsRead(),
                 ])
                 ->sendToDatabase($recipient);

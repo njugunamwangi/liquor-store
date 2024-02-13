@@ -2,6 +2,7 @@
 
 namespace App\Observers;
 
+use App\Filament\Resources\OrderResource;
 use App\Models\Order;
 use App\Models\Role;
 use App\Models\User;
@@ -24,8 +25,8 @@ class OrderObserver
                 ->icon('heroicon-o-shopping-bag')
                 ->body('New order ' . $order->order_id)
                 ->actions([
-                    Action::make('markAsRead')
-                        ->button()
+                    Action::make('View')
+                        ->url(OrderResource::getUrl('view', ['record' => $order->id]))
                         ->markAsRead(),
                 ])
                 ->sendToDatabase($recipient);

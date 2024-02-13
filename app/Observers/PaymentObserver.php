@@ -2,6 +2,7 @@
 
 namespace App\Observers;
 
+use App\Filament\Resources\PaymentResource;
 use App\Models\Payment;
 use App\Models\Role;
 use App\Models\User;
@@ -24,8 +25,8 @@ class PaymentObserver
                 ->icon('heroicon-o-banknotes')
                 ->body('New payment received')
                 ->actions([
-                    Action::make('markAsRead')
-                        ->button()
+                    Action::make('View')
+                        ->url(PaymentResource::getUrl('view', ['record' => $payment->id]))
                         ->markAsRead(),
                 ])
                 ->sendToDatabase($recipient);
