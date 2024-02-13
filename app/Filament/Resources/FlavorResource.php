@@ -96,7 +96,7 @@ class FlavorResource extends Resource
                     ->schema([
                         ImageEntry::make('image')
                             ->getStateUsing(function($record) {
-                                return $record->featuredImage->path;
+                                empty($record->featured_image_id) ? null : $record->featuredImage->path;
                             }),
                         Group::make()
                             ->columns(2)

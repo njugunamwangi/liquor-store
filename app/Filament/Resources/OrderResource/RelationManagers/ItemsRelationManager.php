@@ -32,6 +32,10 @@ class ItemsRelationManager extends RelationManager
             ->recordTitleAttribute('product')
             ->columns([
                 CuratorColumn::make('product.productImage')
+                    ->getStateUsing(function($record) {
+                        empty($record->product->image_id) ? '' : $record->product->productImage->path;
+                    })
+                    ->label('Image')
                     ->height(50),
                 Tables\Columns\TextColumn::make('product.product'),
                 Tables\Columns\TextColumn::make('quantity'),

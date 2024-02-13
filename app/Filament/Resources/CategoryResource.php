@@ -86,7 +86,7 @@ class CategoryResource extends Resource
                     ->schema([
                         ImageEntry::make('image')
                             ->getStateUsing(function($record) {
-                                return $record->image->path;
+                                empty($record->image_id) ? null : $record->image->path;
                             }),
                         Group::make()
                             ->columns(2)

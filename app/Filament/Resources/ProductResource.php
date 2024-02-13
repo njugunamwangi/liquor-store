@@ -255,7 +255,7 @@ class ProductResource extends Resource
                     ->schema([
                         ImageEntry::make('image')
                             ->getStateUsing(function($record) {
-                                return $record->productImage->path;
+                                empty($record->image_id) ? '' : $record->productImage->path;
                             }),
                         Group::make()
                             ->columnSpan(2)
