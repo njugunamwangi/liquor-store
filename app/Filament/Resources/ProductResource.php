@@ -95,9 +95,8 @@ class ProductResource extends Resource
                 Section::make()
                     ->schema([
                         CuratorPicker::make('image_id')
-                            ->relationship('image', 'name')
-                            ->label('Image')
-                            ->required(),
+                            ->relationship('productImage', 'name')
+                            ->label('Image'),
                         Forms\Components\Select::make('category_id')
                             ->relationship('category', 'category')
                             ->createOptionForm(Category::getForm())
