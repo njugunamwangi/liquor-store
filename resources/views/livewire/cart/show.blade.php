@@ -9,7 +9,7 @@
                         <li class="flex py-6 sm:py-10">
                             <div class="flex-shrink-0">
                                 <img
-                                    src="{{ url('/storage/'.$item->product->productImage->path) }}"
+                                    src="{{ empty($item->product->image_id) ? "https://placehold.jp/30/200x300.png?text=image" : url('/storage/'.$item->product->productImage->path) }}"
                                     alt="{{ $item->product->product }}"
                                     class="h-24 w-24 rounded-md object-cover object-center sm:h-48 sm:w-48">
                             </div>
