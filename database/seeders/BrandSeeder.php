@@ -24,7 +24,6 @@ class BrandSeeder extends Seeder
             Brand::create([
                 'brand' => $brand,
                 'slug' => Str::slug($brand),
-                'featured_image_id' => rand(12, 20),
                 'category_id' => Category::where('category', '=', 'Distilled')->first()->id,
                 'flavor_id' => Flavor::where('flavor', '=', 'Cognac')->first()->id,
             ]);
@@ -37,7 +36,6 @@ class BrandSeeder extends Seeder
             Brand::create([
                 'brand' => $brand,
                 'slug' => Str::slug($brand),
-                'featured_image_id' => rand(12, 20),
                 'category_id' => Category::where('category', '=', 'Distilled')->first()->id,
                 'flavor_id' => Flavor::where('flavor', '=', 'Whisky')->first()->id,
             ]);
@@ -50,7 +48,6 @@ class BrandSeeder extends Seeder
             Brand::create([
                 'brand' => $brand,
                 'slug' => Str::slug($brand),
-                'featured_image_id' => rand(12, 20),
                 'category_id' => Category::where('category', '=', 'Distilled')->first()->id,
                 'flavor_id' => Flavor::where('flavor', '=', 'Gin')->first()->id,
             ]);
@@ -63,7 +60,6 @@ class BrandSeeder extends Seeder
             Brand::create([
                 'brand' => $brand,
                 'slug' => Str::slug($brand),
-                'featured_image_id' => rand(12, 20),
                 'category_id' => Category::where('category', '=', 'Distilled')->first()->id,
                 'flavor_id' => Flavor::where('flavor', '=', 'Brandy')->first()->id,
             ]);
@@ -76,7 +72,6 @@ class BrandSeeder extends Seeder
             Brand::create([
                 'brand' => $brand,
                 'slug' => Str::slug($brand),
-                'featured_image_id' => rand(12, 20),
                 'category_id' => Category::where('category', '=', 'Distilled')->first()->id,
                 'flavor_id' => Flavor::where('flavor', '=', 'Tequila')->first()->id,
             ]);
@@ -89,7 +84,6 @@ class BrandSeeder extends Seeder
             Brand::create([
                 'brand' => $brand,
                 'slug' => Str::slug($brand),
-                'featured_image_id' => rand(12, 20),
                 'category_id' => Category::where('category', '=', 'Distilled')->first()->id,
                 'flavor_id' => Flavor::where('flavor', '=', 'Rum')->first()->id,
             ]);
@@ -102,7 +96,6 @@ class BrandSeeder extends Seeder
             Brand::create([
                 'brand' => $brand,
                 'slug' => Str::slug($brand),
-                'featured_image_id' => rand(12, 20),
                 'category_id' => Category::where('category', '=', 'Distilled')->first()->id,
                 'flavor_id' => Flavor::where('flavor', '=', 'Vodka')->first()->id,
             ]);
@@ -116,7 +109,6 @@ class BrandSeeder extends Seeder
             Brand::create([
                 'brand' => $brand,
                 'slug' => Str::slug($brand),
-                'featured_image_id' => rand(12, 20),
                 'category_id' => Category::where('category', '=', 'Undistilled')->first()->id,
                 'flavor_id' => Flavor::where('flavor', '=', 'Beer')->first()->id,
             ]);
@@ -129,7 +121,6 @@ class BrandSeeder extends Seeder
             Brand::create([
                 'brand' => $brand,
                 'slug' => Str::slug($brand),
-                'featured_image_id' => rand(12, 20),
                 'category_id' => Category::where('category', '=', 'Undistilled')->first()->id,
                 'flavor_id' => Flavor::where('flavor', '=', 'Wine')->first()->id,
             ]);
