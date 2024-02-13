@@ -1,17 +1,3 @@
-<!--
-  This example requires some changes to your config:
-
-  ```
-  // tailwind.config.js
-  module.exports = {
-    // ...
-    plugins: [
-      // ...
-      require('@tailwindcss/forms'),
-    ],
-  }
-  ```
--->
 <footer class="bg-white" aria-labelledby="footer-heading">
   <h2 id="footer-heading" class="sr-only">Footer</h2>
   <div class="mx-auto max-w-7xl px-6 pb-8 pt-20 sm:pt-24 lg:px-8 lg:pt-32">
