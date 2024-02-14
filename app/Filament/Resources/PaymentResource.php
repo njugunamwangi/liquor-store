@@ -157,7 +157,11 @@ class PaymentResource extends Resource
                     ->columns(2)
                     ->schema([
                         TextEntry::make('order.order_id')
-                            ->label('Order Reference'),
+                            ->label('Order Reference')
+                            ->url(function ($record) {
+                                return OrderResource::getUrl('view', ['record' => $record->order->id]);
+                            })
+                            ->icon('heroicon-o-link'),
                         TextEntry::make('order.order_status')
                             ->label('Order Status')
                             ->badge()
