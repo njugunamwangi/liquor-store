@@ -158,10 +158,12 @@ class PaymentResource extends Resource
                     ->schema([
                         TextEntry::make('order.order_id')
                             ->label('Order Reference')
+                            ->color('primary')
                             ->url(function ($record) {
                                 return OrderResource::getUrl('view', ['record' => $record->order->id]);
                             })
-                            ->icon('heroicon-o-link'),
+                            ->icon('heroicon-o-link')
+                            ->iconColor('primary'),
                         TextEntry::make('order.order_status')
                             ->label('Order Status')
                             ->badge()
@@ -169,7 +171,13 @@ class PaymentResource extends Resource
                                 return $state->getColor();
                             }),
                         TextEntry::make('user.name')
-                            ->label('Name'),
+                            ->label('Name')
+                            ->color('success')
+                            ->url(function ($record) {
+                                return UserResource::getUrl('view', ['record' => $record->user_id]);
+                            })
+                            ->icon('heroicon-o-link')
+                            ->iconColor('success'),
                         TextEntry::make('user.email')
                             ->label('Email'),
                     ])
