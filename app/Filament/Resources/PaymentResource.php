@@ -176,7 +176,7 @@ class PaymentResource extends Resource
                             ->url(function ($record) {
                                 return UserResource::getUrl('view', ['record' => $record->user_id]);
                             })
-                            ->icon('heroicon-o-link')
+                            ->icon('heroicon-o-user')
                             ->iconColor('success'),
                         TextEntry::make('user.email')
                             ->label('Email'),
