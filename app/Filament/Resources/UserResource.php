@@ -5,6 +5,7 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\UserResource\Pages;
 use App\Filament\Resources\UserResource\RelationManagers;
 use App\Filament\Resources\UserResource\RelationManagers\OrdersRelationManager;
+use App\Filament\Resources\UserResource\RelationManagers\PaymentsRelationManager;
 use App\Models\User;
 use Filament\Forms;
 use Filament\Forms\Components\Grid;
@@ -189,6 +190,7 @@ class UserResource extends Resource
     {
         return [
             OrdersRelationManager::class,
+            PaymentsRelationManager::class,
         ];
     }
 
