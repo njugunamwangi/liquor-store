@@ -12,7 +12,7 @@ class MessagesBalance extends BaseWidget
     protected function getStats(): array
     {
         return [
-            Stat::make('Balances', Africastalking::application()->balance())
+            Stat::make('Balances', 0)
                 ->description('As Per Africa\'sTalking')
                 ->color('primary'),
         ];
