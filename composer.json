@@ -11,6 +11,7 @@
         "php": "^8.1",
         "althinect/filament-spatie-roles-permissions": "^2.2",
         "awcodes/filament-curator": "^3.0",
+        "blade-ui-kit/blade-icons": "^1.6",
         "filament/filament": "^3.0-stable",
         "flowframe/laravel-trend": "^0.1.5",
         "guzzlehttp/guzzle": "^7.2",
