@@ -27,6 +27,7 @@ class ViewFlavor extends ViewRecord
                 Actions\EditAction::make(),
                 CreateAction::make()
                     ->model(Brand::class)
+                    ->label('New Brand')
                     ->form([
                         TextInput::make('brand')
                             ->required()
@@ -45,6 +46,7 @@ class ViewFlavor extends ViewRecord
                     }),
                     CreateAction::make()
                         ->model(Savour::class)
+                        ->label('New Savour')
                         ->form([
                             TextInput::make('savour')
                                 ->required()
@@ -59,6 +61,7 @@ class ViewFlavor extends ViewRecord
                         }),
                     CreateAction::make()
                         ->model(Type::class)
+                        ->label('New Type')
                         ->form([
                             TextInput::make('type')
                                 ->required()
