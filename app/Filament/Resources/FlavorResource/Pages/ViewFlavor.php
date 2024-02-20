@@ -4,9 +4,13 @@ namespace App\Filament\Resources\FlavorResource\Pages;
 
 use App\Filament\Resources\FlavorResource;
 use App\Models\Brand;
+use App\Models\Flavor;
+use Awcodes\Curator\Components\Forms\CuratorPicker;
 use Filament\Actions;
-use Filament\Actions\Action;
 use Filament\Actions\ActionGroup;
+use Filament\Actions\CreateAction;
+use Filament\Forms\Components\RichEditor;
+use Filament\Forms\Components\TextInput;
 use Filament\Resources\Pages\ViewRecord;
 
 class ViewFlavor extends ViewRecord
@@ -18,6 +22,24 @@ class ViewFlavor extends ViewRecord
         return [
             ActionGroup::make([
                 Actions\EditAction::make(),
+                CreateAction::make()
+                    ->model(Brand::class)
+                    ->form([
+                        TextInput::make('brand')
+                            ->required()
+                            ->maxLength(255),
+                        CuratorPicker::make('featured_image_id')
+                            ->relationship('featuredImage', 'id')
+                            ->label('Image'),
+                        RichEditor::make('description')
+                            ->columnSpanFull(),
+                    ])
+                    ->mutateFormDataUsing(function (array $data): array {
+                        $data['category_id'] = $this->record->category->id;
+                        $data['flavor_id'] = $this->record->id;
+
+                        return $data;
+                    })
             ])
         ];
     }
