@@ -1,9 +1,9 @@
-  <div x-data="{ open: {}, mobile: false, category: {}, flavor: {} }" >
-  <!--
-    Mobile menu
+  <div x-data="{ open: {}, mobile: false, category: {}, flavor: {}, search: false }" >
+    <!--
+        Mobile menu
 
-    Off-canvas menu for mobile, show/hide based on off-canvas menu state.
-  -->
+        Off-canvas menu for mobile, show/hide based on off-canvas menu state.
+    -->
     <div class="relative z-40 lg:hidden" x-show="mobile" x-cloak @click.away="mobile = false"  role="dialog" aria-modal="true">
         <!--
         Off-canvas menu backdrop, show/hide based on off-canvas menu state.
@@ -18,75 +18,75 @@
         <div class="fixed inset-0 bg-black bg-opacity-25"></div>
 
         <div class="fixed inset-0 z-40 flex" >
-        <!--
-            Off-canvas menu, show/hide based on off-canvas menu state.
+            <!--
+                Off-canvas menu, show/hide based on off-canvas menu state.
 
-            Entering: "transition ease-in-out duration-300 transform"
-            From: "-translate-x-full"
-            To: "translate-x-0"
-            Leaving: "transition ease-in-out duration-300 transform"
-            From: "translate-x-0"
-            To: "-translate-x-full"
-        -->
-        <div  class="relative flex w-full max-w-xs flex-col overflow-y-auto bg-white pb-12 shadow-xl">
-            <div class="flex px-4 pb-2 pt-5">
-                <button type="button" @click="mobile = !mobile" class="-m-2 inline-flex items-center justify-center rounded-md p-2 text-gray-400">
-                    <span class="sr-only">Close menu</span>
-                    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-                    </svg>
-                </button>
-            </div>
+                Entering: "transition ease-in-out duration-300 transform"
+                From: "-translate-x-full"
+                To: "translate-x-0"
+                Leaving: "transition ease-in-out duration-300 transform"
+                From: "translate-x-0"
+                To: "-translate-x-full"
+            -->
+            <div  class="relative flex w-full max-w-xs flex-col overflow-y-auto bg-white pb-12 shadow-xl">
+                <div class="flex px-4 pb-2 pt-5">
+                    <button type="button" @click="mobile = !mobile" class="-m-2 inline-flex items-center justify-center rounded-md p-2 text-gray-400">
+                        <span class="sr-only">Close menu</span>
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
 
-            <!-- Links -->
-            <div class="mt-2">
-                <div id="tabs-1-panel-1" class="space-y-10 px-4 pb-8 pt-10" aria-labelledby="tabs-1-tab-1" role="tabpanel" tabindex="0">
-                    <div class="space-y-10">
-                        @foreach($categories as $category)
-                            <div>
-                                <div class="flex justify-between">
-                                    <p id="women-shoes-heading-mobile" class="font-medium text-gray-900 hover:text-indigo-700">{{ $category->category }}</p>
-                                    <svg @click="category['{{ $category->id }}'] = !category['{{ $category->id }}']" class="block h-6 w-6 text-gray-400 group-hover:text-gray-500" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-                                        <path x-show="!category['{{ $category->id }}']" stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-                                        <path x-show="category['{{ $category->id }}']" stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15" />
-                                    </svg>
+                <!-- Links -->
+                <div class="mt-2">
+                    <div id="tabs-1-panel-1" class="space-y-10 px-4 pb-8 pt-10" aria-labelledby="tabs-1-tab-1" role="tabpanel" tabindex="0">
+                        <div class="space-y-10">
+                            @foreach($categories as $category)
+                                <div>
+                                    <div class="flex justify-between">
+                                        <p id="women-shoes-heading-mobile" class="font-medium text-gray-900 hover:text-indigo-700">{{ $category->category }}</p>
+                                        <svg @click="category['{{ $category->id }}'] = !category['{{ $category->id }}']" class="block h-6 w-6 text-gray-400 group-hover:text-gray-500" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                                            <path x-show="!category['{{ $category->id }}']" stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                                            <path x-show="category['{{ $category->id }}']" stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15" />
+                                        </svg>
+                                    </div>
+                                    <div x-cloak x-show="category['{{ $category->id }}']" @click.away="category['{{ $category->id }}'] = false">
+                                        <ul role="list" aria-labelledby="women-shoes-heading-mobile" class="mt-6 flex flex-col space-y-6">
+                                            @foreach($category->flavors()->get() as $flavor)
+                                                <li class="flow-root">
+                                                    <div class="flex justify-between">
+                                                        <a href="#" class="-m-2 block p-2 text-gray-500 hover:text-indigo-700"> {{ $flavor->flavor }} </a>
+                                                        <svg @click="flavor['{{ $flavor->id }}'] = !flavor['{{ $flavor->id }}']" class="block h-5 w-5 text-gray-400 group-hover:text-gray-500" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                                                            <path x-show="!flavor['{{ $flavor->id }}']" stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                                                            <path x-show="flavor['{{ $flavor->id }}']" stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15" />
+                                                        </svg>
+                                                    </div>
+                                                    <div x-cloak x-show="flavor['{{ $flavor->id }}']" @click.away="flavor['{{ $flavor->id }}'] = false">
+                                                        <ul role="list" aria-labelledby="women-shoes-heading-mobile" class="mt-6 flex flex-col space-y-6">
+                                                            @foreach($flavor->brands()->get() as $brand)
+                                                                <div class="flex items-center">
+                                                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+                                                                        <path stroke-linecap="round" stroke-linejoin="round" d="m5.25 4.5 7.5 7.5-7.5 7.5m6-15 7.5 7.5-7.5 7.5" />
+                                                                    </svg>
+
+                                                                    <li class="flow-root">
+                                                                        <a href="#" class="-m-2 block p-2 text-gray-500 hover:text-indigo-700"> {{ $brand->brand }} </a>
+                                                                    </li>
+                                                                </div>
+                                                            @endforeach
+                                                        </ul>
+                                                    </div>
+                                                </li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
                                 </div>
-                                <div x-cloak x-show="category['{{ $category->id }}']" @click.away="category['{{ $category->id }}'] = false">
-                                    <ul role="list" aria-labelledby="women-shoes-heading-mobile" class="mt-6 flex flex-col space-y-6">
-                                        @foreach($category->flavors()->get() as $flavor)
-                                            <li class="flow-root">
-                                                <div class="flex justify-between">
-                                                    <a href="#" class="-m-2 block p-2 text-gray-500 hover:text-indigo-700"> {{ $flavor->flavor }} </a>
-                                                    <svg @click="flavor['{{ $flavor->id }}'] = !flavor['{{ $flavor->id }}']" class="block h-5 w-5 text-gray-400 group-hover:text-gray-500" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-                                                        <path x-show="!flavor['{{ $flavor->id }}']" stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-                                                        <path x-show="flavor['{{ $flavor->id }}']" stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15" />
-                                                    </svg>
-                                                </div>
-                                                <div x-cloak x-show="flavor['{{ $flavor->id }}']" @click.away="flavor['{{ $flavor->id }}'] = false">
-                                                    <ul role="list" aria-labelledby="women-shoes-heading-mobile" class="mt-6 flex flex-col space-y-6">
-                                                        @foreach($flavor->brands()->get() as $brand)
-                                                            <div class="flex items-center">
-                                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
-                                                                    <path stroke-linecap="round" stroke-linejoin="round" d="m5.25 4.5 7.5 7.5-7.5 7.5m6-15 7.5 7.5-7.5 7.5" />
-                                                                </svg>
-
-                                                                <li class="flow-root">
-                                                                    <a href="#" class="-m-2 block p-2 text-gray-500 hover:text-indigo-700"> {{ $brand->brand }} </a>
-                                                                </li>
-                                                            </div>
-                                                        @endforeach
-                                                    </ul>
-                                                </div>
-                                            </li>
-                                        @endforeach
-                                    </ul>
-                                </div>
-                            </div>
-                        @endforeach
+                            @endforeach
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
         </div>
 
     </div>
@@ -118,12 +118,12 @@
                         @foreach($categories as $category)
                             <div class="flex">
                                 <div class="relative flex">
-                                <!-- Item active: "text-indigo-600", Item inactive: "text-gray-700 hover:text-gray-800" -->
-                                <button @click="open['{{ $category->id }}'] = !open['{{ $category->id }}']" type="button" class="text-gray-700 hover:text-gray-800 relative z-10 flex items-center justify-center text-sm font-medium transition-colors duration-200 ease-out" aria-expanded="false">
-                                    {{ $category->category }}
-                                    <!-- Open: "bg-indigo-600", Closed: "" -->
-                                    <span class="absolute inset-x-0 bottom-0 h-0.5 transition-colors duration-200 ease-out sm:mt-5 sm:translate-y-px sm:transform" aria-hidden="true"></span>
-                                </button>
+                                    <!-- Item active: "text-indigo-600", Item inactive: "text-gray-700 hover:text-gray-800" -->
+                                    <button @click="open['{{ $category->id }}'] = !open['{{ $category->id }}']" type="button" class="text-gray-700 hover:text-gray-800 relative z-10 flex items-center justify-center text-sm font-medium transition-colors duration-200 ease-out" aria-expanded="false">
+                                        {{ $category->category }}
+                                        <!-- Open: "bg-indigo-600", Closed: "" -->
+                                        <span class="absolute inset-x-0 bottom-0 h-0.5 transition-colors duration-200 ease-out sm:mt-5 sm:translate-y-px sm:transform" aria-hidden="true"></span>
+                                    </button>
                                 </div>
 
                                 <!--
@@ -205,7 +205,7 @@
                         @endforeach
 
                     <!-- <a href="#" class="flex items-center text-sm font-medium text-gray-700 hover:text-gray-800">Company</a> -->
-                    <!-- <a href="#" class="flex items-center text-sm font-medium text-gray-700 hover:text-gray-800">Stores</a> -->
+                    <a href="#" class="flex items-center text-sm font-medium text-gray-700 hover:text-gray-800">Stores</a>
                     </div>
                 </div>
 
@@ -217,12 +217,31 @@
 
                 <div class="flex flex-1 items-center justify-end">
                     <!-- Search -->
-                    <a href="#" class="ml-6 hidden p-2 text-gray-400 hover:text-gray-500 lg:block">
+                    <div @click="search = !search" class="ml-6 hidden p-2 text-gray-400 hover:text-gray-500 lg:block">
                         <span class="sr-only">Search</span>
                         <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
                         </svg>
-                    </a>
+                    </div>
+
+                    <!-- Search command palette -->
+                    <div x-cloak x-show="search" @click.away="search = false" class="fixed inset-0 z-10 w-screen overflow-y-auto p-4 sm:p-6 md:p-20">
+                        <!--
+                        Command palette, show/hide based on modal state.
+
+                        Entering: "ease-out duration-300"
+                            From: "opacity-0 scale-95"
+                            To: "opacity-100 scale-100"
+                        Leaving: "ease-in duration-200"
+                            From: "opacity-100 scale-100"
+                            To: "opacity-0 scale-95"
+                        -->
+                        <div class="mx-auto max-w-3xl transform divide-y divide-gray-100 overflow-hidden rounded-xl bg-white shadow-2xl ring-1 ring-black ring-opacity-5 transition-all">
+
+                            <livewire:search />
+
+                        </div>
+                    </div>
 
                     <!-- Cart -->
                     <div class="ml-4 flow-root lg:ml-6">
