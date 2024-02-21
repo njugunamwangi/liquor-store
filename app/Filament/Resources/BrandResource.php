@@ -3,11 +3,8 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\BrandResource\Pages;
-use App\Filament\Resources\BrandResource\RelationManagers;
 use App\Models\Brand;
-use Awcodes\Curator\Components\Forms\CuratorPicker;
 use Awcodes\Curator\Components\Tables\CuratorColumn;
-use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Infolists\Components\Group;
 use Filament\Infolists\Components\ImageEntry;
@@ -82,7 +79,7 @@ class BrandResource extends Resource
                     ->columns(3)
                     ->schema([
                         ImageEntry::make('image')
-                            ->getStateUsing(function($record) {
+                            ->getStateUsing(function ($record) {
                                 empty($record->featured_image_id) ? null : $record->featuredImage->path;
                             }),
                         Group::make()
@@ -91,9 +88,9 @@ class BrandResource extends Resource
                             ->schema([
                                 TextEntry::make('brand'),
                                 TextEntry::make('flavor.flavor'),
-                                TextEntry::make('category.category')
-                            ])
-                    ])
+                                TextEntry::make('category.category'),
+                            ]),
+                    ]),
             ]);
     }
 

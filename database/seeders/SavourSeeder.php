@@ -4,7 +4,6 @@ namespace Database\Seeders;
 
 use App\Models\Flavor;
 use App\Models\Savour;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Str;
 
@@ -37,7 +36,7 @@ class SavourSeeder extends Seeder
 
         // Beers
         $beerSavours = [
-            'Cider', 'Malt', 'Lite', 'Lager', 'Stout', 'Strong'
+            'Cider', 'Malt', 'Lite', 'Lager', 'Stout', 'Strong',
         ];
 
         foreach ($beerSavours as $savour) {

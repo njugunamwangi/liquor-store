@@ -11,7 +11,11 @@ class PaymentStatsWidget extends BaseWidget
 {
     protected static ?int $sort = 1;
 
-    protected function getColumns(): int { return 2; }
+    protected function getColumns(): int
+    {
+        return 2;
+    }
+
     protected function getStats(): array
     {
         return [

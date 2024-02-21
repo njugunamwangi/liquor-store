@@ -32,7 +32,7 @@ class BrandsRelationManager extends RelationManager
                 Tables\Columns\TextColumn::make('brand'),
             ])
             ->filters([
-                Tables\Filters\TrashedFilter::make()
+                Tables\Filters\TrashedFilter::make(),
             ])
             ->headerActions([
                 Tables\Actions\CreateAction::make(),

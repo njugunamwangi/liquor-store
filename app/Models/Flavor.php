@@ -29,34 +29,40 @@ class Flavor extends Model
         return $this->belongsTo(Media::class, 'featured_image_id', 'id');
     }
 
-    public function getSlugOptions() : SlugOptions
+    public function getSlugOptions(): SlugOptions
     {
         return SlugOptions::create()
             ->generateSlugsFrom('flavor')
             ->saveSlugsTo('slug');
     }
 
-    public function savours(): HasMany {
+    public function savours(): HasMany
+    {
         return $this->hasMany(Savour::class);
     }
 
-    public function types(): HasMany {
+    public function types(): HasMany
+    {
         return $this->hasMany(Type::class);
     }
 
-    public function brands(): HasMany {
+    public function brands(): HasMany
+    {
         return $this->hasMany(Brand::class);
     }
 
-    public function products(): HasMany {
+    public function products(): HasMany
+    {
         return $this->hasMany(Product::class);
     }
 
-    public function category(): BelongsTo {
+    public function category(): BelongsTo
+    {
         return $this->belongsTo(Category::class);
     }
 
-    public static function getForm(): array {
+    public static function getForm(): array
+    {
         return [
             CuratorPicker::make('featured_image_id')
                 ->relationship('featuredImage', 'name')
@@ -82,7 +88,7 @@ class Flavor extends Model
                 ->required()
                 ->searchable(),
             RichEditor::make('description')
-                ->columnSpanFull()
-            ];
+                ->columnSpanFull(),
+        ];
     }
 }

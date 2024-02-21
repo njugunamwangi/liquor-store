@@ -3,7 +3,6 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\PaymentResource\Pages;
-use App\Filament\Resources\PaymentResource\RelationManagers;
 use App\Models\Payment;
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -13,14 +12,13 @@ use Filament\Infolists\Infolist;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class PaymentResource extends Resource
 {
     protected static ?string $model = Payment::class;
 
     protected static ?string $navigationGroup = 'Shop';
+
     protected static ?int $navigationSort = 7;
 
     public static function getNavigationBadge(): ?string
@@ -147,9 +145,9 @@ class PaymentResource extends Resource
                         TextEntry::make('ip_address')
                             ->label('IP Address'),
                         TextEntry::make('amount')
-                            ->getStateUsing(function($record) {
-                                return $record->currency . number_format($record->amount, 2);
-                            })
+                            ->getStateUsing(function ($record) {
+                                return $record->currency.number_format($record->amount, 2);
+                            }),
                     ]),
                 Section::make('Order Information')
                     ->icon('heroicon-o-shopping-bag')
@@ -167,7 +165,7 @@ class PaymentResource extends Resource
                         TextEntry::make('order.order_status')
                             ->label('Order Status')
                             ->badge()
-                            ->color(function($state) {
+                            ->color(function ($state) {
                                 return $state->getColor();
                             }),
                         TextEntry::make('user.name')
@@ -180,7 +178,7 @@ class PaymentResource extends Resource
                             ->iconColor('success'),
                         TextEntry::make('user.email')
                             ->label('Email'),
-                    ])
+                    ]),
             ]);
     }
 

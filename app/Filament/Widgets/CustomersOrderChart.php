@@ -10,11 +10,13 @@ use Flowframe\Trend\TrendValue;
 class CustomersOrderChart extends ChartWidget
 {
     protected static ?int $sort = 3;
+
     protected static ?string $heading = 'Customer Registration';
 
     public ?string $filter = '3months';
 
-    protected function getFilters(): ?array {
+    protected function getFilters(): ?array
+    {
         return [
             'week' => 'Last Week',
             'month' => 'Last Month',

@@ -21,10 +21,11 @@ use Spatie\Sluggable\SlugOptions;
 class Brand extends Model
 {
     use HasFactory;
-    use SoftDeletes;
     use HasSlug;
+    use SoftDeletes;
 
     public const CREATED_AT = null;
+
     public const UPDATED_AT = null;
 
     protected $guarded = [];
@@ -34,27 +35,30 @@ class Brand extends Model
         return $this->belongsTo(Media::class, 'featured_image_id');
     }
 
-    public function getSlugOptions() : SlugOptions
+    public function getSlugOptions(): SlugOptions
     {
         return SlugOptions::create()
             ->generateSlugsFrom('brand')
             ->saveSlugsTo('slug');
     }
 
-    public function products(): HasMany {
+    public function products(): HasMany
+    {
         return $this->hasMany(Product::class, 'brand_id', 'id');
     }
 
-    public function category(): BelongsTo {
+    public function category(): BelongsTo
+    {
         return $this->belongsTo(Category::class);
     }
 
-    public function flavor(): BelongsTo {
+    public function flavor(): BelongsTo
+    {
         return $this->belongsTo(Flavor::class);
     }
 
-
-    public static function getForm(): array {
+    public static function getForm(): array
+    {
         return [
             TextInput::make('brand')
                 ->required()
@@ -69,7 +73,7 @@ class Brand extends Model
                         ->live()
                         ->searchable(),
                     Select::make('flavor_id')
-                        ->relationship('flavor', 'flavor', modifyQueryUsing: function(Builder $query, Get $get) {
+                        ->relationship('flavor', 'flavor', modifyQueryUsing: function (Builder $query, Get $get) {
                             return $query->where('category_id', $get('category_id'));
                         })
                         ->createOptionForm(Flavor::getForm())
@@ -84,5 +88,4 @@ class Brand extends Model
                 ->columnSpanFull(),
         ];
     }
-
 }

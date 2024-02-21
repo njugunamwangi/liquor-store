@@ -11,7 +11,6 @@ use Filament\Forms\Components\TextInput;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\Sluggable\HasSlug;
@@ -32,10 +31,10 @@ class Category extends Model
         'slug',
         'image_id',
         'parent_id',
-        'description'
+        'description',
     ];
 
-    public function getSlugOptions() : SlugOptions
+    public function getSlugOptions(): SlugOptions
     {
         return SlugOptions::create()
             ->generateSlugsFrom('category')
@@ -47,31 +46,38 @@ class Category extends Model
         return $this->belongsTo(Media::class, 'image_id', 'id');
     }
 
-    public function flavors(): HasMany {
+    public function flavors(): HasMany
+    {
         return $this->hasMany(Flavor::class);
     }
 
-    public function brands(): HasMany {
+    public function brands(): HasMany
+    {
         return $this->hasMany(Brand::class);
     }
 
-    public function image(): BelongsTo {
+    public function image(): BelongsTo
+    {
         return $this->belongsTo(Media::class, 'image_id', 'id');
     }
 
-    public function parent(): BelongsTo {
+    public function parent(): BelongsTo
+    {
         return $this->belongsTo(Category::class, 'parent_id', 'id');
     }
 
-    public function children(): HasMany {
+    public function children(): HasMany
+    {
         return $this->hasMany(Category::class, 'parent_id', 'id');
     }
 
-    public function products() : HasMany {
+    public function products(): HasMany
+    {
         return $this->hasMany(Product::class);
     }
 
-    public static function getForm(): array {
+    public static function getForm(): array
+    {
         return [
             Grid::make(2)
                 ->schema([
@@ -82,7 +88,7 @@ class Category extends Model
                         ->relationship('parent', 'category')
                         ->searchable()
                         ->preload()
-                        ->label('Parent Category')
+                        ->label('Parent Category'),
                 ]),
             TextInput::make('slug')
                 ->required()
@@ -96,5 +102,4 @@ class Category extends Model
                 ->columnSpanFull(),
         ];
     }
-
 }

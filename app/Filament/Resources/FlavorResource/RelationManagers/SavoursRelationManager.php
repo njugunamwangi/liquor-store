@@ -32,7 +32,7 @@ class SavoursRelationManager extends RelationManager
                 Tables\Columns\TextColumn::make('savour'),
             ])
             ->filters([
-                Tables\Filters\TrashedFilter::make()
+                Tables\Filters\TrashedFilter::make(),
             ])
             ->headerActions([
             ])

@@ -32,7 +32,7 @@ class ProductsRelationManager extends RelationManager
                 Tables\Columns\TextColumn::make('product'),
             ])
             ->filters([
-                Tables\Filters\TrashedFilter::make()
+                Tables\Filters\TrashedFilter::make(),
             ])
             ->headerActions([
             ])

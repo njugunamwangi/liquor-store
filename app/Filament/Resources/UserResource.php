@@ -3,7 +3,6 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\UserResource\Pages;
-use App\Filament\Resources\UserResource\RelationManagers;
 use App\Filament\Resources\UserResource\RelationManagers\OrdersRelationManager;
 use App\Filament\Resources\UserResource\RelationManagers\PaymentsRelationManager;
 use App\Models\User;
@@ -147,42 +146,46 @@ class UserResource extends Resource
                             ->schema([
                                 TextEntry::make('email_verified_at')
                                     ->label('Email')
-                                    ->getStateUsing(function($record) {
-                                        return ($record->email_verified_at == NULL) ? 'Not Verified' : 'Verified';
+                                    ->getStateUsing(function ($record) {
+                                        return ($record->email_verified_at == null) ? 'Not Verified' : 'Verified';
                                     })
                                     ->badge()
                                     ->color(function ($state) {
-                                        if($state === 'Verified') {
+                                        if ($state === 'Verified') {
                                             return 'success';
                                         }
+
                                         return 'warning';
                                     })
                                     ->icon(function ($state) {
-                                        if($state === 'Verified') {
+                                        if ($state === 'Verified') {
                                             return 'heroicon-o-check-badge';
                                         }
+
                                         return 'heroicon-o-x-circle';
                                     }),
                                 TextEntry::make('two_factor_confirmed_at')
                                     ->label('Two Factor Authentication')
-                                    ->getStateUsing(function($record) {
-                                        return ($record->two_factor_confirmed_at == NULL) ? 'Not Verified' : 'Verified';
+                                    ->getStateUsing(function ($record) {
+                                        return ($record->two_factor_confirmed_at == null) ? 'Not Verified' : 'Verified';
                                     })
                                     ->badge()
                                     ->color(function ($state) {
-                                        if($state === 'Verified') {
+                                        if ($state === 'Verified') {
                                             return 'success';
                                         }
+
                                         return 'warning';
                                     })
                                     ->icon(function ($state) {
-                                        if($state === 'Verified') {
+                                        if ($state === 'Verified') {
                                             return 'heroicon-o-check-badge';
                                         }
+
                                         return 'heroicon-o-x-circle';
                                     }),
-                            ])
-                    ])
+                            ]),
+                    ]),
             ]);
     }
 

@@ -8,13 +8,30 @@ use App\Models\OrderDetail;
 use App\Models\OrderItem;
 use Illuminate\Support\Str;
 use Livewire\Component;
-use Masmerise\Toaster\Toaster;
 
 class Checkout extends Component
 {
-    public $cart, $subTotal, $shipping = 100;
+    public $cart;
 
-    public $name, $email, $phone, $address1, $address2, $city, $state, $zipcode;
+    public $subTotal;
+
+    public $shipping = 100;
+
+    public $name;
+
+    public $email;
+
+    public $phone;
+
+    public $address1;
+
+    public $address2;
+
+    public $city;
+
+    public $state;
+
+    public $zipcode;
 
     public function rules()
     {
@@ -38,7 +55,6 @@ class Checkout extends Component
         foreach ($this->cart as $item) {
             $total += $item->product->retail_price * $item->quantity;
         }
-
 
         $order = Order::create([
             'user_id' => auth()->user()->id,
@@ -75,7 +91,7 @@ class Checkout extends Component
         if ($order && $orderDetails) {
             Cart::query()->where('user_id', '=', auth()->user()->id)->delete();
 
-            return redirect()->to('/account/order/' . $order->tracking_no);
+            return redirect()->to('/account/order/'.$order->tracking_no);
         }
     }
 

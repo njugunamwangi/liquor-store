@@ -3,15 +3,12 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\FlavorResource\Pages;
-use App\Filament\Resources\FlavorResource\RelationManagers;
 use App\Filament\Resources\FlavorResource\RelationManagers\BrandsRelationManager;
 use App\Filament\Resources\FlavorResource\RelationManagers\ProductsRelationManager;
 use App\Filament\Resources\FlavorResource\RelationManagers\SavoursRelationManager;
 use App\Filament\Resources\FlavorResource\RelationManagers\TypesRelationManager;
 use App\Models\Flavor;
 use Awcodes\Curator\Components\Tables\CuratorColumn;
-use Filament\Forms;
-use Filament\Forms\Components\Grid;
 use Filament\Forms\Form;
 use Filament\Infolists\Components\Group;
 use Filament\Infolists\Components\ImageEntry;
@@ -95,7 +92,7 @@ class FlavorResource extends Resource
                     ->columns(3)
                     ->schema([
                         ImageEntry::make('image')
-                            ->getStateUsing(function($record) {
+                            ->getStateUsing(function ($record) {
                                 empty($record->featured_image_id) ? null : $record->featuredImage->path;
                             }),
                         Group::make()
@@ -104,7 +101,7 @@ class FlavorResource extends Resource
                             ->schema([
                                 TextEntry::make('flavor'),
                                 TextEntry::make('category.category'),
-                            ])
+                            ]),
                     ]),
             ]);
     }

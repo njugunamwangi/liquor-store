@@ -32,7 +32,7 @@ class FlavorsRelationManager extends RelationManager
                 Tables\Columns\TextColumn::make('flavor'),
             ])
             ->filters([
-                Tables\Filters\TrashedFilter::make()
+                Tables\Filters\TrashedFilter::make(),
             ])
             ->headerActions([
                 Tables\Actions\CreateAction::make(),

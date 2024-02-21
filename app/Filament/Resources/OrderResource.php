@@ -96,7 +96,7 @@ class OrderResource extends Resource
                                                 Components\TextEntry::make('payment_method'),
                                                 Components\TextEntry::make('payment_status')
                                                     ->badge()
-                                                    ->color(function($state) {
+                                                    ->color(function ($state) {
                                                         return $state->getColor();
                                                     })
                                                     ->icon(function ($state) {
@@ -104,12 +104,12 @@ class OrderResource extends Resource
                                                     }),
                                                 Components\TextEntry::make('order_status')
                                                     ->badge()
-                                                    ->color(function($state) {
+                                                    ->color(function ($state) {
                                                         return $state->getColor();
                                                     })
                                                     ->icon(function ($state) {
                                                         return $state->getIcon();
-                                                    })
+                                                    }),
                                             ]),
                                         ]),
                                 ])->from('lg'),
@@ -211,14 +211,14 @@ class OrderResource extends Resource
     {
         return [
             RelationManagers\ItemsRelationManager::class,
-            PaymentsRelationManager::class
+            PaymentsRelationManager::class,
         ];
     }
 
     public static function getWidgets(): array
     {
         return [
-            OrdersStatsOverview::class
+            OrdersStatsOverview::class,
         ];
     }
 

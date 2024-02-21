@@ -15,27 +15,30 @@ use Spatie\Sluggable\SlugOptions;
 class Type extends Model
 {
     use HasFactory;
-    use SoftDeletes;
     use HasSlug;
+    use SoftDeletes;
 
     protected $guarded = [];
 
-    public function getSlugOptions() : SlugOptions
+    public function getSlugOptions(): SlugOptions
     {
         return SlugOptions::create()
             ->generateSlugsFrom('type')
             ->saveSlugsTo('slug');
     }
 
-    public function flavor() : BelongsTo {
+    public function flavor(): BelongsTo
+    {
         return $this->belongsTo(Flavor::class);
     }
 
-    public function products() : HasMany {
+    public function products(): HasMany
+    {
         return $this->hasMany(Product::class);
     }
 
-    public static function getForm(): array {
+    public static function getForm(): array
+    {
         return [
             TextInput::make('type')
                 ->required(),

@@ -27,7 +27,7 @@ class CreateNewUser implements CreatesNewUsers
             'password' => [
                 'required',
                 'confirmed',
-                Password::min(8)->mixedCase()->numbers()->symbols()
+                Password::min(8)->mixedCase()->numbers()->symbols(),
             ],
             'terms' => Jetstream::hasTermsAndPrivacyPolicyFeature() ? ['accepted', 'required'] : '',
         ])->validate();

@@ -32,7 +32,7 @@ class TypesRelationManager extends RelationManager
                 Tables\Columns\TextColumn::make('type'),
             ])
             ->filters([
-                Tables\Filters\TrashedFilter::make()
+                Tables\Filters\TrashedFilter::make(),
             ])
             ->headerActions([
             ])

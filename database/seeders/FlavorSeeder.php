@@ -4,7 +4,6 @@ namespace Database\Seeders;
 
 use App\Models\Category;
 use App\Models\Flavor;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Str;
 
@@ -15,7 +14,7 @@ class FlavorSeeder extends Seeder
      */
     public function run(): void
     {
-        $distilledFlavors = ['Cognac','Whisky', 'Gin', 'Absinthe', 'Rum', 'Tequila', 'Vodka', 'Brandy'];
+        $distilledFlavors = ['Cognac', 'Whisky', 'Gin', 'Absinthe', 'Rum', 'Tequila', 'Vodka', 'Brandy'];
 
         foreach ($distilledFlavors as $flavor) {
             Flavor::create([

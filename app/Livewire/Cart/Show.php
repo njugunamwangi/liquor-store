@@ -10,7 +10,11 @@ use Masmerise\Toaster\Toaster;
 
 class Show extends Component
 {
-    public $cart, $subTotal = 0, $shipping = 100;
+    public $cart;
+
+    public $subTotal = 0;
+
+    public $shipping = 100;
 
     public function incrementQuantity(int $cartId)
     {
@@ -56,7 +60,8 @@ class Show extends Component
         }
     }
 
-    public function clearCart() {
+    public function clearCart()
+    {
         $model = DB::table('carts')
             ->where('user_id', '=', auth()->user()->id);
 
@@ -78,7 +83,7 @@ class Show extends Component
         }
 
         return view('livewire.cart.show', [
-            'cart' => $this->cart
+            'cart' => $this->cart,
         ]);
     }
 }

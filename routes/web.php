@@ -1,7 +1,6 @@
 <?php
 
 use App\Http\Controllers\AccountController;
-use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SiteController;
@@ -23,7 +22,7 @@ Route::get('/', function () {
     return view('home');
 });
 
-Route::middleware([ 'auth:sanctum', config('jetstream.auth_session'), 'verified',])->group(function () {
+Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified'])->group(function () {
     Route::get('/checkout', [SiteController::class, 'checkout'])->name('checkout');
 
     Route::prefix('account')->group(function () {

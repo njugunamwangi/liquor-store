@@ -3,7 +3,6 @@
 namespace App\Filament\Resources\ProductResource\Widgets;
 
 use App\Models\OrderItem;
-use App\Models\Product;
 use Filament\Widgets\ChartWidget;
 use Flowframe\Trend\Trend;
 use Flowframe\Trend\TrendValue;
@@ -12,17 +11,19 @@ use Illuminate\Database\Eloquent\Model;
 class ProductChartWidget extends ChartWidget
 {
     public ?Model $record = null;
+
     protected static ?string $heading = 'Product Order History';
 
     public ?string $filter = 'month';
 
     protected static ?string $pollingInterval = '1s';
 
-    protected int | string | array $columnSpan = 'full';
+    protected int|string|array $columnSpan = 'full';
 
     protected static ?string $maxHeight = '250px';
 
-    protected function getFilters(): ?array {
+    protected function getFilters(): ?array
+    {
         return [
             'week' => 'Last Week',
             'month' => 'Last Month',

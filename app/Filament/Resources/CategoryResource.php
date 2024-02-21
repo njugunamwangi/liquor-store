@@ -3,15 +3,11 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\CategoryResource\Pages;
-use App\Filament\Resources\CategoryResource\RelationManagers;
 use App\Filament\Resources\CategoryResource\RelationManagers\BrandsRelationManager;
 use App\Filament\Resources\CategoryResource\RelationManagers\FlavorsRelationManager;
 use App\Filament\Resources\CategoryResource\RelationManagers\ProductsRelationManager;
 use App\Models\Category;
-use Awcodes\Curator\Components\Forms\CuratorPicker;
 use Awcodes\Curator\Components\Tables\CuratorColumn;
-use Filament\Forms;
-use Filament\Forms\Components\Grid;
 use Filament\Forms\Form;
 use Filament\Infolists\Components\Group;
 use Filament\Infolists\Components\ImageEntry;
@@ -85,16 +81,16 @@ class CategoryResource extends Resource
                     ->columns(3)
                     ->schema([
                         ImageEntry::make('image')
-                            ->getStateUsing(function($record) {
+                            ->getStateUsing(function ($record) {
                                 empty($record->image_id) ? null : $record->image->path;
                             }),
                         Group::make()
                             ->columns(2)
                             ->columnSpan(2)
                             ->schema([
-                                TextEntry::make('category')
-                            ])
-                    ])
+                                TextEntry::make('category'),
+                            ]),
+                    ]),
             ]);
     }
 
@@ -103,7 +99,7 @@ class CategoryResource extends Resource
         return [
             FlavorsRelationManager::class,
             BrandsRelationManager::class,
-            ProductsRelationManager::class
+            ProductsRelationManager::class,
         ];
     }
 

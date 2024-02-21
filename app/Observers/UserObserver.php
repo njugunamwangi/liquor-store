@@ -22,7 +22,7 @@ class UserObserver
                 ->title('New account')
                 ->info()
                 ->icon('heroicon-o-user-plus')
-                ->body($user->name . ' created an account')
+                ->body($user->name.' created an account')
                 ->actions([
                     Action::make('View')
                         ->url(UserResource::getUrl('view', ['record' => $user->id]))

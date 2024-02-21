@@ -20,7 +20,7 @@ class PaymentObserver
 
         foreach ($recipients as $recipient) {
             Notification::make()
-                ->title($payment->user->name . ' made payment for order ' . $payment->order->order_id )
+                ->title($payment->user->name.' made payment for order '.$payment->order->order_id)
                 ->success()
                 ->icon('heroicon-o-banknotes')
                 ->body('New payment received')

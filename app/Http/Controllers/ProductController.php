@@ -32,7 +32,7 @@ class ProductController extends Controller
      */
     public function show(Category $category, Flavor $flavor, Brand $brand, Request $request, Product $product)
     {
-        if (!$product->status) {
+        if (! $product->status) {
             throw new NotFoundHttpException;
         }
 

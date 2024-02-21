@@ -14,7 +14,7 @@ class ListAmounts extends ListRecords
     {
         return [
             Actions\CreateAction::make()
-            ->slideOver(),
+                ->slideOver(),
         ];
     }
 }

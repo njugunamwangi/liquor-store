@@ -3,7 +3,6 @@
 namespace App\Filament\Resources\FlavorResource\Pages;
 
 use App\Filament\Resources\FlavorResource;
-use Filament\Actions;
 use Filament\Resources\Pages\CreateRecord;
 
 class CreateFlavor extends CreateRecord

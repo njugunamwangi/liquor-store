@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 use App\Models\Amount;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Str;
 

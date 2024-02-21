@@ -4,7 +4,6 @@ namespace Database\Seeders;
 
 use App\Models\Flavor;
 use App\Models\Type;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Str;
 
@@ -16,7 +15,7 @@ class TypeSeeder extends Seeder
     public function run(): void
     {
         $types = [
-            'Single Malt', 'Blended Whisky', 'Blended Malt', 'Grain Whisky', 'Organic Whisky'
+            'Single Malt', 'Blended Whisky', 'Blended Malt', 'Grain Whisky', 'Organic Whisky',
         ];
 
         foreach ($types as $type) {

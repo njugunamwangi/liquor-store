@@ -7,7 +7,7 @@ use Livewire\Component;
 
 class Search extends Component
 {
-    public $search = "";
+    public $search = '';
 
     public $hoveredProduct;
 
@@ -25,7 +25,8 @@ class Search extends Component
         return view('livewire.search', compact('products'));
     }
 
-    public function setHoveredProduct($product) {
+    public function setHoveredProduct($product)
+    {
         $this->hoveredProduct = Product::find($product);
     }
 }

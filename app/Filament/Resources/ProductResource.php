@@ -3,7 +3,6 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\ProductResource\Pages;
-use App\Filament\Resources\ProductResource\RelationManagers;
 use App\Filament\Resources\ProductResource\RelationManagers\CartsRelationManager;
 use App\Filament\Resources\ProductResource\RelationManagers\OrderItemsRelationManager;
 use App\Models\Amount;
@@ -20,7 +19,6 @@ use Filament\Forms\Components\Grid;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Form;
 use Filament\Forms\Get;
-use Filament\GlobalSearch\Actions\Action;
 use Filament\Infolists\Components\Group;
 use Filament\Infolists\Components\ImageEntry;
 use Filament\Infolists\Components\Section as ComponentsSection;
@@ -106,7 +104,7 @@ class ProductResource extends Resource
                             ->preload()
                             ->searchable(),
                         Forms\Components\Select::make('flavor_id')
-                            ->relationship('flavor', 'flavor', modifyQueryUsing: function(Builder $query, Get $get) {
+                            ->relationship('flavor', 'flavor', modifyQueryUsing: function (Builder $query, Get $get) {
                                 return $query->where('category_id', $get('category_id'));
                             })
                             ->createOptionForm(Flavor::getForm())
@@ -115,7 +113,7 @@ class ProductResource extends Resource
                             ->preload()
                             ->searchable(),
                         Forms\Components\Select::make('savour_id')
-                            ->relationship('savour', 'savour', modifyQueryUsing: function(Builder $query, Get $get) {
+                            ->relationship('savour', 'savour', modifyQueryUsing: function (Builder $query, Get $get) {
                                 return $query->where('flavor_id', $get('flavor_id'));
                             })
                             ->label('Savour')
@@ -124,14 +122,16 @@ class ProductResource extends Resource
                             ->createOptionForm(Savour::getForm())
                             ->editOptionForm(Savour::getForm())
                             ->visible(function (Get $get): bool {
-                                if (!empty($get('flavor_id'))) {
+                                if (! empty($get('flavor_id'))) {
                                     $flavor = Flavor::find($get('flavor_id'));
+
                                     return $flavor->savours()->count() > 0;
                                 }
+
                                 return false;
                             }),
                         Forms\Components\Select::make('type_id')
-                            ->relationship('type', 'type', modifyQueryUsing: function(Builder $query, Get $get) {
+                            ->relationship('type', 'type', modifyQueryUsing: function (Builder $query, Get $get) {
                                 return $query->where('flavor_id', $get('flavor_id'));
                             })
                             ->label('Type')
@@ -140,14 +140,16 @@ class ProductResource extends Resource
                             ->createOptionForm(Type::getForm())
                             ->editOptionForm(Type::getForm())
                             ->visible(function (Get $get): bool {
-                                if (!empty($get('flavor_id'))) {
+                                if (! empty($get('flavor_id'))) {
                                     $flavor = Flavor::find($get('flavor_id'));
+
                                     return $flavor->types()->count() > 0;
                                 }
+
                                 return false;
                             }),
                         Forms\Components\Select::make('brand_id')
-                            ->relationship('brand', 'brand', modifyQueryUsing: function(Builder $query, Get $get) {
+                            ->relationship('brand', 'brand', modifyQueryUsing: function (Builder $query, Get $get) {
                                 return $query->where('flavor_id', $get('flavor_id'));
                             })
                             ->createOptionForm(Brand::getForm())
@@ -253,7 +255,7 @@ class ProductResource extends Resource
                     ->columns(3)
                     ->schema([
                         ImageEntry::make('image')
-                            ->getStateUsing(function($record) {
+                            ->getStateUsing(function ($record) {
                                 empty($record->image_id) ? '' : $record->productImage->path;
                             }),
                         Group::make()
@@ -268,8 +270,8 @@ class ProductResource extends Resource
                                     ->money('Kes'),
                                 TextEntry::make('retail_price')
                                     ->money('Kes'),
-                            ])
-                    ])
+                            ]),
+                    ]),
             ]);
     }
 

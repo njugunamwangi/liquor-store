@@ -4,7 +4,6 @@ namespace App\Filament\Resources\FlavorResource\Pages;
 
 use App\Filament\Resources\FlavorResource;
 use App\Models\Brand;
-use App\Models\Flavor;
 use App\Models\Savour;
 use App\Models\Type;
 use Awcodes\Curator\Components\Forms\CuratorPicker;
@@ -44,37 +43,37 @@ class ViewFlavor extends ViewRecord
 
                         return $data;
                     }),
-                    CreateAction::make()
-                        ->model(Savour::class)
-                        ->label('New Savour')
-                        ->form([
-                            TextInput::make('savour')
-                                ->required()
-                                ->maxLength(255)
-                                ->columnSpanFull(),
-                        ])
-                        ->mutateFormDataUsing(function (array $data): array {
-                            $data['flavor_id'] = $this->record->id;
-                            $data['slug'] = Str::slug($data['savour']);
+                CreateAction::make()
+                    ->model(Savour::class)
+                    ->label('New Savour')
+                    ->form([
+                        TextInput::make('savour')
+                            ->required()
+                            ->maxLength(255)
+                            ->columnSpanFull(),
+                    ])
+                    ->mutateFormDataUsing(function (array $data): array {
+                        $data['flavor_id'] = $this->record->id;
+                        $data['slug'] = Str::slug($data['savour']);
 
-                            return $data;
-                        }),
-                    CreateAction::make()
-                        ->model(Type::class)
-                        ->label('New Type')
-                        ->form([
-                            TextInput::make('type')
-                                ->required()
-                                ->maxLength(255)
-                                ->columnSpanFull(),
-                        ])
-                        ->mutateFormDataUsing(function (array $data): array {
-                            $data['flavor_id'] = $this->record->id;
-                            $data['slug'] = Str::slug($data['type']);
+                        return $data;
+                    }),
+                CreateAction::make()
+                    ->model(Type::class)
+                    ->label('New Type')
+                    ->form([
+                        TextInput::make('type')
+                            ->required()
+                            ->maxLength(255)
+                            ->columnSpanFull(),
+                    ])
+                    ->mutateFormDataUsing(function (array $data): array {
+                        $data['flavor_id'] = $this->record->id;
+                        $data['slug'] = Str::slug($data['type']);
 
-                            return $data;
-                        }),
-                ])
+                        return $data;
+                    }),
+            ]),
         ];
     }
 }

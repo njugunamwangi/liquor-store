@@ -20,10 +20,10 @@ class OrderObserver
 
         foreach ($recipients as $recipient) {
             Notification::make()
-                ->title($order->user->name . ' placed an order')
+                ->title($order->user->name.' placed an order')
                 ->info()
                 ->icon('heroicon-o-shopping-bag')
-                ->body('New order ' . $order->order_id)
+                ->body('New order '.$order->order_id)
                 ->actions([
                     Action::make('View')
                         ->url(OrderResource::getUrl('view', ['record' => $order->id]))
@@ -42,7 +42,7 @@ class OrderObserver
 
         foreach ($recipients as $recipient) {
             Notification::make()
-                ->title($order->order_id . ' ' . $order->order_status->value)
+                ->title($order->order_id.' '.$order->order_status->value)
                 ->iconColor($order->order_status->getColor())
                 ->icon($order->order_status->getIcon())
                 ->body('Order updated')
