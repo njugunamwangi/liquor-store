@@ -7,7 +7,7 @@
         <div class="flex flex-auto flex-col pl-2">
             <div>
                 <h4 class="font-medium text-gray-900 hover:text-indigo-700">
-                    <a href="{{ route('product', [$item->product->category, $item->product->flavor, $item->product->brand, $item->product]) }}">{{ $item->product->product }}</a>
+                    <a href="{{ route('product', $item->product) }}">{{ $item->product->product }}</a>
                 </h4>
             </div>
             <div class="mt-6 flex flex-1 items-end">

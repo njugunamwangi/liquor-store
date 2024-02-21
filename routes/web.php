@@ -43,4 +43,4 @@ Route::get('/search', Search::class)->name('search');
 Route::post('/pay', [PaymentController::class, 'redirectToGateway'])->name('pay');
 Route::get('/payment/callback', [PaymentController::class, 'handleGatewayCallback']);
 
-Route::get('/{category:slug}/{flavor:slug}/{brand:slug}/{product:slug}', [ProductController::class, 'show'])->name('product');
+Route::get('/product/{product:slug}', [ProductController::class, 'show'])->name('product');
