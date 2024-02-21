@@ -8,6 +8,7 @@ use Filament\Forms\Components\Grid;
 use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
+use FilamentTiptapEditor\TiptapEditor;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -98,7 +99,7 @@ class Category extends Model
                 ->relationship('image', 'name')
                 ->label('Image')
                 ->required(),
-            RichEditor::make('description')
+            TiptapEditor::make('description')
                 ->columnSpanFull(),
         ];
     }
