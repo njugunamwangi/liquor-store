@@ -25,7 +25,6 @@
                     @foreach($products as $product)
                         <li
                             wire:mouseover="setHoveredProduct({{ $product->id }})"
-                            wire:mouseout="setHoveredProduct(null)"
                             class="group flex cursor-default select-none items-center rounded-md p-2 hover:bg-gray-100" id="{{ $product->id }}" role="option" tabindex="-1">
                             <img
                                 src="{{ empty($product->image_id) ? "https://placehold.jp/30/200x300.png?text=image" : url('/storage/'.$product->productImage->path) }}"
