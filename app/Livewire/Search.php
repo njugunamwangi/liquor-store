@@ -15,6 +15,8 @@ class Search extends Component
     {
         $products = [];
 
+        $search = $this->search;
+
         if (strlen($this->search) >= 1) {
             $products = Product::query()
                 ->where('product', 'like', "%$this->search%")
@@ -22,7 +24,7 @@ class Search extends Component
                 ->get();
         }
 
-        return view('livewire.search', compact('products'));
+        return view('livewire.search', compact('products', 'search'));
     }
 
     public function setHoveredProduct($product)

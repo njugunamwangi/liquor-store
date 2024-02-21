@@ -13,8 +13,19 @@
                 aria-controls="options">
         </form>
     </div>
+    @if(strlen($search) == 0)
 
-    @if(sizeof($products) > 0)
+        <!-- Empty state, show/hide based on command palette state -->
+        <div class="px-6 py-14 text-center text-sm sm:px-14">
+            <svg class="mx-auto h-6 w-6 text-gray-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 1 0-7.5 0v4.5m11.356-1.993 1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 0 1-1.12-1.243l1.264-12A1.125 1.125 0 0 1 5.513 7.5h12.974c.576 0 1.059.435 1.119 1.007ZM8.625 10.5a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm7.5 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z" />
+            </svg>
+
+            <p class="mt-4 font-semibold text-gray-900">Results go here</p>
+            <p class="mt-2 text-gray-500">Type in the search bar to get products.</p>
+        </div>
+
+    @elseif(sizeof($products) > 0 && strlen($search) > 0)
 
         <div class="flex transform-gpu divide-x divide-gray-100">
             <!-- Preview Visible: "sm:h-96" -->
@@ -44,7 +55,7 @@
             @if(!empty($hoveredProduct))
                 <div class="hidden h-96 w-1/2 flex-none flex-col divide-y divide-gray-100 overflow-y-auto sm:flex">
                     <div class="flex-none p-6 text-center">
-                        <img src="{{ empty($hoveredProduct->image_id) ? "https://placehold.jp/30/200x300.png?text=image" : url('/storage/'.$hoveredProduct->productImage->path) }}" alt="" class="mx-auto h-56 w-56">
+                        <img src="{{ empty($hoveredProduct->image_id) ? "https://placehold.jp/30/200x300.png?text=image" : url('/storage/'.$hoveredProduct->productImage->path) }}" alt="" class="mx-auto h-56 w-56 object-cover object-center">
 
                     </div>
                     <div class="flex-none p-6 text-center">
