@@ -205,7 +205,7 @@
                         @endforeach
 
                     <!-- <a href="#" class="flex items-center text-sm font-medium text-gray-700 hover:text-gray-800">Company</a> -->
-                    <a href="#" class="flex items-center text-sm font-medium text-gray-700 hover:text-gray-800">Stores</a>
+                    <!-- <a href="#" class="flex items-center text-sm font-medium text-gray-700 hover:text-gray-800">Stores</a> -->
                     </div>
                 </div>
 
@@ -225,7 +225,7 @@
                     </div>
 
                     <!-- Search command palette -->
-                    <div x-cloak x-show="search" @click.away="search = false" class="fixed inset-0 z-10 w-screen overflow-y-auto p-4 sm:p-6 md:p-20">
+                    <div x-cloak x-show="search" @click.away="search = false" class="fixed inset-0 z-10 bg-opacity-100 bg-gray-50 w-screen overflow-y-auto p-4 sm:p-6 md:p-20">
                         <!--
                         Command palette, show/hide based on modal state.
 
