@@ -9,6 +9,7 @@ use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Get;
+use FilamentTiptapEditor\TiptapEditor;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -84,8 +85,9 @@ class Brand extends Model
             CuratorPicker::make('featured_image_id')
                 ->relationship('featuredImage', 'id')
                 ->label('Image'),
-            RichEditor::make('description')
-                ->columnSpanFull(),
+            TiptapEditor::make('description')
+                ->columnSpanFull()
+                ->extraInputAttributes(['style' => 'min-height: 12rem;']),
         ];
     }
 }

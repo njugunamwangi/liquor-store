@@ -100,7 +100,8 @@ class Category extends Model
                 ->label('Image')
                 ->required(),
             TiptapEditor::make('description')
-                ->columnSpanFull(),
+                ->columnSpanFull()
+                ->extraInputAttributes(['style' => 'min-height: 12rem;']),
         ];
     }
 }

@@ -27,6 +27,7 @@ use Filament\Infolists\Infolist;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
+use FilamentTiptapEditor\TiptapEditor;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
@@ -62,8 +63,9 @@ class ProductResource extends Resource
                                     ->hiddenOn('create')
                                     ->maxLength(2000),
                             ]),
-                        Forms\Components\RichEditor::make('description')
-                            ->columnSpanFull(),
+                        TiptapEditor::make('description')
+                            ->columnSpanFull()
+                            ->extraInputAttributes(['style' => 'min-height: 12rem;']),
                         Grid::make(2)
                             ->schema([
                                 Forms\Components\TextInput::make('list_price')
