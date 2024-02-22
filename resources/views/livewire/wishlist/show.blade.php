@@ -2,7 +2,7 @@
     <!-- product - start -->
     @if($wishlist && $wishlist->count() > 0)
         @foreach($wishlist as $product)
-            <x-product-item :product="$product->product" />
+            <x-wishlist-item :product="$product->product" />
         @endforeach
     @else
         You have not added any products
