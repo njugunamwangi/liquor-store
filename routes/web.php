@@ -29,7 +29,6 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
         Route::get('/', [AccountController::class, 'home'])->name('account');
         Route::get('/orders', [AccountController::class, 'orders'])->name('my-orders');
         Route::get('/order/{order:tracking_no}', [AccountController::class, 'viewOrder'])->name('order');
-        Route::get('/cart', [AccountController::class, 'cart'])->name('my-cart');
         Route::get('/wishlist', [AccountController::class, 'wishlist'])->name('my-wishlist');
         Route::get('/two-factor', [AccountController::class, 'twoFactor'])->name('two-factor');
         Route::get('/browser-sessions', [AccountController::class, 'browserSessions'])->name('browser-sessions');

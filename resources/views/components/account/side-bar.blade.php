@@ -91,17 +91,6 @@
                     </a>
                 </li>
                 <li>
-                    <a href="{{ route('my-cart') }}" wire:navigate class="{{ request()->routeIs('my-cart') ? 'bg-gray-50 text-indigo-600' : 'text-gray-700 hover:text-indigo-600 hover:bg-gray-50' }} group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold">
-                    <svg class="h-6 w-6 flex-shrink-0 {{ request()->routeIs('my-cart') ? 'text-indigo-600' : 'text-gray-400 group-hover:text-indigo-500' }}" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
-                    </svg>
-                    Cart
-                    <span class="inline-flex items-center rounded-md {{ request()->routeIs('my-cart') ? 'text-indigo-600 ring-indigo-600 bg-indigo-50' : 'text-gray-600 ring-gray-500/10' }} px-2 py-1 text-xs font-medium ring-1 ring-inset ">
-                        <livewire:cart.count />
-                    </span>
-                    </a>
-                </li>
-                <li>
                     <a href="{{ route('two-factor') }}" class="{{ request()->routeIs('two-factor') ? 'bg-gray-50 text-indigo-600' : 'text-gray-700 hover:text-indigo-600 hover:bg-gray-50' }} group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold">
                     <svg class="h-6 w-6 shrink-0 {{ request()->routeIs('two-factor') ? 'text-indigo-600' : 'text-gray-400 group-hover:text-indigo-500' }}" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M7.864 4.243A7.5 7.5 0 0119.5 10.5c0 2.92-.556 5.709-1.568 8.268M5.742 6.364A7.465 7.465 0 004.5 10.5a7.464 7.464 0 01-1.15 3.993m1.989 3.559A11.209 11.209 0 008.25 10.5a3.75 3.75 0 117.5 0c0 .527-.021 1.049-.064 1.565M12 10.5a14.94 14.94 0 01-3.6 9.75m6.633-4.596a18.666 18.666 0 01-2.485 5.33" />
@@ -167,6 +156,7 @@
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 9V5.25A2.25 2.25 0 0 1 10.5 3h6a2.25 2.25 0 0 1 2.25 2.25v13.5A2.25 2.25 0 0 1 16.5 21h-6a2.25 2.25 0 0 1-2.25-2.25V15m-3 0-3-3m0 0 3-3m-3 3H15" />
             </svg>
+            <span class="m-2 text-sm">Back to Shop</span>
         </a>
         <nav class="flex flex-1 flex-col">
             <ul role="list" class="flex flex-1 flex-col gap-y-7">
@@ -202,17 +192,6 @@
                         <span class="inline-flex items-center rounded-md {{ request()->routeIs('my-wishlist') ? 'text-indigo-600 ring-indigo-600 bg-indigo-50' : 'text-gray-600 ring-gray-500/10' }} px-2 py-1 text-xs font-medium  ring-1 ring-inset ">
                             <livewire:wishlist.count />
                         </span>
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ route('my-cart') }}" wire:navigate class="{{ request()->routeIs('my-cart') ? 'bg-gray-50 text-indigo-600' : 'text-gray-700 hover:text-indigo-600 hover:bg-gray-50' }} group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold">
-                    <svg class="h-6 w-6 flex-shrink-0 {{ request()->routeIs('my-cart') ? 'text-indigo-600' : 'text-gray-400 group-hover:text-indigo-500' }}" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
-                    </svg>
-                    Cart
-                    <span class="inline-flex items-center rounded-md {{ request()->routeIs('my-cart') ? 'text-indigo-600 ring-indigo-600 bg-indigo-50' : 'text-gray-600 ring-gray-500/10' }} px-2 py-1 text-xs font-medium ring-1 ring-inset ">
-                        <livewire:cart.count />
-                    </span>
                     </a>
                 </li>
                 <li>
