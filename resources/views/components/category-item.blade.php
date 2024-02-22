@@ -11,7 +11,11 @@
             <div class="mt-4">
                 <a wire:navigate href="{{ route('product', $product) }}" class="text-sm font-medium text-gray-900 hover:text-indigo-600">{{ $product->product }}</a>
                 <p class="mt-1 text-sm text-gray-500">{{ $product->brand->brand }} | {{ $product->flavor->flavor }} | {{ $product->amount->amount }} </p>
-                <p class="mt-1 text-sm font-medium text-gray-900">Kes {{ number_format($product->retail_price, 2) }} </p>
+                <div class="flex">
+                    <p class="mt-1 text-sm font-medium text-gray-900 mr-4">Kes {{ number_format($product->retail_price, 2) }} </p>
+                    <p class="mt-1 text-sm font-medium text-red-500 line-through">Kes {{ number_format($product->list_price, 2) }} </p>
+                </div>
+
             </div>
         </div>
     </div>
