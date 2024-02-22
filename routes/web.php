@@ -38,6 +38,7 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
 
 Route::get('/cart', [SiteController::class, 'cart'])->name('cart');
 Route::get('/search', Search::class)->name('search');
+Route::get('/brands', Brands::class)->name('brands');
 
 Route::post('/pay', [PaymentController::class, 'redirectToGateway'])->name('pay');
 Route::get('/payment/callback', [PaymentController::class, 'handleGatewayCallback']);
