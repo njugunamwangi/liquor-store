@@ -4,6 +4,7 @@ use App\Http\Controllers\AccountController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SiteController;
+use App\Livewire\Brands;
 use App\Livewire\Search;
 use Illuminate\Support\Facades\Route;
 
