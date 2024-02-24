@@ -36,7 +36,8 @@
                     @foreach($products as $product)
                         <li
                             wire:mouseover="setHoveredProduct({{ $product->id }})"
-                            class="group flex cursor-default select-none items-center rounded-md p-2 hover:bg-gray-100" id="{{ $product->id }}" role="option" tabindex="-1">
+                            class="group flex cursor-default select-none items-center rounded-md p-2 hover:bg-gray-100 {{ !empty($hoveredProduct) && $product->id == $hoveredProduct->id ? 'bg-gray-100' : '' }} "
+                            id="{{ $product->id }}" role="option" tabindex="-1">
                             <img
                                 src="{{ empty($product->image_id) ? "https://placehold.jp/30/200x300.png?text=image" : url('/storage/'.$product->productImage->path) }}"
                                 alt=" {{ $product->product }} "
@@ -53,14 +54,21 @@
 
             <!-- Active item side-panel, show/hide based on active state -->
             @if(!empty($hoveredProduct))
-                <div class="hidden h-96 w-1/2 flex-none flex-col divide-y divide-gray-100 overflow-y-auto sm:flex">
+                <div class="hidden w-1/2 flex-none flex-col divide-y divide-gray-100 overflow-y-auto sm:flex">
                     <div class="flex-none p-6 text-center">
-                        <img src="{{ empty($hoveredProduct->image_id) ? "https://placehold.jp/30/200x300.png?text=image" : url('/storage/'.$hoveredProduct->productImage->path) }}" alt="" class="mx-auto h-56 w-56 object-cover object-center">
-
+                        <a href="{{ route('product', $hoveredProduct) }}">
+                            <img
+                                src="{{ empty($hoveredProduct->image_id) ? "https://placehold.jp/30/200x300.png?text=image" : url('/storage/'.$hoveredProduct->productImage->path) }}"
+                                alt=""
+                                class="mx-auto h-56 w-56 object-cover object-center">
+                        </a>
                     </div>
                     <div class="flex-none p-6 text-center">
-                        <h2 class="font-semibold text-gray-900">{{ $hoveredProduct->product }}</h2>
+                        <a href="{{ route('product', $hoveredProduct) }}" class="font-semibold text-gray-900">{{ $hoveredProduct->product }}</a>
                         <p class="text-sm leading-6 text-gray-500">{{ $hoveredProduct->brand->brand }} | {{ $hoveredProduct->flavor->flavor }} | {{ $hoveredProduct->amount->amount }}</p>
+                        <p class="text-sm leading-6 text-gray-500 mr-2 mb-2">Kes {{ number_format($hoveredProduct->retail_price, 2) }}</p>
+
+                        <livewire:add-to-cart :product="$hoveredProduct" />
                     </div>
                 </div>
             @endif
