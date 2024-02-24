@@ -37,4 +37,8 @@ class Search extends Component
     {
         $this->hoveredProduct = Product::find($product);
     }
+
+    public function closeSearch() {
+        $this->search = null;
+    }
 }
