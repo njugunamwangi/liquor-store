@@ -106,14 +106,29 @@ class ProductResource extends Resource
                             ->preload()
                             ->searchable(),
                         Forms\Components\Select::make('flavor_id')
+                            ->hidden(fn (Get $get): bool => ! $get('category_id'))
                             ->relationship('flavor', 'flavor', modifyQueryUsing: function (Builder $query, Get $get) {
                                 return $query->where('category_id', $get('category_id'));
                             })
-                            ->createOptionForm(Flavor::getForm())
-                            ->editOptionForm(Flavor::getForm())
                             ->live()
                             ->preload()
-                            ->searchable(),
+                            ->searchable()
+                            ->createOptionForm(Flavor::getForm())
+                            ->editOptionForm(Flavor::getForm()),
+                        Forms\Components\Select::make('brand_id')
+                            ->relationship('brand', 'brand', modifyQueryUsing: function (Builder $query, Get $get) {
+                                return $query->where('flavor_id', $get('flavor_id'));
+                            })
+                            ->createOptionForm(Brand::getForm())
+                            ->editOptionForm(Brand::getForm())
+                            ->preload()
+                            ->searchable()
+                            ->visible(function (Get $get): bool {
+                                if (! empty($get('category_id')&& $get('flavor_id'))) {
+                                    return true;
+                                }
+                                return false;
+                            }),
                         Forms\Components\Select::make('savour_id')
                             ->relationship('savour', 'savour', modifyQueryUsing: function (Builder $query, Get $get) {
                                 return $query->where('flavor_id', $get('flavor_id'));
@@ -150,14 +165,6 @@ class ProductResource extends Resource
 
                                 return false;
                             }),
-                        Forms\Components\Select::make('brand_id')
-                            ->relationship('brand', 'brand', modifyQueryUsing: function (Builder $query, Get $get) {
-                                return $query->where('flavor_id', $get('flavor_id'));
-                            })
-                            ->createOptionForm(Brand::getForm())
-                            ->editOptionForm(Brand::getForm())
-                            ->preload()
-                            ->searchable(),
                         Forms\Components\Select::make('amount_id')
                             ->relationship('amount', 'amount')
                             ->label('Volume')
