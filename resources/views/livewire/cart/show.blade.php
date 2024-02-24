@@ -35,15 +35,15 @@
                                         <label for="quantity-0" class="sr-only">{{ $item->product->product }}</label>
                                         <div class="flex flex-row h-8 ">
                                             <button
-                                                wire:click.prevent="incrementQuantity({{ $item->id }})"
+                                                wire:click.prevent="decrementQuantity({{ $item->id }})"
                                                 wire:loading.attr="disabled"
                                                 type="button"
-                                                class="inline-flex items-center rounded-l-md bg-white px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-10">
+                                                class="-ml-px inline-flex items-center rounded-l-md bg-white px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-10">
                                                 <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 256 256" xml:space="preserve">
                                                     <defs>
                                                     </defs>
                                                     <g style="stroke: none; stroke-width: 0; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: none; fill-rule: nonzero; opacity: 1;" transform="translate(1.4065934065934016 1.4065934065934016) scale(2.81 2.81)" >
-                                                        <path d="M 88.516 43.517 H 46.484 V 1.484 C 46.484 0.664 45.819 0 45 0 s -1.484 0.664 -1.484 1.484 v 42.033 H 1.484 C 0.664 43.517 0 44.181 0 45 s 0.664 1.483 1.484 1.483 h 42.033 v 42.033 C 43.516 89.335 44.18 90 45 90 s 1.484 -0.664 1.484 -1.484 V 46.483 h 42.033 C 89.336 46.483 90 45.82 90 45 S 89.336 43.517 88.516 43.517 z" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(0,0,0); fill-rule: nonzero; opacity: 1;" transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round" />
+                                                        <path d="M 88.616 46.384 H 1.583 c -0.82 0 -1.484 -0.664 -1.484 -1.483 s 0.664 -1.484 1.484 -1.484 h 87.033 c 0.819 0 1.484 0.664 1.484 1.484 S 89.435 46.384 88.616 46.384 z" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(0,0,0); fill-rule: nonzero; opacity: 1;" transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round" />
                                                     </g>
                                                 </svg>
                                             </button>
@@ -51,15 +51,15 @@
                                             <input disabled value="{{ $item->quantity }}" class="w-16 border border-gray-300 py-1.5 text-center text-base font-medium leading-5 text-gray-700 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500 sm:text-sm" />
 
                                             <button
-                                                wire:click.prevent="decrementQuantity({{ $item->id }})"
+                                                wire:click.prevent="incrementQuantity({{ $item->id }})"
                                                 wire:loading.attr="disabled"
                                                 type="button"
-                                                class="-ml-px inline-flex items-center rounded-r-md bg-white px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-10">
+                                                class="inline-flex items-center rounded-r-md bg-white px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-10">
                                                 <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 256 256" xml:space="preserve">
                                                     <defs>
                                                     </defs>
                                                     <g style="stroke: none; stroke-width: 0; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: none; fill-rule: nonzero; opacity: 1;" transform="translate(1.4065934065934016 1.4065934065934016) scale(2.81 2.81)" >
-                                                        <path d="M 88.616 46.384 H 1.583 c -0.82 0 -1.484 -0.664 -1.484 -1.483 s 0.664 -1.484 1.484 -1.484 h 87.033 c 0.819 0 1.484 0.664 1.484 1.484 S 89.435 46.384 88.616 46.384 z" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(0,0,0); fill-rule: nonzero; opacity: 1;" transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round" />
+                                                        <path d="M 88.516 43.517 H 46.484 V 1.484 C 46.484 0.664 45.819 0 45 0 s -1.484 0.664 -1.484 1.484 v 42.033 H 1.484 C 0.664 43.517 0 44.181 0 45 s 0.664 1.483 1.484 1.483 h 42.033 v 42.033 C 43.516 89.335 44.18 90 45 90 s 1.484 -0.664 1.484 -1.484 V 46.483 h 42.033 C 89.336 46.483 90 45.82 90 45 S 89.336 43.517 88.516 43.517 z" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(0,0,0); fill-rule: nonzero; opacity: 1;" transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round" />
                                                     </g>
                                                 </svg>
                                             </button>
