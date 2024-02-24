@@ -19,7 +19,7 @@
                                     <div>
                                         <div class="flex justify-between">
                                             <h3 class="text-sm">
-                                            <a href="#" class="font-medium text-gray-700 hover:text-gray-800">{{ $item->product->product }}</a>
+                                            <a href="{{ route('product', $item->product) }}" class="font-medium text-gray-700 hover:text-gray-800">{{ $item->product->product }}</a>
                                             </h3>
                                         </div>
                                         <div class="mt-1 flex text-sm">
