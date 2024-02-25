@@ -44,9 +44,11 @@
                                 class="h-6 w-6 flex-none rounded-full">
                             <span class="ml-3 flex-auto truncate">{{ $product->product }}</span>
                             <!-- Not Active: "hidden" -->
-                            <svg class="ml-3 hidden h-5 w-5 flex-none text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                                <path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clip-rule="evenodd" />
-                            </svg>
+                            @if(!empty($hoveredProduct) && $product->id == $hoveredProduct->id)
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+                                </svg>
+                            @endif
                         </li>
                     @endforeach
                 </ul>
