@@ -225,7 +225,7 @@
                     </div>
 
                     <!-- Search command palette -->
-                    <div x-cloak x-show="search" class="fixed inset-0 z-10 bg-opacity-100 bg-gray-50 w-screen overflow-y-auto p-4 sm:p-6 md:p-20">
+                    <div x-cloak x-show="search" class="fixed inset-0 z-10 bg-opacity-75 bg-gray-50 w-screen overflow-y-auto p-4 sm:p-6 md:p-20">
                         <!--
                         Command palette, show/hide based on modal state.
 
