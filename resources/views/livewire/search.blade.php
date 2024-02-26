@@ -70,7 +70,14 @@
                         <p class="text-sm leading-6 text-gray-500">{{ $hoveredProduct->brand->brand }} | {{ $hoveredProduct->flavor->flavor }} | {{ $hoveredProduct->amount->amount }}</p>
                         <p class="text-sm leading-6 text-gray-500 mr-2 mb-2">Kes {{ number_format($hoveredProduct->retail_price, 2) }}</p>
 
-                        <livewire:add-to-cart :product="$hoveredProduct" />
+
+                        <a
+                            wire:click.prevent="addToCart({{ $hoveredProduct->id }})"
+                            href="#"
+                            class="flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-2 text-sm font-medium text-white hover:bg-gray-900">
+                            Add to Cart
+                        </a>
+
                     </div>
                 </div>
             @endif

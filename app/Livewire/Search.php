@@ -2,8 +2,11 @@
 
 namespace App\Livewire;
 
+use App\Models\Cart;
 use App\Models\Product;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
+use Masmerise\Toaster\Toaster;
 
 class Search extends Component
 {
@@ -40,5 +43,32 @@ class Search extends Component
 
     public function closeSearch() {
         $this->search = null;
+    }
+
+    public function addToCart(int $productId)
+    {
+        if (! Auth::check()) {
+            Toaster::info('Please login to proceed');
+        } else {
+
+            $model = Cart::query()
+                ->where('user_id', '=', auth()->user()->id)
+                ->where('product_id', '=', $productId)
+                ->first();
+
+            if (! $model) {
+
+                Cart::create([
+                    'user_id' => auth()->user()->id,
+                    'product_id' => $productId,
+                    'quantity' => 1,
+                ]);
+                $this->dispatch('CartUpdated');
+
+                Toaster::success('Product added to cart');
+            } else {
+                Toaster::warning('Product already added to cart.');
+            }
+        }
     }
 }
