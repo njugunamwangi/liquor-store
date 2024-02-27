@@ -28,6 +28,7 @@ use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Actions\ActionGroup;
 use Filament\Tables\Actions\ReplicateAction;
+use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
 use FilamentTiptapEditor\TiptapEditor;
 use Illuminate\Database\Eloquent\Builder;
@@ -189,6 +190,9 @@ class ProductResource extends Resource
                 Tables\Columns\TextColumn::make('brand.brand')
                     ->sortable()
                     ->searchable(),
+                Tables\Columns\TextColumn::make('amount.amount')
+                    ->sortable()
+                    ->searchable(),
                 Tables\Columns\TextColumn::make('model_name')
                     ->toggleable(isToggledHiddenByDefault: true)
                     ->searchable(),
@@ -241,6 +245,30 @@ class ProductResource extends Resource
             ])
             ->filters([
                 Tables\Filters\TrashedFilter::make(),
+                SelectFilter::make('category')
+                    ->relationship('category', 'category')
+                    ->searchable()
+                    ->preload(),
+                SelectFilter::make('flavor')
+                    ->relationship('flavor', 'flavor')
+                    ->searchable()
+                    ->preload(),
+                SelectFilter::make('brand')
+                    ->relationship('brand', 'brand')
+                    ->searchable()
+                    ->preload(),
+                SelectFilter::make('amount')
+                    ->relationship('amount', 'amount')
+                    ->searchable()
+                    ->preload(),
+                SelectFilter::make('type')
+                    ->relationship('type', 'type')
+                    ->searchable()
+                    ->preload(),
+                SelectFilter::make('savour')
+                    ->relationship('savour', 'savour')
+                    ->searchable()
+                    ->preload(),
             ])
             ->actions([
                 ActionGroup::make([
