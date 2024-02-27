@@ -26,6 +26,7 @@ use Filament\Infolists\Components\TextEntry;
 use Filament\Infolists\Infolist;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Actions\ReplicateAction;
 use Filament\Tables\Table;
 use FilamentTiptapEditor\TiptapEditor;
 use Illuminate\Database\Eloquent\Builder;
@@ -57,10 +58,7 @@ class ProductResource extends Resource
                             ->schema([
                                 Forms\Components\TextInput::make('product')
                                     ->required()
-                                    ->maxLength(2000),
-                                Forms\Components\TextInput::make('slug')
-                                    ->required()
-                                    ->hiddenOn('create')
+                                    ->columnSpanFull()
                                     ->maxLength(2000),
                             ]),
                         TiptapEditor::make('description')
@@ -246,6 +244,8 @@ class ProductResource extends Resource
             ->actions([
                 Tables\Actions\ViewAction::make(),
                 Tables\Actions\EditAction::make(),
+                ReplicateAction::make()
+                    ->excludeAttributes(['slug'])
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
