@@ -3,7 +3,7 @@
             <div class="py-16 sm:py-24 lg:mx-auto lg:max-w-7xl lg:px-8 lg:py-32">
                 <div class="flex items-center justify-between px-4 sm:px-6 lg:px-0">
                     <h2 id="trending-heading" class="text-2xl font-bold tracking-tight text-gray-900">Shop by Flavors</h2>
-                    <a href="#" class="hidden text-sm font-semibold text-indigo-600 hover:text-indigo-500 sm:block">
+                    <a href="{{ route('flavors') }}" wire:navigate class="hidden text-sm font-semibold text-indigo-600 hover:text-indigo-500 sm:block">
                         See everything
                         <span aria-hidden="true"> &rarr;</span>
                     </a>
@@ -40,7 +40,7 @@
                 </div>
 
                 <div class="mt-12 px-4 sm:hidden">
-                    <a href="#" class="text-sm font-semibold text-indigo-600 hover:text-indigo-500">
+                    <a href="{{ route('flavors') }}" wire:navigate class="text-sm font-semibold text-indigo-600 hover:text-indigo-500">
                         See everything
                         <span aria-hidden="true"> &rarr;</span>
                     </a>
