@@ -65,7 +65,7 @@ class BrandSeeder extends Seeder
         }
 
         // Tequila
-        $tequila = ['Camino', 'Sierra', 'Patron', 'Jose Cuervo', 'Olmeca', 'Poncos'];
+        $tequila = ['Camino', 'Sierra', 'Patron', 'Jose Cuervo', 'Olmeca', 'Poncos', '1800'];
 
         foreach ($tequila as $brand) {
             Brand::create([
@@ -89,7 +89,7 @@ class BrandSeeder extends Seeder
         }
 
         // Vodka
-        $vodka = ['Absolute Vodka', 'Smirnoff', 'Flirt', 'Skyy', 'Grey Goose', 'Ciroc'];
+        $vodka = ['Absolut', 'Smirnoff', 'Flirt', 'Skyy', 'Grey Goose', 'Ciroc'];
 
         foreach ($vodka as $brand) {
             Brand::create([
