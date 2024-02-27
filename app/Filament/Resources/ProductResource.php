@@ -26,6 +26,7 @@ use Filament\Infolists\Components\TextEntry;
 use Filament\Infolists\Infolist;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Actions\ActionGroup;
 use Filament\Tables\Actions\ReplicateAction;
 use Filament\Tables\Table;
 use FilamentTiptapEditor\TiptapEditor;
@@ -242,10 +243,12 @@ class ProductResource extends Resource
                 Tables\Filters\TrashedFilter::make(),
             ])
             ->actions([
-                Tables\Actions\ViewAction::make(),
-                Tables\Actions\EditAction::make(),
-                ReplicateAction::make()
-                    ->excludeAttributes(['slug'])
+                ActionGroup::make([
+                    Tables\Actions\ViewAction::make(),
+                    Tables\Actions\EditAction::make(),
+                    ReplicateAction::make()
+                        ->excludeAttributes(['slug'])
+                ])
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
