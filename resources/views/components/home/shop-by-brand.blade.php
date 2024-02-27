@@ -2,7 +2,7 @@
     <section aria-labelledby="category-heading" class="pt-24 sm:pt-32 xl:mx-auto xl:max-w-7xl xl:px-8">
         <div class="px-4 sm:flex sm:items-center sm:justify-between sm:px-6 lg:px-8 xl:px-0">
             <h2 id="category-heading" class="text-2xl font-bold tracking-tight text-gray-900">Shop by Brand</h2>
-            <a href="{{ route('brands') }}" class="hidden text-sm font-semibold text-indigo-600 hover:text-indigo-500 sm:block">
+            <a href="{{ route('brands') }}" wire:navigate class="hidden text-sm font-semibold text-indigo-600 hover:text-indigo-500 sm:block">
             Browse all brands
             <span aria-hidden="true"> &rarr;</span>
             </a>
@@ -27,7 +27,7 @@
         </div>
 
         <div class="mt-6 px-4 sm:hidden">
-            <a href="{{ route('brands') }}" class="block text-sm font-semibold text-indigo-600 hover:text-indigo-500">
+            <a href="{{ route('brands') }}" wire:navigate class="block text-sm font-semibold text-indigo-600 hover:text-indigo-500">
             Browse all brands
             <span aria-hidden="true"> &rarr;</span>
             </a>
