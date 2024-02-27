@@ -7,14 +7,8 @@ use Livewire\Component;
 
 class Brands extends Component
 {
-    public $title;
-
     public $hoveredBrand;
 
-    public function mount(Brand $brand)
-    {
-        $this->title = $brand ? $brand->brand : null;
-    }
     public function render()
     {
         $brands = Brand::query()
