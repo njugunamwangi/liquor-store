@@ -24,8 +24,6 @@
         "livewire/livewire": "^3.0",
         "masmerise/livewire-toaster": "2.0.0",
         "njxqlus/filament-progressbar": "^1.0",
-        "samuelmwangiw/africastalking-laravel": "^1.4",
-        "sebdesign/laravel-viva-payments": "^6.0",
         "spatie/laravel-sluggable": "^3.5",
         "unicodeveloper/laravel-paystack": "^1.1",
         "z3d0x/filament-logger": "^0.6.2"
