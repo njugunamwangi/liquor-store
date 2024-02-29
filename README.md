@@ -4,6 +4,9 @@
 
 - [Laravel JetStream](https://jetstream.laravel.com/introduction.html).
 - [Activity Logger](https://filamentphp.com/plugins/z3d0x-logger).
+- [Spatie Roles & Permissions](https://filamentphp.com/plugins/tharinda-rodrigo-spatie-roles-permissions).
+- [Filament Curator](https://filamentphp.com/plugins/awcodes-curator).
+- [Filament Tiptap Editor](https://filamentphp.com/plugins/awcodes-tiptap-editor).
 
 # Tech Stack
 
@@ -11,6 +14,10 @@
 - [Livewire](https://livewire.laravel.com).
 - [TailwindCSS](https://tailwindcss.com).
 - [FilamentPHP V3](https://filamentphp.com).
+
+## Payment
+
+- [PayStack](https://github.com/unicodeveloper/laravel-paystack).
 
 ## Prerequisites
 
@@ -22,6 +29,7 @@ password: password
 
 ## Installation
 - Clone the repository
+
 ```bash
 git clone https://github.com/njugunamwangi/laracom.git
 ```
@@ -39,6 +47,7 @@ php artisan migrate --seed
  ```bash
 composer install
 ```
+
 - Install npm dependencies
 ```bash
 npm install
@@ -53,6 +62,7 @@ php artisan key:generate
 ```bash
 php artisan serve
 ```
+
 - Run application using 
 ```bash
 npm run dev
@@ -62,6 +72,8 @@ npm run dev
 ```bash
 php artisan storage:link
 ```
+
+Payment 
 
 ## License
 
