@@ -22,6 +22,9 @@
 ## Prerequisites
 
 - Admin credentials
+
+app_url/admin
+
 ```bash
 email: admin@ndachi.dev
 password: password
