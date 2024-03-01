@@ -24,7 +24,7 @@
                                             {{ ($flavor->products()->count() > 1 ? $flavor->products()->count() . ' products' : $flavor->products()->count() . ' product') }}
                                         </p>
                                         <h3 class="mt-1 font-semibold text-gray-900">
-                                        <a href="#">
+                                        <a href="{{ route('flavor', $flavor) }}">
                                             <span class="absolute inset-0"></span>
                                             {{ $flavor->flavor }}
                                         </a>
@@ -34,7 +34,6 @@
                                 </li>
                             @endforeach
 
-                        <!-- More products... -->
                         </ul>
                     </div>
                 </div>

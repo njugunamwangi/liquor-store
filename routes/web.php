@@ -5,6 +5,7 @@ use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SiteController;
 use App\Livewire\Brands;
+use App\Livewire\Flavor;
 use App\Livewire\Flavors;
 use App\Livewire\Search;
 use Illuminate\Support\Facades\Route;
@@ -42,6 +43,7 @@ Route::get('/cart', [SiteController::class, 'cart'])->name('cart');
 Route::get('/search', Search::class)->name('search');
 Route::get('/brands', Brands::class)->name('brands');
 Route::get('/flavors', Flavors::class)->name('flavors');
+Route::get('/flavor/{flavor:slug}', Flavor::class)->name('flavor');
 
 Route::post('/pay', [PaymentController::class, 'redirectToGateway'])->name('pay');
 Route::get('/payment/callback', [PaymentController::class, 'handleGatewayCallback']);
