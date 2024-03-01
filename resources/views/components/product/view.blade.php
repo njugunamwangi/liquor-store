@@ -15,7 +15,7 @@
                         </li>
                         <li>
                             <div class="flex items-center text-sm">
-                            <a href="#" class="font-medium text-gray-500 hover:text-gray-900">{{ $product->flavor->flavor }}</a>
+                            <a href="{{ route('flavor', $product->flavor) }}" wire:navigate class="font-medium text-gray-500 hover:text-gray-900">{{ $product->flavor->flavor }}</a>
                             <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="ml-2 h-5 w-5 flex-shrink-0 text-gray-300">
                                 <path d="M5.555 17.776l8-16 .894.448-8 16-.894-.448z" />
                             </svg>
@@ -23,7 +23,7 @@
                         </li>
                         <li>
                             <div class="flex items-center text-sm">
-                            <a href="#" class="font-medium text-gray-500 hover:text-gray-900">{{ $product->brand->brand }}</a>
+                            <a href="{{ route('brand', $product->brand) }}" wire:navigate class="font-medium text-gray-500 hover:text-gray-900">{{ $product->brand->brand }}</a>
                             </div>
                         </li>
                     </ol>

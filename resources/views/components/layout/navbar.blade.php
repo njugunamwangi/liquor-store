@@ -56,7 +56,7 @@
                                             @foreach($category->flavors()->get() as $flavor)
                                                 <li class="flow-root">
                                                     <div class="flex justify-between">
-                                                        <a href="#" class="-m-2 block p-2 text-gray-500 hover:text-indigo-700"> {{ $flavor->flavor }} </a>
+                                                        <a href="{{ route('flavor', $flavor) }}" wire:navigate class="-m-2 block p-2 text-gray-500 hover:text-indigo-700"> {{ $flavor->flavor }} </a>
                                                         <svg @click="flavor['{{ $flavor->id }}'] = !flavor['{{ $flavor->id }}']" class="block h-5 w-5 text-gray-400 group-hover:text-gray-500" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
                                                             <path x-show="!flavor['{{ $flavor->id }}']" stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
                                                             <path x-show="flavor['{{ $flavor->id }}']" stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15" />
@@ -71,7 +71,7 @@
                                                                     </svg>
 
                                                                     <li class="flow-root">
-                                                                        <a href="#" class="-m-2 block p-2 text-gray-500 hover:text-indigo-700"> {{ $brand->brand }} </a>
+                                                                        <a href="{{ route('brand', $brand) }}" wire:navigate class="-m-2 block p-2 text-gray-500 hover:text-indigo-700"> {{ $brand->brand }} </a>
                                                                     </li>
                                                                 </div>
                                                             @endforeach
@@ -167,7 +167,7 @@
                                                                 class="object-cover object-center group-hover:opacity-75">
                                                             <div class="flex flex-col justify-end">
                                                                 <div class="bg-white bg-opacity-60 p-4 text-sm">
-                                                                    <a href="#" class="font-medium text-gray-900">
+                                                                    <a href="{{ route('flavor', $flavor) }}" wire:navigate class="font-medium text-gray-900">
                                                                         <span class="absolute inset-0" aria-hidden="true"></span>
                                                                         {{ $flavor->flavor }}
                                                                     </a>
@@ -187,7 +187,7 @@
                                                         <ul role="list" aria-labelledby="women-brands-heading" class="mt-4 space-y-4">
                                                             @foreach($flavor->brands()->inRandomOrder()->limit(5)->get() as $brand)
                                                             <li class="flex">
-                                                                <a href="#" class="hover:text-gray-800">
+                                                                <a href="{{ route('brand', $brand) }}" wire:navigate class="hover:text-gray-800">
                                                                     {{ $brand->brand }}
                                                                 </a>
                                                             </li>

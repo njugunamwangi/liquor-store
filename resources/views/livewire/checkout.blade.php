@@ -15,7 +15,7 @@
                                 <div class="space-y-1 sm:flex sm:items-start sm:justify-between sm:space-x-6">
                                     <div class="flex-auto space-y-1 text-sm font-medium">
                                         <h3 class="text-gray-900">
-                                        <a href="#">{{ $item->product->product }}</a>
+                                        <a href="{{ route('product', $item->product) }}">{{ $item->product->product }}</a>
                                         </h3>
                                         <div class="flex justify-between">
                                             <p class="text-gray-900">{{ $item->quantity }} x Kes {{ number_format( $item->product->retail_price , 2 ) }}</p>
