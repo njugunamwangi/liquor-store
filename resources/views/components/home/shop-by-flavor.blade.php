@@ -16,7 +16,7 @@
                                 <li class="inline-flex w-64 flex-col text-center lg:w-auto">
                                     <div class="group relative">
                                     <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200">
-                                        <img src="{{ empty($flavor->featured_image_id) ? "https://placehold.jp/30/200x300.png?text=image" : url('/storage/'. $flavor->featuredImage->path) }}" alt="{{ $flavor->flavor }}"
+                                        <img src="{{ empty($flavor->featured_image_id) ? "https://placehold.co/600x400?text=".$flavor->flavor : url('/storage/'. $flavor->featuredImage->path) }}" alt="{{ $flavor->flavor }}"
                                             class="h-full w-full object-cover object-center group-hover:opacity-75">
                                     </div>
                                     <div class="mt-6">

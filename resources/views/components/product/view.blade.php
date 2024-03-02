@@ -59,7 +59,7 @@
                 <!-- Product image -->
                 <div class="mt-10 lg:col-start-2 lg:row-span-2 lg:mt-0 lg:self-center">
                 <div class=" overflow-hidden rounded-lg">
-                    <img src="{{ empty($product->image_id) ? "https://placehold.jp/30/200x300.png?text=image" : url('/storage/'.$product->productImage->path) }}" alt="{{ $product->product }}" class="h-full w-full object-cover object-center">
+                    <img src="{{ empty($product->image_id) ? "https://placehold.co/300x400?text=".$product->product : url('/storage/'.$product->productImage->path) }}" alt="{{ $product->product }}" class="h-full w-full object-cover object-center">
                 </div>
                 </div>
 

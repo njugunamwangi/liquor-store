@@ -8,7 +8,7 @@
                     @foreach($cart as $item)
                         <li class="flex space-x-6 py-6">
                             <img
-                                src="{{ empty($item->product->image_id) ? "https://placehold.jp/30/200x300.png?text=image" : url('/storage/'.$item->product->productImage->path) }}"
+                                src="{{ empty($item->product->image_id) ? "https://placehold.co/600x400?text=".$item->product->product : url('/storage/'.$item->product->productImage->path) }}"
                                 alt="{{ $item->product->product }}"
                                 class="h-24 w-24 flex-none rounded-md bg-gray-100 object-cover object-center">
                             <div class="flex-auto">

@@ -1,6 +1,6 @@
 
     <div class="flex space-x-6 border-b border-gray-200 py-10">
-        <img src="{{ empty($item->product->image_id) ? "https://placehold.jp/30/200x300.png?text=image" : url('/storage/'.$item->product->productImage->path)}}"
+        <img src="{{ empty($item->product->image_id) ? "https://placehold.co/600x400?text=".$item->product->product : url('/storage/'.$item->product->productImage->path)}}"
              alt="Glass bottle with black plastic pour top and mesh insert."
              class="h-20 w-16 flex-none rounded-lg bg-gray-100 object-cover object-center sm:h-40 sm:w-40">
 
