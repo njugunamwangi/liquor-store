@@ -121,7 +121,7 @@
                                                 class="relative flex h-80 w-56 flex-col overflow-hidden rounded-lg p-6 hover:opacity-75 xl:w-auto">
                                                 <span aria-hidden="true" class="absolute inset-0">
                                                 <img
-                                                    src="{{ empty($flavor->featured_image_id) ? "https://placehold.jp/30/200x300.png?text=image" : url('/storage/'. $flavor->featuredImage->path) }}"
+                                                    src="{{ empty($flavor->featured_image_id) ? "https://placehold.co/300x400?text=".$flavor->flavor  : url('/storage/'. $flavor->featuredImage->path) }}"
                                                     alt="{{ $flavor->flavor }}"
                                                     class="h-full w-full object-cover object-center">
                                                 </span>
