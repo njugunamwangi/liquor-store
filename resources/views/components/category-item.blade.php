@@ -3,7 +3,7 @@
             <div class=" h-72 w-full overflow-hidden rounded-lg">
                 <a href="{{ route('product', $product) }}"" >
                     <img
-                    src="{{ empty($product->image_id) ? "https://placehold.jp/30/200x300.png?text=image" : url('/storage/'.$product->productImage->path) }}"
+                    src="{{ empty($product->image_id) ? "https://placehold.co/300x400?text=".$product->product : url('/storage/'.$product->productImage->path) }}"
                     alt="{{ $product->product }}"
                     class="h-full w-full object-cover object-center">
                 </a>
