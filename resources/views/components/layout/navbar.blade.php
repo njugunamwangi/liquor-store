@@ -204,7 +204,11 @@
                             </div>
                         @endforeach
 
-                    <!-- <a href="#" class="flex items-center text-sm font-medium text-gray-700 hover:text-gray-800">Company</a> -->
+                    @if(auth()->user()->hasRole(App\Models\Role::IS_ADMIN))
+                        <a href="/admin" wire:navigate class="flex items-center text-sm font-medium text-gray-700 hover:text-gray-800">
+                            Admin Dashboard
+                        </a>
+                    @endif
                     <!-- <a href="#" class="flex items-center text-sm font-medium text-gray-700 hover:text-gray-800">Stores</a> -->
                     </div>
                 </div>
