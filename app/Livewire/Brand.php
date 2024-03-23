@@ -3,12 +3,14 @@
 namespace App\Livewire;
 
 use App\Models\Product;
+use Livewire\Attributes\Layout;
 use Livewire\Component;
 
 class Brand extends Component
 {
     public \App\Models\Brand $brand;
 
+    #[Layout('layouts.app')]
     public function render()
     {
         $brand = $this->brand;
@@ -18,6 +20,6 @@ class Brand extends Component
             ->get();
 
         return view('livewire.brand', compact('brand', 'products'))
-            ->layout('layouts.app', ['title' => $this->brand->brand]);
+            ->title($this->brand->brand);
     }
 }

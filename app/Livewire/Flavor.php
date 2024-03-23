@@ -3,12 +3,14 @@
 namespace App\Livewire;
 
 use App\Models\Product;
+use Livewire\Attributes\Layout;
 use Livewire\Component;
 
 class Flavor extends Component
 {
     public \App\Models\Flavor $flavor;
 
+    #[Layout('layouts.app')]
     public function render()
     {
         $products = Product::query()
@@ -18,6 +20,6 @@ class Flavor extends Component
         $flavor = $this->flavor;
 
         return view('livewire.flavor', compact('flavor', 'products'))
-            ->layout('layouts.app', ['title' => $this->flavor->flavor]);
+            ->title($this->flavor->flavor);
     }
 }
