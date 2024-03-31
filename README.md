@@ -34,7 +34,7 @@ password: password
 - Clone the repository
 
 ```bash
-git clone https://github.com/njugunamwangi/laracom.git
+git clone https://github.com/njugunamwangi/liquor-store.git
 ```
 - On the root of the directory, copy and paste .env.example onto .env and configure the database accordingly
  ```bash
