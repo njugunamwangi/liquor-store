@@ -65,6 +65,8 @@ class OrdersChartWidget extends ChartWidget
                 [
                     'label' => 'Orders',
                     'data' => $data->map(fn (TrendValue $value) => $value->aggregate),
+                    'backgroundColor' => '#36A2EB',
+                    'borderColor' => '#9BD0F5',
                 ],
             ],
             'labels' => $data->map(fn (TrendValue $value) => $value->date),

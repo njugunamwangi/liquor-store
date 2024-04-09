@@ -12,6 +12,7 @@ class CustomersOrderChart extends ChartWidget
     protected static ?int $sort = 3;
 
     protected static ?string $heading = 'Customer Registration';
+    protected static string $color = 'info';
 
     public ?string $filter = '3months';
 
