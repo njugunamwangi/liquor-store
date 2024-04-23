@@ -12,6 +12,7 @@ use Filament\Pages;
 use Filament\Panel;
 use Filament\PanelProvider;
 use Filament\Support\Colors\Color;
+use Filament\Support\Enums\MaxWidth;
 use Filament\Support\Facades\FilamentView;
 use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
 use Illuminate\Cookie\Middleware\EncryptCookies;
@@ -40,12 +41,18 @@ class AdminPanelProvider extends PanelProvider
             ->pages([
                 Pages\Dashboard::class,
             ])
+            ->maxContentWidth(MaxWidth::Full)
             ->navigationGroups([
-                NavigationGroup::make('Content'),
-                NavigationGroup::make('Shop'),
-                NavigationGroup::make('User Management'),
-                NavigationGroup::make('Roles and Permissions'),
-                NavigationGroup::make('Settings'),
+                NavigationGroup::make('Content')
+                    ->collapsed(),
+                NavigationGroup::make('Shop')
+                    ->collapsed(),
+                NavigationGroup::make('User Management')
+                    ->collapsed(),
+                NavigationGroup::make('Roles and Permissions')
+                    ->collapsed(),
+                NavigationGroup::make('Settings')
+                    ->collapsed(),
             ])
             ->discoverWidgets(in: app_path('Filament/Widgets'), for: 'App\\Filament\\Widgets')
             ->widgets([
