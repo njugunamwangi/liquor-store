@@ -41,8 +41,11 @@ class AdminPanelProvider extends PanelProvider
                 Pages\Dashboard::class,
             ])
             ->navigationGroups([
-                NavigationGroup::make('Shop')->icon('heroicon-o-shopping-cart'),
-                NavigationGroup::make('User Management')->icon('heroicon-o-user-group'),
+                NavigationGroup::make('Content'),
+                NavigationGroup::make('Shop'),
+                NavigationGroup::make('User Management'),
+                NavigationGroup::make('Roles and Permissions'),
+                NavigationGroup::make('Settings'),
             ])
             ->discoverWidgets(in: app_path('Filament/Widgets'), for: 'App\\Filament\\Widgets')
             ->widgets([
