@@ -8,8 +8,9 @@ enum OrderStatus: string
     case Processing = 'Processing';
     case Delivered = 'Delivered';
     case Cancelled = 'Cancelled';
-
     case Shipped = 'Shipped';
+
+    public const DEFAULT = self::Pending->value;
 
     public function getColor(): string
     {
@@ -32,4 +33,10 @@ enum OrderStatus: string
             self::Cancelled => 'heroicon-o-x-circle',
         };
     }
+
+    public static function values(): array
+    {
+        return array_column(self::cases(), 'value');
+    }
+
 }
