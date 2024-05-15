@@ -2,6 +2,8 @@
 
 namespace App\Livewire;
 
+use App\Enums\OrderStatus;
+use App\Enums\PaymentStatus;
 use App\Models\Cart;
 use App\Models\Order;
 use App\Models\OrderDetail;
@@ -62,8 +64,8 @@ class Checkout extends Component
             'tracking_no' => Str::uuid(),
             'order_id' => 'AXFYT-'.rand(1000000, 9999999),
             'payment_method' => '-',
-            'payment_status' => 'Not Paid',
-            'order_status' => 'Pending',
+            'payment_status' => PaymentStatus::DEFAULT,
+            'order_status' => OrderStatus::DEFAULT,
             'shipping' => $this->shipping,
         ]);
 

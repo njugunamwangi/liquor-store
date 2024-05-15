@@ -9,8 +9,18 @@ use App\Filament\Resources\OrderResource\RelationManagers;
 use App\Filament\Resources\OrderResource\RelationManagers\PaymentsRelationManager;
 use App\Filament\Resources\OrderResource\Widgets\OrdersStatsOverview;
 use App\Models\Order;
+use App\Models\Product;
 use Filament\Forms;
+use Filament\Forms\Components\Actions\Action;
+use Filament\Forms\Components\Grid;
+use Filament\Forms\Components\Group;
+use Filament\Forms\Components\Repeater;
+use Filament\Forms\Components\Section;
+use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Wizard;
 use Filament\Forms\Form;
+use Filament\Forms\Get;
+use Filament\Forms\Set;
 use Filament\Infolists\Components;
 use Filament\Infolists\Components\Tabs;
 use Filament\Infolists\Infolist;
@@ -20,6 +30,8 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Ysfkaya\FilamentPhoneInput\Forms\PhoneInput;
+use Ysfkaya\FilamentPhoneInput\PhoneInputNumberType;
 
 class OrderResource extends Resource
 {
@@ -38,33 +50,141 @@ class OrderResource extends Resource
 
     public static function form(Form $form): Form
     {
+        $products = Product::get();
+
         return $form
             ->schema([
-                Forms\Components\Select::make('user_id')
-                    ->relationship('user', 'name')
-                    ->searchable()
-                    ->preload()
-                    ->required(),
-                Forms\Components\TextInput::make('total_price')
-                    ->required()
-                    ->numeric(),
-                Forms\Components\TextInput::make('payment_method')
-                    ->required()
-                    ->maxLength(45),
-                Forms\Components\Select::make('payment_status')
-                    ->enum(PaymentStatus::class)
-                    ->options(PaymentStatus::class)
-                    ->searchable()
-                    ->required(),
-                Forms\Components\TextInput::make('tracking_no')
-                    ->required()
-                    ->maxLength(2000),
-                Forms\Components\Select::make('order_status')
-                    ->enum(OrderStatus::class)
-                    ->options(OrderStatus::class)
-                    ->searchable()
-                    ->required(),
+                Wizard::make([
+                    Wizard\Step::make('Order')
+                        ->schema([
+                            Group::make()
+                                ->columnSpanFull()
+                                ->schema([
+                                    Forms\Components\Select::make('user_id')
+                                        ->relationship('user', 'name')
+                                        ->searchable()
+                                        ->preload()
+                                        ->required(),
+                                    Grid::make(2)
+                                        ->schema([
+                                            Forms\Components\Select::make('payment_status')
+                                                ->enum(PaymentStatus::class)
+                                                ->options(PaymentStatus::class)
+                                                ->searchable()
+                                                ->required()
+                                                ->default(PaymentStatus::DEFAULT),
+                                            Forms\Components\Select::make('order_status')
+                                                ->enum(OrderStatus::class)
+                                                ->options(OrderStatus::class)
+                                                ->searchable()
+                                                ->required()
+                                                ->default(OrderStatus::DEFAULT),
+                                        ])
+                                ]),
+                            Group::make()
+                                ->columnSpanFull()
+                                ->schema([
+                                    Section::make()
+                                        ->schema([
+                                            Repeater::make('products')
+                                                ->addActionLabel('Add Product')
+                                                ->schema([
+                                                    Forms\Components\Select::make('product_id')
+                                                        ->label('Product')
+                                                        ->options(
+                                                            $products->mapWithKeys(function (Product $product) {
+                                                                return [$product->id => sprintf('%s %s (Kes%s)', $product->flavor->flavor . ' | ', $product->product, $product->retail_price)];
+                                                            })
+                                                        )
+                                                        ->searchable()
+                                                        ->preload()
+                                                        ->disableOptionWhen(function ($value, $state, Get $get) {
+                                                            return collect($get('../*.product_id'))
+                                                                ->reject(fn($id) => $id == $state)
+                                                                ->filter()
+                                                                ->contains($value);
+                                                        })
+                                                        ->required(),
+                                                    Forms\Components\TextInput::make('quantity')
+                                                        ->integer()
+                                                        ->default(1)
+                                                        ->required()
+                                                ])
+                                                ->live()
+                                                ->afterStateUpdated(function (Get $get, Set $set) {
+                                                    self::updateTotals($get, $set);
+                                                })
+                                                ->deleteAction(
+                                                    fn(Action $action) => $action->after(fn(Get $get, Set $set) => self::updateTotals($get, $set)),
+                                                )
+                                                ->reorderable(false)
+                                                ->columns(2)
+                                        ])->columnSpan(8),
+                                    Section::make()
+                                        ->schema([
+                                            TextInput::make('subtotal')
+                                                ->readOnly()
+                                                ->afterStateUpdated(function (Get $get, Set $set) {
+                                                    self::updateTotals($get, $set);
+                                                }),
+                                            TextInput::make('shipping')
+                                                ->numeric()
+                                                ->default(100)
+                                                ->live(true)
+                                                ->afterStateUpdated(function (Get $get, Set $set) {
+                                                    self::updateTotals($get, $set);
+                                                }),
+                                            TextInput::make('total_price')
+                                                ->readOnly(),
+                                        ])->columnSpan(4),
+                                ])->columns(12)
+                        ]),
+                    Wizard\Step::make('Delivery')
+                        ->schema([
+                            Grid::make(2)
+                                ->schema([
+                                    PhoneInput::make('phone')
+                                        ->defaultCountry('KE')
+                                        ->displayNumberFormat(PhoneInputNumberType::INTERNATIONAL)
+                                        ->focusNumberFormat(PhoneInputNumberType::INTERNATIONAL),
+                                    Grid::make(2)
+                                        ->schema([
+                                            TextInput::make('address1')
+                                                ->label('Address 1')
+                                                ->required(),
+                                            TextInput::make('address2')
+                                                ->label('Address 2')
+                                        ]),
+                                    Grid::make(2)
+                                        ->schema([
+                                            TextInput::make('city')
+                                                ->required(),
+                                            TextInput::make('state')
+                                                ->required()
+                                        ]),
+                                    TextInput::make('zipcode')
+                                        ->label('Zip Code')
+                                        ->columnSpanFull()
+                                        ->required()
+                                ])
+                        ]),
+                ])
+                ->columnSpanFull()
             ]);
+    }
+
+    public static function updateTotals(Get $get, Set $set): void
+    {
+        $selectedProducts = collect($get('products'))->filter(fn($item) => !empty($item['product_id']) && !empty($item['quantity']));
+
+        $prices = Product::find($selectedProducts->pluck('product_id'))->pluck('retail_price', 'id');
+
+        $subtotal = $selectedProducts->reduce(function ($subtotal, $product) use ($prices) {
+            return $subtotal + ($prices[$product['product_id']] * $product['quantity']);
+        }, 0);
+
+        $set('subtotal', number_format($subtotal, 2, '.', ''));
+        $set('total_price', number_format($subtotal + $get('shipping'), 2, '.', ''));
     }
 
     public static function infolist(Infolist $infolist): Infolist
@@ -196,7 +316,6 @@ class OrderResource extends Resource
             ])
             ->actions([
                 Tables\Actions\ViewAction::make(),
-                Tables\Actions\EditAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
@@ -228,7 +347,6 @@ class OrderResource extends Resource
             'index' => Pages\ListOrders::route('/'),
             'create' => Pages\CreateOrder::route('/create'),
             'view' => Pages\ViewOrder::route('/{record}'),
-            'edit' => Pages\EditOrder::route('/{record}/edit'),
         ];
     }
 
