@@ -26,6 +26,7 @@
         "njxqlus/filament-progressbar": "^1.0",
         "spatie/laravel-sluggable": "^3.5",
         "unicodeveloper/laravel-paystack": "^1.1",
+        "ysfkaya/filament-phone-input": "^2.3",
         "z3d0x/filament-logger": "^0.6.2"
     },
     "require-dev": {
