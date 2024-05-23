@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\OrderStatus;
+use App\Enums\PaymentMethod;
+use App\Enums\PaymentStatus;
 use App\Models\Order;
 use App\Models\Payment;
 use Illuminate\Support\Facades\Redirect;
@@ -41,6 +44,7 @@ class PaymentController extends Controller
         $payment = Payment::create([
             'status' => $data['status'],
             'message' => $paymentDetails['message'],
+            'payment_method' => PaymentMethod::Stripe->value,
             'paymentId' => $data['id'],
             'order_id' => $data['metadata']['order_id'],
             'user_id' => $data['metadata']['user_id'],
@@ -60,9 +64,9 @@ class PaymentController extends Controller
                     ->first();
 
                 $model->update([
-                    'payment_status' => 'Paid',
-                    'order_status' => 'Processing',
-                    'payment_method' => 'PayStack',
+                    'payment_status' => PaymentStatus::Paid,
+                    'order_status' => OrderStatus::Processing,
+                    'payment_method' => PaymentMethod::PayStack,
                 ]);
             }
 

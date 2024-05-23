@@ -53,4 +53,9 @@ class Order extends Model
     {
         return $this->hasMany(Payment::class);
     }
+
+    public function paid(): bool
+    {
+        return $this->payment_status === PaymentStatus::Paid;
+    }
 }
