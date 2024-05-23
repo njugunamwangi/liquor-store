@@ -26,6 +26,7 @@ use Filament\Infolists\Components\Tabs;
 use Filament\Infolists\Infolist;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Actions\Action as ActionsAction;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
@@ -316,6 +317,10 @@ class OrderResource extends Resource
             ])
             ->actions([
                 Tables\Actions\ViewAction::make(),
+                ActionsAction::make('stripe')
+                    ->icon('heroicon-o-credit-card')
+                    ->hidden(fn($record) => $record->paid())
+                    ->url(fn($record): string => self::getUrl('checkout', [$record]))
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
@@ -347,6 +352,7 @@ class OrderResource extends Resource
             'index' => Pages\ListOrders::route('/'),
             'create' => Pages\CreateOrder::route('/create'),
             'view' => Pages\ViewOrder::route('/{record}'),
+            'checkout' => Pages\Checkout::route('/{record}/checkout')
         ];
     }
 
