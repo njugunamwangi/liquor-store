@@ -41,4 +41,11 @@ return [
         'isv_partner_api_key' => env('VIVA_ISV_PARTNER_API_KEY'),
     ],
 
+    'stripe' => [
+        'key'       => env('STRIPE_KEY'),
+        'secret'    => env('STRIPE_SECRET'),
+        'currency'  => env('STRIPE_CURRENCY'),
+        'wh_secret' => env('STRIPE_WEBHOOK_SECRET'),
+    ],
+
 ];
