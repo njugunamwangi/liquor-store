@@ -6,7 +6,7 @@
         <form method="get" action="{{ route('search') }}">
             <input
                 wire:model.live="search"
-                class="h-12 w-full border-0 bg-transparent pl-11 pr-4 text-gray-800 placeholder:text-gray-400 focus:ring-0 sm:text-sm"
+                class="w-full h-12 pr-4 text-gray-800 bg-transparent border-0 pl-11 placeholder:text-gray-400 focus:ring-0 sm:text-sm"
                 placeholder="Search..."
                 role="combobox"
                 aria-expanded="false"
@@ -16,8 +16,8 @@
     @if(strlen($search) == 0)
 
         <!-- Empty state, show/hide based on command palette state -->
-        <div class="px-6 py-14 text-center text-sm sm:px-14">
-            <svg class="mx-auto h-6 w-6 text-gray-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+        <div class="px-6 text-sm text-center py-14 sm:px-14">
+            <svg class="w-6 h-6 mx-auto text-gray-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 1 0-7.5 0v4.5m11.356-1.993 1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 0 1-1.12-1.243l1.264-12A1.125 1.125 0 0 1 5.513 7.5h12.974c.576 0 1.059.435 1.119 1.007ZM8.625 10.5a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm7.5 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z" />
             </svg>
 
@@ -27,9 +27,9 @@
 
     @elseif(sizeof($products) > 0 && strlen($search) > 0)
 
-        <div class="flex transform-gpu divide-x divide-gray-100">
+        <div class="flex divide-x divide-gray-100 transform-gpu">
             <!-- Preview Visible: "sm:h-96" -->
-            <div class="max-h-96 min-w-0 flex-auto scroll-py-4 overflow-y-auto px-6 py-4 sm:h-96">
+            <div class="flex-auto min-w-0 px-6 py-4 overflow-y-auto max-h-96 scroll-py-4 sm:h-96">
                 <!-- Results, show/hide based on command palette state. -->
                 <ul class="-mx-2 text-sm text-gray-700" id="options" role="listbox">
                     <!-- Active: "bg-gray-100 text-gray-900" -->
@@ -41,8 +41,8 @@
                             <img
                                 src="{{ empty($product->image_id) ? "https://placehold.jp/30/200x300.png?text=image" : url('/storage/'.$product->productImage->path) }}"
                                 alt=" {{ $product->product }} "
-                                class="h-6 w-6 flex-none rounded-full">
-                            <span class="ml-3 flex-auto truncate">{{ $product->product }}</span>
+                                class="flex-none w-6 h-6 rounded-full">
+                            <span class="flex-auto ml-3 truncate">{{ $product->product }}</span>
                             <!-- Not Active: "hidden" -->
                             @if(!empty($hoveredProduct) && $product->id == $hoveredProduct->id)
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
@@ -56,25 +56,25 @@
 
             <!-- Active item side-panel, show/hide based on active state -->
             @if(!empty($hoveredProduct))
-                <div class="hidden w-1/2 flex-none flex-col divide-y divide-gray-100 overflow-y-auto sm:flex">
+                <div class="flex-col flex-none hidden w-1/2 overflow-y-auto divide-y divide-gray-100 sm:flex">
                     <div class="flex-none p-6 text-center">
                         <a href="{{ route('product', $hoveredProduct) }}">
                             <img
-                                src="{{ empty($hoveredProduct->image_id) ? "https://placehold.jp/30/200x300.png?text=image" : url('/storage/'.$hoveredProduct->productImage->path) }}"
+                                src="{{ empty($hoveredProduct->image_id) ? "https://placehold.co/600x400?text=".$hoveredProduct->product : url('/storage/'.$hoveredProduct->productImage->path) }}"
                                 alt=""
-                                class="mx-auto h-56 w-56 object-cover object-center">
+                                class="object-cover object-center w-56 h-56 mx-auto">
                         </a>
                     </div>
                     <div class="flex-none p-6 text-center">
                         <a href="{{ route('product', $hoveredProduct) }}" class="font-semibold text-gray-900">{{ $hoveredProduct->product }}</a>
                         <p class="text-sm leading-6 text-gray-500">{{ $hoveredProduct->brand->brand }} | {{ $hoveredProduct->flavor->flavor }} | {{ $hoveredProduct->amount->amount }}</p>
-                        <p class="text-sm leading-6 text-gray-500 mr-2 mb-2">Kes {{ number_format($hoveredProduct->retail_price, 2) }}</p>
+                        <p class="mb-2 mr-2 text-sm leading-6 text-gray-500">Kes {{ number_format($hoveredProduct->retail_price, 2) }}</p>
 
 
                         <a
                             wire:click.prevent="addToCart({{ $hoveredProduct->id }})"
                             href="#"
-                            class="flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-2 text-sm font-medium text-white hover:bg-gray-900">
+                            class="flex items-center justify-center px-8 py-2 text-sm font-medium text-white bg-indigo-600 border border-transparent rounded-md hover:bg-gray-900">
                             Add to Cart
                         </a>
 
@@ -86,8 +86,8 @@
     @else
 
         <!-- Empty state, show/hide based on command palette state -->
-        <div class="px-6 py-14 text-center text-sm sm:px-14">
-            <svg class="mx-auto h-6 w-6 text-gray-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+        <div class="px-6 text-sm text-center py-14 sm:px-14">
+            <svg class="w-6 h-6 mx-auto text-gray-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 1 0-7.5 0v4.5m11.356-1.993 1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 0 1-1.12-1.243l1.264-12A1.125 1.125 0 0 1 5.513 7.5h12.974c.576 0 1.059.435 1.119 1.007ZM8.625 10.5a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm7.5 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z" />
             </svg>
 
@@ -97,12 +97,12 @@
 
     @endif
 
-    <div class="px-6 py-4 text-center text-sm sm:px-14">
+    <div class="px-6 py-4 text-sm text-center sm:px-14">
         <button
             @click="search = false"
             wire:click="closeSearch"
             type="button"
-            class="mt-6 w-full rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+            class="w-full px-3 py-2 mt-6 text-sm font-semibold text-white bg-indigo-600 rounded-md shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
             Close Search
         </button>
     </div>
