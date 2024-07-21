@@ -204,11 +204,7 @@
                             </div>
                         @endforeach
 
-                    @if(auth()->user() && auth()->user()->hasRole(App\Models\Role::IS_ADMIN))
-                        <a href="{{ route('filament.admin.pages.dashboard') }}" wire:navigate class="flex items-center text-sm font-medium text-gray-700 hover:text-gray-800">
-                            Admin Dashboard
-                        </a>
-                    @endif
+
                     <!-- <a href="#" class="flex items-center text-sm font-medium text-gray-700 hover:text-gray-800">Stores</a> -->
                     </div>
                 </div>
